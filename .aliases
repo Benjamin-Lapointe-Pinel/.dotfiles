@@ -4,3 +4,11 @@ alias ll="ls -lhA"
 alias tree='ll --tree'
 alias cs='cd;ls'
 alias ct='cd;tree'
+
+docker() {
+    if [[ $@ == "container watch" ]]; then
+        command watch -t 'docker container ls -a --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
+    else
+        command docker "$@"
+    fi
+}

@@ -28,6 +28,35 @@ color21="dd/dd/dd" # Base 06
 color_foreground="d5/d5/d5" # Base 05
 color_background="1d/20/21" # Base 00
 
+color_value() { echo ${1//\/} }
+
+if [ ! -f .terminal_theme ]; then
+    echo "*color0: #$(color_value $color00)" >> .terminal_theme
+    echo "*color1: #$(color_value $color01)" >> .terminal_theme
+    echo "*color2: #$(color_value $color02)" >> .terminal_theme
+    echo "*color3: #$(color_value $color03)" >> .terminal_theme
+    echo "*color4: #$(color_value $color04)" >> .terminal_theme
+    echo "*color5: #$(color_value $color05)" >> .terminal_theme
+    echo "*color6: #$(color_value $color06)" >> .terminal_theme
+    echo "*color7: #$(color_value $color07)" >> .terminal_theme
+    echo "*color8: #$(color_value $color08)" >> .terminal_theme
+    echo "*color9: #$(color_value $color09)" >> .terminal_theme
+    echo "*color10: #$(color_value $color10)" >> .terminal_theme
+    echo "*color11: #$(color_value $color11)" >> .terminal_theme
+    echo "*color12: #$(color_value $color12)" >> .terminal_theme
+    echo "*color13: #$(color_value $color13)" >> .terminal_theme
+    echo "*color14: #$(color_value $color14)" >> .terminal_theme
+    echo "*color15: #$(color_value $color15)" >> .terminal_theme
+    echo "*color16: #$(color_value $color16)" >> .terminal_theme
+    echo "*color17: #$(color_value $color17)" >> .terminal_theme
+    echo "*color18: #$(color_value $color18)" >> .terminal_theme
+    echo "*color19: #$(color_value $color19)" >> .terminal_theme
+    echo "*color20: #$(color_value $color20)" >> .terminal_theme
+    echo "*color21: #$(color_value $color21)" >> .terminal_theme
+    echo "*background: #$(color_value $color_background)" >> .terminal_theme
+    echo "*foreground: #$(color_value $color_foreground)" >> .terminal_theme
+fi
+
 if [ -n "$TMUX" ]; then
   # Tell tmux to pass the escape sequences through
   # (Source: http://permalink.gmane.org/gmane.comp.terminal-emulators.tmux.user/1324)
@@ -78,13 +107,13 @@ put_template 21 $color21
 # foreground / background / cursor color
 if [ -n "$ITERM_SESSION_ID" ]; then
   # iTerm2 proprietary escape codes
-  put_template_custom Pg d5d5d5 # foreground
-  put_template_custom Ph 1d2021 # background
-  put_template_custom Pi d5d5d5 # bold color
-  put_template_custom Pj 53585b # selection color
-  put_template_custom Pk d5d5d5 # selected text color
-  put_template_custom Pl d5d5d5 # cursor
-  put_template_custom Pm 1d2021 # cursor text
+  put_template_custom Pg $(color_value $color_foreground) # foreground
+  put_template_custom Ph $(color_value $color_foreground) # background
+  put_template_custom Pi $(color_value $color07) # bold color
+  put_template_custom Pj $(color_value $color18) # selection color
+  put_template_custom Pk $(color_value $color07) # selected text color
+  put_template_custom Pl $(color_value $color07) # cursor
+  put_template_custom Pm $(color_value $color00) # cursor text
 else
   put_template_var 10 $color_foreground
   if [ "$BASE16_SHELL_SET_BACKGROUND" != false ]; then
@@ -97,6 +126,7 @@ else
 fi
 
 # clean up
+unset -f color_value
 unset -f put_template
 unset -f put_template_var
 unset -f put_template_custom

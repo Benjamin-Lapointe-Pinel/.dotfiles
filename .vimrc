@@ -24,7 +24,6 @@ set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-m> :NERDTreeFind<CR>
 nnoremap <C-@> :set list! list?<CR>
-nnoremap <C-r> :source $MYVIMRC<CR>
 autocmd FileType python nnoremap <buffer> <F5> :w<CR>:!clear;python %<CR>
 autocmd FileType dockerfile nnoremap <F5> :w<CR>:!clear;docker build -t build .;docker run --rm -it $(docker build -q .)<CR>
 

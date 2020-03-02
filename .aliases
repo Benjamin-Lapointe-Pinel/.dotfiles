@@ -4,6 +4,7 @@ alias ll="ls -lhA"
 alias tree='ll --tree'
 alias cs='cd;ls'
 alias ct='cd;tree'
+alias pacman='pacman --color=auto'
 
 docker() {
     if [[ $@ == "container watch" ]]; then

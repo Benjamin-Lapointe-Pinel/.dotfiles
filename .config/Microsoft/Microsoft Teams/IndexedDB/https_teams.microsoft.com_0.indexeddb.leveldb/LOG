@@ -1,0 +1,14 @@
+2020/03/02-14:26:33.935 6768 Reusing MANIFEST /home/admin/.dotfiles/.config/Microsoft/Microsoft Teams/IndexedDB/https_teams.microsoft.com_0.indexeddb.leveldb/MANIFEST-000001
+2020/03/02-14:26:49.857 7036 Level-0 table #5: started
+2020/03/02-14:26:49.908 7036 Level-0 table #5: 1616491 bytes OK
+2020/03/02-14:26:49.909 7036 Delete type=0 #3
+2020/03/02-14:26:54.895 7036 Level-0 table #7: started
+2020/03/02-14:26:54.930 7036 Level-0 table #7: 1464142 bytes OK
+2020/03/02-14:26:54.932 7036 Delete type=0 #4
+2020/03/02-14:26:54.956 7036 Compacting 1@1 + 1@2 files
+2020/03/02-14:26:55.109 7036 Generated table #8@1: 7577 keys, 2158444 bytes
+2020/03/02-14:26:55.173 7036 Generated table #9@1: 2660 keys, 546667 bytes
+2020/03/02-14:26:55.173 7036 Compacted 1@1 + 1@2 files => 2705111 bytes
+2020/03/02-14:26:55.181 7036 compacted to: files[ 0 0 2 0 0 0 0 ]
+2020/03/02-14:26:55.181 7036 Delete type=2 #5
+2020/03/02-14:26:55.182 7036 Delete type=2 #7

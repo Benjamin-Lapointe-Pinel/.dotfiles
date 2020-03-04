@@ -77,8 +77,8 @@ AntiAlias:	1
 DefaultFVShowHmetrics:	0
 DefaultFVShowVmetrics:	0
 DefaultFVSize:	48
-DefaultFVRowCount:	10
-DefaultFVColCount:	10
+DefaultFVRowCount:	11
+DefaultFVColCount:	32
 DefaultFVGlyphLabel:	0
 SaveToDir:	0
 OnlyCopyDisplayed:	0
@@ -142,8 +142,8 @@ FCBookmarks:	~/fonts;/usr/X11R6/lib/X11/fonts/
 DefaultMVType:	1
 DefaultMVWidth:	800
 DefaultMVHeight:	300
-DefaultBVWidth:	270
-DefaultBVHeight:	250
+DefaultBVWidth:	1078
+DefaultBVHeight:	631
 AnchorControlPixelSize:	150
 CV_B1Tool:	0
 CV_CB1Tool:	0
@@ -151,6 +151,7 @@ CV_B2Tool:	1
 CV_CB2Tool:	5
 XUID-Base:	1021 941 41885830
 ShowKerningPane:	1
+Recent:	/home/admin/.fonts/unifont-12.1.04.otb
 Recent:	/home/admin/TamzenForPowerline7x14r.pcf
 Recent:	/home/admin/.local/share/fonts/tamzen-font-Tamzen-1.11.4/TamzenForPowerline10x20b.otb
 Recent:	/home/admin/.dotfiles/.local/share/fonts/tamzen-font-Tamzen-1.11.4/TamzenForPowerline7x14r.pcf
@@ -160,4 +161,3 @@ Recent:	/home/admin/.dotfiles/.local/share/fonts/tamzen-font-Tamzen-1.11.4/Tamze
 Recent:	/home/admin/.dotfiles/.local/share/fonts/tamzen-font-Tamzen-1.11.4/TamzenForPowerline8x16r.pcf
 Recent:	/home/admin/.dotfiles/.local/share/fonts/tamzen-font-Tamzen-1.11.4/TamzenForPowerline7x13b.pcf
 Recent:	/home/admin/.dotfiles/.local/share/fonts/tamzen-font-Tamzen-1.11.4/TamzenForPowerline7x13r.pcf
-Recent:	/home/admin/.dotfiles/.local/share/fonts/tamzen-font-Tamzen-1.11.4/TamzenForPowerline7x14b.pcf

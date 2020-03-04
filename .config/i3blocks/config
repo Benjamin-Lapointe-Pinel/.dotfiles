@@ -20,6 +20,16 @@ color=#f5af19
 command=echo "$USER"
 interval=once
 
+[ip]
+label=
+interval=60
+
+[date]
+label= 
+command=date '+%Y-%m-%d'
+interval=86400
+
 [time]
-command=date '+ %Y-%m-%d  %H:%M:%S'
+label= 
+command=date '+%H:%M:%S'
 interval=1

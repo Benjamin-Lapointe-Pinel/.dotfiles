@@ -77,8 +77,8 @@ AntiAlias:	1
 DefaultFVShowHmetrics:	0
 DefaultFVShowVmetrics:	0
 DefaultFVSize:	48
-DefaultFVRowCount:	21
-DefaultFVColCount:	50
+DefaultFVRowCount:	11
+DefaultFVColCount:	34
 DefaultFVGlyphLabel:	0
 SaveToDir:	0
 OnlyCopyDisplayed:	0
@@ -151,6 +151,7 @@ CV_B2Tool:	1
 CV_CB2Tool:	5
 XUID-Base:	1021 941 41885830
 ShowKerningPane:	1
+Recent:	/usr/share/fonts/misc/9x15.pcf
 Recent:	/home/admin/.dotfiles/fonts/siji/bdf/siji.bdf
 Recent:	/home/admin/.dotfiles/.fonts/uw-ttyp0-1.3/bdf/t0-11.bdf
 Recent:	/home/admin/.fonts/unifont-12.1.04.otb
@@ -160,4 +161,3 @@ Recent:	/home/admin/.dotfiles/.local/share/fonts/tamzen-font-Tamzen-1.11.4/Tamze
 Recent:	/home/admin/.dotfiles/.local/share/fonts/tamzen-font-Tamzen-1.11.4/TamzenForPowerline8x15b.pcf
 Recent:	/home/admin/.dotfiles/.local/share/fonts/tamzen-font-Tamzen-1.11.4/TamzenForPowerline8x15r.pcf
 Recent:	/home/admin/.dotfiles/.local/share/fonts/tamzen-font-Tamzen-1.11.4/TamzenForPowerline8x16b.pcf
-Recent:	/home/admin/.dotfiles/.local/share/fonts/tamzen-font-Tamzen-1.11.4/TamzenForPowerline8x16r.pcf

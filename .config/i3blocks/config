@@ -4,10 +4,19 @@
 # and its website describes the configuration:
 #
 #     https://vivien.github.io/i3blocks
-
-
+#
+command=./blocklets/$BLOCK_NAME/$BLOCK_NAME
 separator=true
 separator_block_width=15
+
+[volume-pulseaudio]
+interval=once
+signal=1
+
+[mediaplayer]
+#instance=spotify
+interval=5
+signal=10
 
 [documentation]
 full_text=Documentation
@@ -23,6 +32,10 @@ interval=once
 [ip]
 label=
 interval=60
+
+[disk]
+label= 
+interval=30
 
 [date]
 label= 

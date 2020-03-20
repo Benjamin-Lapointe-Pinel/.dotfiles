@@ -1,7 +1,6 @@
 alias lb='br -dsp'
 alias la='ls -A'
 alias ll="ls -lhA"
-alias tree='ll --tree'
 alias cs='cd;ls'
 alias ct='cd;tree'
 alias pacman='pacman --color=auto'

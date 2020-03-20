@@ -44,12 +44,12 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-;font-0 = ${xrdb:font}
+;font-0 = monospace
 ;font-1 = wuncon siji
 
 modules-left = i3
 modules-center = mpd
-modules-right = filesystem pulseaudio memory cpu eth battery date powermenu
+modules-right = filesystem mpd pulseaudio memory cpu eth battery date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -178,12 +178,9 @@ label = BL
 bar-width = 10
 bar-indicator = |
 bar-indicator-foreground = #fff
-bar-indicator-font = 2
 bar-fill = ─
-bar-fill-font = 2
 bar-fill-foreground = #9f78e1
 bar-empty = ─
-bar-empty-font = 2
 bar-empty-foreground = ${colors.foreground-alt}
 
 [module/backlight-acpi]
@@ -231,7 +228,7 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = vetha8f4f38
+interface = enp0s3
 interval = 3.0
 
 format-connected-underline = #55aa55
@@ -281,11 +278,8 @@ bar-volume-foreground-5 = #f5a70a
 bar-volume-foreground-6 = #ff5555
 bar-volume-gradient = false
 bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = -
-bar-volume-fill-font = 2
-bar-volume-empty = -
-bar-volume-empty-font = 2
+bar-volume-fill = ─
+bar-volume-empty = ─
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/alsa]
@@ -309,11 +303,8 @@ bar-volume-foreground-5 = #f5a70a
 bar-volume-foreground-6 = #ff5555
 bar-volume-gradient = false
 bar-volume-indicator = |
-bar-volume-indicator-font = 2
 bar-volume-fill = ─
-bar-volume-fill-font = 2
 bar-volume-empty = ─
-bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]

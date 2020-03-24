@@ -9,6 +9,7 @@ It comes with some other features though:
 * Automatically estimate what unit (K,M,G,T) to use depending on the value. You can still choose between bits and bytes.
 * By default sum all the network interfaces (except lo) instead of only default route interface.
 * Warning and critical colors as an option.
+* Choice for SI units or binary units.
 
 ## Build
 
@@ -16,26 +17,33 @@ It comes with some other features though:
 make
 ```
 
-### Example Blocklet
+### Config
 ```ini
 [bandwidth]
-label=
-command=$SCRIPT_DIR/bandwidth2 -w 307200:30720 -c 512000:51200
+command=$SCRIPT_DIR/bandwidth2 
 interval=persist
 markup=pango
+LABEL=
+#INTERFACE=(checks all interfaces)
+#USE_BITS=0
+#USE_BYTES=1
+#WARN_RX=0
+#WARN_TX=0
+#CRIT_RX=0
+#CRIT_TX=0
+#USE_SI=0
 ```
 
-## Options
+E.g.
 
-```
-Usage: ./bandwidth2 [-b|B] [-t seconds] [-i interface] [-w Bytes:Bytes] [-c Bytes:Bytes] [-h]
-
--b              use bits/s
--B              use Bytes/s  (default)
--t seconds      refresh time (default is 1)
--i interface    network interface to monitor. If not specified, check all interfaces.
--w Bytes:Bytes  Set warning (color orange) for Rx:Tx bandwidth. (default: none)
--c Bytes:Bytes  Set critical (color red) for Rx:Tx bandwidth. (default: none)
--h              this help
-
+```ini
+[bandwidth]
+command=$SCRIPT_DIR/bandwidth2 
+interval=persist
+markup=pango
+LABEL=
+WARN_RX=307200
+WARN_TX=30720
+CRIT_RX=512000
+CRIT_TX=51200
 ```

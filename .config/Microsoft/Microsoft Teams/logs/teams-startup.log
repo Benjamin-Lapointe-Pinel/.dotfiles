@@ -1,7 +1,1 @@
-(node:162546) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 appInitialized listeners added. Use emitter.setMaxListeners() to increase limit
-ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM mic_call
-ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM call
-ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM loopback_call
-ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM mic_call
-ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM call
-ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM loopback_call
+(node:668) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 appInitialized listeners added. Use emitter.setMaxListeners() to increase limit

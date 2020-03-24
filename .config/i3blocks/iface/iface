@@ -18,11 +18,11 @@
 #------------------------------------------------------------------------
 
 # Use the provided interface, otherwise the device used for the default route.
-if [[ -n $BLOCK_INSTANCE ]]; then
-  IF=$BLOCK_INSTANCE
-else
-  IF=$(ip route | awk '/^default/ { print $5 ; exit }')
-fi
+IF="${IFACE:-$BLOCK_INSTANCE}"
+IF="${IF:-$(ip route | awk '/^default/ { print $5 ; exit }')}"
+
+# Exit if there is no default route
+[[ -z "$IF" ]] && exit
 
 #------------------------------------------------------------------------
 
@@ -32,24 +32,33 @@ fi
 
 #------------------------------------------------------------------------
 
-if [[ "$(cat /sys/class/net/$IF/operstate)" = 'down' ]]; then
-  echo down # full text
-  echo down # short text
+AF=${ADDRESS_FAMILY:-inet6?}
+LABEL="${LABEL:-}"
+
+for flag in "$1" "$2"; do
+  case "$flag" in
+    -4)
+      AF=inet ;;
+    -6)
+      AF=inet6 ;;
+    -L)
+      if [[ "$IF" = "" ]]; then
+        LABEL="iface "
+      else
+        LABEL="$IF: "
+      fi ;;
+  esac
+done
+
+if [[ "$IF" = "" ]] || [[ "$(cat /sys/class/net/$IF/operstate)" = 'down' ]]; then
+  echo "${LABEL}down" # full text
+  echo "${LABEL}down" # short text
   echo \#FF0000 # color
   exit
 fi
 
-case $1 in
-  -4)
-    AF=inet ;;
-  -6)
-    AF=inet6 ;;
-  *)
-    AF=inet6? ;;
-esac
-
 # if no interface is found, use the first device with a global scope
-IPADDR=$(ip addr show $IF | perl -n -e "/$AF ([^\/]+).* scope global/ && print \$1 and exit")
+IPADDR=$(ip addr show $IF | perl -n -e "/$AF ([^ \/]+).* scope global/ && print \$1 and exit")
 
 case $BLOCK_BUTTON in
   3) echo -n "$IPADDR" | xclip -q -se c ;;
@@ -57,5 +66,5 @@ esac
 
 #------------------------------------------------------------------------
 
-echo "$IPADDR" # full text
-echo "$IPADDR" # short text
+echo "$LABEL$IPADDR" # full text
+echo "$LABEL$IPADDR" # short text

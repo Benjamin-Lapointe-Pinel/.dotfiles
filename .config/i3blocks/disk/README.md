@@ -12,7 +12,8 @@ which is disabled by default.
 ```
 [disk]
 command=$SCRIPT_DIR/disk
-label=HOME
-#instance=/mnt/data
+LABEL=HOME 
+#DIR=$HOME
+#ALERT_LOW=10
 interval=30
 ```

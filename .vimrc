@@ -25,6 +25,8 @@ nnoremap <C-m> :NERDTreeFind<CR>
 nnoremap <C-@> :set list! list?<CR>
 
 autocmd BufNewFile,BufRead *.ino set filetype=arduino
+autocmd BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 autocmd FileType python nnoremap <buffer> <F5> :w<CR>:!clear;python %<CR>
 autocmd FileType dockerfile nnoremap <F5> :w<CR>:!clear;docker build -t build .;docker run --rm -it $(docker build -q .)<CR>

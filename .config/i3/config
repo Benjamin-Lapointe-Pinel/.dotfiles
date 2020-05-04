@@ -118,9 +118,9 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-set $ws1 "1  "
-set $ws2 "2  "
-set $ws3 "3  "
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
@@ -128,41 +128,30 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
-set $ws11 "11"
-set $ws12 "12"
 
 # switch to workspace
-bindsym F1 workspace $ws1
-bindsym F2 workspace $ws2
-bindsym F3 workspace $ws3
-bindsym F4 workspace $ws4
-bindsym F5 workspace $ws5
-bindsym F6 workspace $ws6
-bindsym F7 workspace $ws7
-bindsym F8 workspace $ws8
-bindsym F9 workspace $ws9
-bindsym F10 workspace $ws10
-bindsym F11 workspace $ws11
-bindsym F12 workspace $ws12
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
 # move focused container to workspace
-bindsym Shift+F1 move container to workspace number $ws1
-bindsym Shift+F2 move container to workspace number $ws2
-bindsym Shift+F3 move container to workspace number $ws3
-bindsym Shift+F4 move container to workspace number $ws4
-bindsym Shift+F5 move container to workspace number $ws5
-bindsym Shift+F6 move container to workspace number $ws6
-bindsym Shift+F7 move container to workspace number $ws7
-bindsym Shift+F8 move container to workspace number $ws8
-bindsym Shift+F9 move container to workspace number $ws9
-bindsym Shift+F10 move container to workspace number $ws10
-bindsym Shift+F11 move container to workspace number $ws11
-bindsym Shift+F12 move container to workspace number $ws12
-
-#assign [class="^Firefox$"] $ws3
-assign [class="^Microsoft Teams - Preview$"] $ws3
-#exec --no-startup-id firefox
-exec --no-startup-id teams
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -179,16 +168,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym j resize shrink width 4 px or 4 ppt
+        bindsym k resize grow height 4 px or 4 ppt
+        bindsym l resize shrink height 4 px or 4 ppt
+        bindsym semicolon resize grow width 4 px or 4 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 4 px or 4 ppt
+        bindsym Down resize grow height 4 px or 4 ppt
+        bindsym Up resize shrink height 4 px or 4 ppt
+        bindsym Right resize grow width 4 px or 4 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -200,6 +189,8 @@ bindsym $mod+r mode "resize"
 
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 bindsym --release Num_Lock exec pkill -SIGRTMIN+11 i3blocks
+
+#bindsym Shift+$mod+l exec xautolock -locknow
 
 bar {
     status_command i3blocks

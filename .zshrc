@@ -91,3 +91,8 @@ PERL_MM_OPT="INSTALL_BASE=/home/admin/perl5"; export PERL_MM_OPT;
 
 source $HOME/.aliases
 source /home/admin/.config/broot/launcher/bash/br
+
+export PATH=$PATH:/home/admin/bin
+source '/home/admin/lib/azure-cli/az.completion'
+
+if [ $commands[kubectl] ]; then source <(kubectl completion zsh); fi

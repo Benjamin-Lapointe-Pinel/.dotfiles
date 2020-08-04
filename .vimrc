@@ -29,10 +29,10 @@ autocmd BufNewFile,BufRead docker-compose.{yaml,yml} set filetype=docker-compose
 autocmd BufNewFile,BufRead *.{yaml,yml} set filetype=yaml
 
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-autocmd FileType python nnoremap <buffer> <F5> :w<CR>:!clear;python %<CR>
+autocmd FileType python nnoremap <buffer> <F5> :w<CR>:!clear; python %<CR>
 autocmd FileType dockerfile nnoremap <buffer> <F5> :w<CR>:!clear; docker build -t build . && docker run --rm -it $(docker build -q .)<CR>
-autocmd FileType docker-compose nnoremap <buffer> <F5> :w<CR>:!clear;docker-compose --file % up; docker-compose --file % down<CR>
-autocmd FileType arduino nnoremap <buffer> <F5> :w<CR>:!clear;arduino -v --upload %<CR>
+autocmd FileType docker-compose nnoremap <buffer> <F5> :w<CR>:!clear; docker-compose --file % down; docker-compose --file % up -d<CR>
+autocmd FileType arduino nnoremap <buffer> <F5> :w<CR>:!clear; arduino -v --upload %<CR>
 
 set conceallevel=3
 

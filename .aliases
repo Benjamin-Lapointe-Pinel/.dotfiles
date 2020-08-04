@@ -8,7 +8,7 @@ alias yay='yay --color=auto'
 
 docker() {
     if [[ $@ == "container watch" ]]; then
-        command watch -t 'docker container ls -a --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
+        command watch -n 1 -t 'docker container ls -a --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
     else
         command docker "$@"
     fi

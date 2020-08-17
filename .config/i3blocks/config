@@ -53,7 +53,7 @@ label=⮁
 interval=30
 
 [disk]
-label= 
+label=🖴 
 interval=30
 
 # CPU usage
@@ -71,5 +71,5 @@ label=LOAD
 interval=10
 
 [time]
-command=date '+ %Y-%m-%d  %H:%M:%S'
+command=date '+📅 %Y-%m-%d ⏰ %H:%M:%S'
 interval=1

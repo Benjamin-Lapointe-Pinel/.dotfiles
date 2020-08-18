@@ -68,14 +68,9 @@ command=date '+📅 %Y-%m-%d ⏰ %H:%M:%S'
 interval=1
 
 [shutdown_menu]
-full_text=Quit
-#FG_COLOR=#bbbbbb
-#BG_COLOR=#111111
-#HLFG_COLOR=#111111
-#HLBG_COLOR=#bbbbbb
-#BORDER_COLOR=#222222
+full_text=⏻ 
 LAUNCHER=rofi
-ROFI_TEXT=Menu:
+ROFI_TEXT=Menu
 ROFI_OPTIONS=-width 11 -location 3 -hide-scrollbar -bw 2
 ENABLE_CONFIRMATIONS=true (must be true or false)
-LOCKSCRIPT=i3lock
+LOCKSCRIPT=i3lock --color=${BG_COLOR#"#"}

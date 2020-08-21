@@ -33,7 +33,6 @@ GetOptions("help|h" => \&help,
 );
 
 # Get CPU usage
-$ENV{LC_ALL}="en_US"; # if mpstat is not run under en_US locale, things may break, so make sure it is
 open (MPSTAT, 'mpstat 1 1 |') or die;
 while (<MPSTAT>) {
     if (/^.*\s+(\d+\.\d+)[\s\x00]?$/) {
@@ -51,12 +50,13 @@ printf "%.${decimals}f%%\n", $cpu_usage;
 print "${label}";
 printf "%.${decimals}f%%\n", $cpu_usage;
 
+my $crit_color = `xrdb -query | grep 'color1:' | awk '{print \$NF}'`;
+my $warn_color = `xrdb -query | grep 'color3:' | awk '{print \$NF}'`;
 # Print color, if needed
 if ($cpu_usage >= $t_crit) {
-    print "#FF0000\n";
-    exit 33;
+    print "$crit_color";
 } elsif ($cpu_usage >= $t_warn) {
-    print "#FFFC00\n";
+    print "$warn_color";
 }
 
 exit 0;

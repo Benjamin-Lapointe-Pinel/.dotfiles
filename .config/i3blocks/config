@@ -1,19 +1,24 @@
 command=$BLOCK_NAME/$BLOCK_NAME
-separator_block_width=15
+separator_block_width=10
 
-[mediaplayer]
-instance=spotify
-interval=5
-signal=10
+[primary]
+label=🖹
+command=echo "$(xclip -o |  grep -o '^.\{0,9\}' | sed -e 's/[^a-zA-Z0-9\-]/_/g')"
+interval=2
+separator=false
+
+[clipboard]
+label=📋
+command=echo "$(xclip -o -selection "clipboard" | grep -o '^.\{0,9\}' | sed -e 's/[^a-zA-Z0-9\-]/_/g')"
+interval=2
 
 [keyindicator]
 markup=pango
 KEY=CAPS
 interval=once
 signal=11
-label= 
+label= 
 separator=false
-separator_block_width=5
 
 [keyindicator]
 markup=pango
@@ -36,35 +41,43 @@ signal=11
 
 [iface]
 interval=10
+label= 
+separator=false
+separator_block_width=10
 
-[bandwidth2]
-markup=pango
-interval=persist
-label=⮁ 
+[bandwidth]
+interval=5
+INLABEL=↓ 
+OUTLABEL=↑ 
+TREAT_UNKNOWN_AS_UP=1
+
+[temperature]
+label=TEMP
+interval=10
+
+[cpu_usage]
+label=🖳
+interval=5
+min_width= 100.00%
+separator=false
 
 [memory]
-interval=30
+interval=5
+separator=false
 
 [disk]
-label=🖴 
-interval=30
-
-# CPU usage
-#
-# The script may be called with -w and -c switches to specify thresholds,
-# see the script for details.
-[cpu_usage]
-label=CPU
-interval=10
-min_width=CPU: 100.00%
-#separator=false
-
-[load_average]
-label=LOAD
-interval=10
+label=🏠
+interval=60
 
 [time]
-command=date '+📅 %Y-%m-%d ⏰ %H:%M:%S'
+label=📅
+command=date '+%Y-%m-%d'
+interval=3600
+separator=false
+
+[time]
+label=⏰
+command=date '+%H:%M:%S'
 interval=1
 
 [shutdown_menu]

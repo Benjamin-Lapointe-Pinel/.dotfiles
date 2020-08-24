@@ -4,6 +4,7 @@
 [credential]
 	helper = store
 [alias]
+	supdate  = submodule update --remote --merge
     adog = log --all --decorate --oneline --graph
     lg = !"git lg1"
     lg1 = !"git lg1-specific --all"

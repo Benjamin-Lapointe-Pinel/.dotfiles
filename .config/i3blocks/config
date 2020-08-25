@@ -15,14 +15,17 @@ interval=2
 [keyindicator]
 markup=pango
 KEY=CAPS
+TEXT_ON=🔠
+TEXT_OFF=🔡
 interval=once
 signal=11
-label= 
 separator=false
 
 [keyindicator]
 markup=pango
 KEY=NUM
+TEXT_ON=🔢
+TEXT_OFF=🔢
 interval=once
 signal=11
 
@@ -47,8 +50,8 @@ separator_block_width=10
 
 [bandwidth]
 interval=5
-INLABEL=↓ 
-OUTLABEL=↑ 
+INLABEL=⬇
+OUTLABEL=⬆
 TREAT_UNKNOWN_AS_UP=1
 
 [temperature]
@@ -85,5 +88,5 @@ full_text=⏻
 LAUNCHER=rofi
 ROFI_TEXT=Menu
 ROFI_OPTIONS=-width 11 -location 3 -hide-scrollbar -bw 2
-ENABLE_CONFIRMATIONS=true (must be true or false)
+ENABLE_CONFIRMATIONS=true
 LOCKSCRIPT=i3lock --color=${BG_COLOR#"#"}

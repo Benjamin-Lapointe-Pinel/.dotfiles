@@ -42,9 +42,6 @@ if !exists('g:airline_symbols')
 endif
 
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -56,3 +53,9 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 set rtp+=/usr/bin/fzf
+
+let g:NERDTreeGitStatusLogLevel = 3 " temp
+
+" These lines must be at the very end of the vimrc file.
+packloadall
+silent! helptags ALL

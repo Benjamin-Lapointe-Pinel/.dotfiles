@@ -18,8 +18,13 @@ set number relativenumber
 set showmatch
 set showcmd
 
+set wildmenu
+set wildignorecase
+set wildmode=full
+
 set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<
 
+nnoremap gb :ls<CR>:b
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-m> :NERDTreeFind<CR>
 nnoremap <C-@> :set list! list?<CR>
@@ -43,18 +48,7 @@ endif
 
 let g:airline#extensions#tabline#enabled = 1
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
 set rtp+=/usr/bin/fzf
-
-let g:NERDTreeGitStatusLogLevel = 3 " temp
 
 " These lines must be at the very end of the vimrc file.
 packloadall

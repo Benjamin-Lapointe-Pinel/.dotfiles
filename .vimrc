@@ -24,6 +24,15 @@ set wildmode=full
 
 set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<
 
+map <C-h>     <C-w>h
+map <C-j>     <C-w>j
+map <C-k>     <C-w>k
+map <C-l>     <C-w>l
+map <C-left>  <C-w><left>
+map <C-down>  <C-w><down>
+map <C-up>    <C-w><up>
+map <C-right> <C-w><right>
+
 nnoremap gb :ls<CR>:b
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-m> :NERDTreeFind<CR>
@@ -36,7 +45,7 @@ autocmd BufNewFile,BufRead *.{yaml,yml} set filetype=yaml
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType python nnoremap <buffer> <F5> :w<CR>:!clear; python %<CR>
 autocmd FileType dockerfile nnoremap <buffer> <F5> :w<CR>:!clear; docker build -t build . && docker run --rm -it $(docker build -q .)<CR>
-autocmd FileType docker-compose nnoremap <buffer> <F5> :w<CR>:!clear; docker-compose --file % down; docker-compose --file % up -d<CR>
+autocmd FileType docker-compose nnoremap <buffer> <F5> :w<CR>:!clear; docker-compose down; docker-compose up -d<CR>
 autocmd FileType arduino nnoremap <buffer> <F5> :w<CR>:!clear; arduino -v --upload %<CR>
 
 set conceallevel=3

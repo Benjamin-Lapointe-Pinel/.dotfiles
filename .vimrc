@@ -22,6 +22,9 @@ set wildmenu
 set wildignorecase
 set wildmode=full
 
+set splitbelow
+set splitright
+
 set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<
 
 map <C-h>     <C-w>h

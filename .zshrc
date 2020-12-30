@@ -1,5 +1,3 @@
-source .base16_theme
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -7,12 +5,12 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+source $HOME/.aliases
+source $HOME/.base16_theme
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-export ZSH="/home/admin/.oh-my-zsh"
-
-ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -66,15 +64,6 @@ plugins=(
 	zsh-syntax-highlighting
 )
 
-source $ZSH/oh-my-zsh.sh
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -89,11 +78,7 @@ PERL_MM_OPT="INSTALL_BASE=/home/admin/perl5"; export PERL_MM_OPT;
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-source $HOME/.aliases
-source /home/admin/.config/broot/launcher/bash/br
-
 export PATH=$PATH:/home/admin/bin
-source '/home/admin/lib/azure-cli/az.completion'
 
 if [ $commands[kubectl] ]; then source <(kubectl completion zsh); fi
 

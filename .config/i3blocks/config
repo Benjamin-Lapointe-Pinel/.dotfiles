@@ -1,17 +1,6 @@
 command=$BLOCK_NAME/$BLOCK_NAME
 separator_block_width=10
 
-[primary]
-label=🖹
-command=echo "$(xclip -o |  grep -o '^.\{0,9\}' | sed -e 's/[^a-zA-Z0-9\-]/_/g')"
-interval=2
-separator=false
-
-[clipboard]
-label=📋
-command=echo "$(xclip -o -selection "clipboard" | grep -o '^.\{0,9\}' | sed -e 's/[^a-zA-Z0-9\-]/_/g')"
-interval=2
-
 [keyindicator]
 markup=pango
 KEY=CAPS
@@ -62,10 +51,6 @@ interval=10
 label=🖳
 interval=5
 min_width= 100.00%
-separator=false
-
-[memory]
-interval=5
 separator=false
 
 [disk]

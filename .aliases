@@ -6,7 +6,6 @@ alias ct='cd;tree'
 alias pacman='pacman --color=auto'
 alias yay='yay --color=auto'
 alias bat='bat --paging=never -p'
-alias cat='bat'
 
 docker() {
     if [[ $@ == "container watch" ]]; then

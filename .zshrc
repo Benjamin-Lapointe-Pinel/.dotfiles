@@ -9,76 +9,39 @@ source $HOME/.aliases
 source $HOME/.base16_theme
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-export FZF_BASE=/usr/bin/fzf
 
 plugins=(
 	docker
 	docker-compose
 	extract
-	fzf
 	gem
-	git
-	gradle
 	kubectl
 	pip
 	python
 	sudo
-	zsh-autosuggestions
-	zsh-syntax-highlighting
 )
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+export FZF_BASE=/usr/bin/fzf
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+autoload -Uz compinit
+compinit
+source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+source $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh
+fpath=($HOME/.zsh/zsh-completions/src $fpath)
 
 PATH="`ruby -e 'puts Gem.user_dir'`/bin:$PATH"
 
-PATH="/home/admin/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/admin/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/admin/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/admin/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/admin/perl5"; export PERL_MM_OPT;
+PATH="$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export PATH=$PATH:/home/admin/bin
+export PATH=$PATH:$HOME/bin
 
 if [ $commands[kubectl] ]; then source <(kubectl completion zsh); fi
 
@@ -88,9 +51,17 @@ pasteinit() {
   OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
   zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
 }
-
 pastefinish() {
   zle -N self-insert $OLD_SELF_INSERT
 }
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
+
+HISTFILE=$HOME/.histfile
+HISTSIZE=10000
+SAVEHIST=$HISTSIZE
+setopt share_history
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+
+setopt extendedglob

@@ -24,7 +24,7 @@ set_from_resource $cursorColor cursorColor
 
 set $mod Mod4
 
-font pango:monospace
+font pango:monospace 8
 
 focus_follows_mouse no
 

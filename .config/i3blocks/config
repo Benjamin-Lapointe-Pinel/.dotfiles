@@ -1,35 +1,10 @@
 command=$BLOCK_NAME/$BLOCK_NAME
 separator_block_width=10
 
-[keyindicator]
-markup=pango
-KEY=CAPS
-TEXT_ON=🔠
-TEXT_OFF=🔡
+[volume]
+label= 
 interval=once
-signal=11
-separator=false
-
-[keyindicator]
-markup=pango
-KEY=NUM
-TEXT_ON=🔢
-TEXT_OFF=🔢
-interval=once
-signal=11
-
-# Volume indicator
-#
-# The first parameter sets the step (and units to display)
-# The second parameter overrides the mixer selection
-# See the script for details.
-#[volume]
-#label=VOL
-##label=♪
-#instance=Master
-##instance=PCM
-#interval=once
-#signal=10
+signal=10
 
 [iface]
 interval=10
@@ -38,40 +13,31 @@ separator=false
 separator_block_width=10
 
 [bandwidth]
-interval=5
-INLABEL=⬇
-OUTLABEL=⬆
+interval=2
+INLABEL=↑
+OUTLABEL=↓
 TREAT_UNKNOWN_AS_UP=1
 
-[temperature]
-label=TEMP
-interval=10
-
 [cpu_usage]
-label=🖳
-interval=5
-min_width= 100.00%
+label= 
+interval=1
+min_width=100%
+DECIMALS=0
+T_WARN=75
+T_CRIT=90
 separator=false
 
 [disk]
-label=🏠
+label= 
 interval=60
 
 [time]
-label=📅
+label= 
 command=date '+%Y-%m-%d'
 interval=3600
 separator=false
 
 [time]
-label=⏰
+label= 
 command=date '+%H:%M:%S'
 interval=1
-
-[shutdown_menu]
-full_text=⏻ 
-LAUNCHER=rofi
-ROFI_TEXT=Menu
-ROFI_OPTIONS=-width 11 -location 3 -hide-scrollbar -bw 2
-ENABLE_CONFIRMATIONS=true
-LOCKSCRIPT=i3lock --color=${BG_COLOR#"#"}

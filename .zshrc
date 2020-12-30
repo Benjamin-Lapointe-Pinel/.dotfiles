@@ -20,7 +20,7 @@ source $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.plug
 fpath=($HOME/.zsh/zsh-completions/src $fpath)
 
 export FZF_BASE=/usr/bin/fzf
-source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 autoload -Uz compinit
 compinit

@@ -28,7 +28,6 @@ font pango:monospace 8
 
 focus_follows_mouse no
 
-smart_borders on
 default_border pixel 1
 
 client.focused $foreground $background $color7 $foreground $foreground

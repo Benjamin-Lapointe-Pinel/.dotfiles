@@ -9,7 +9,6 @@ source $HOME/.aliases
 source $HOME/.base16_theme
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
-
 plugins=(
 	docker
 	docker-compose
@@ -20,15 +19,17 @@ plugins=(
 	python
 	sudo
 )
-export FZF_BASE=/usr/bin/fzf
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
-autoload -Uz compinit
-compinit
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 source $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh
+
 fpath=($HOME/.zsh/zsh-completions/src $fpath)
+
+export FZF_BASE=/usr/bin/fzf
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+autoload -Uz compinit
+compinit
 
 PATH="`ruby -e 'puts Gem.user_dir'`/bin:$PATH"
 
@@ -56,6 +57,7 @@ pastefinish() {
 }
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
+zstyle ':completion:*' special-dirs true
 
 HISTFILE=$HOME/.histfile
 HISTSIZE=10000

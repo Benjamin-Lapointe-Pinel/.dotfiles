@@ -1,5 +1,8 @@
 source $HOME/.aliases
 source $HOME/.base16_theme
+source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+source $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh
 source $HOME/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -13,9 +16,6 @@ plugins=(
 	python
 	sudo
 )
-source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
-source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
-source $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh
 
 fpath=($HOME/.zsh/zsh-completions/src $fpath)
 
@@ -33,6 +33,8 @@ PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
 PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
 
+export VISUAL=vim
+export EDITOR=$VISUAL
 export PATH=$PATH:$HOME/bin
 
 if [ $commands[kubectl] ]; then source <(kubectl completion zsh); fi

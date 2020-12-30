@@ -3,6 +3,7 @@ separator_block_width=10
 
 [volume]
 label= 
+STEP=1%
 interval=once
 signal=10
 

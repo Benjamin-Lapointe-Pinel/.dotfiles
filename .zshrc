@@ -25,14 +25,6 @@ source /usr/share/fzf/completion.zsh
 autoload -Uz compinit
 compinit
 
-PATH="`ruby -e 'puts Gem.user_dir'`/bin:$PATH"
-
-PATH="$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
-
 export VISUAL=vim
 export EDITOR=$VISUAL
 export PATH=$PATH:$HOME/bin
@@ -53,9 +45,12 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 zstyle ':completion:*' special-dirs true
 
 HISTFILE=$HOME/.histfile
-HISTSIZE=10000
+HISTSIZE=1000
 SAVEHIST=$HISTSIZE
 setopt share_history
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt extendedglob
+
+# Can be use for specific environment
+source .rc

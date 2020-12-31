@@ -1,5 +1,6 @@
-source $HOME/.aliases
 source $HOME/.base16_theme
+source $HOME/.key-bindings.zsh
+source $HOME/.aliases
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 source $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh
@@ -51,6 +52,8 @@ setopt share_history
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt extendedglob
+
+
 
 # Can be use for specific environment
 [[ ! -f ~/.rc ]] || source ~/.rc

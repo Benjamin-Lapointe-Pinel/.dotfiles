@@ -1,5 +1,6 @@
 .rc
 .config/*
+!.config/fontconfig
 !.config/i3
 !.config/i3blocks
 !.config/termite

@@ -53,4 +53,4 @@ setopt hist_ignore_space
 setopt extendedglob
 
 # Can be use for specific environment
-source .rc
+[[ ! -f ~/.rc ]] || source ~/.rc

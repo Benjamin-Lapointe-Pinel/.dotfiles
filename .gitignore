@@ -1,2 +1,5 @@
-.config/Microsoft/
-.config/teams/
+.rc
+.config/*
+!.config/i3
+!.config/i3blocks
+!.config/termite

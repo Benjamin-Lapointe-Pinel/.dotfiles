@@ -1,3 +1,5 @@
+autoload -Uz compinit && compinit -i
+
 source $HOME/.base16_theme
 source $HOME/.key-bindings.zsh
 source $HOME/.aliases
@@ -13,8 +15,6 @@ source /usr/share/fzf/completion.zsh
 if [ $commands[kubectl] ]; then source <(kubectl completion zsh); fi
 fpath=($HOME/.zsh/zsh-completions/src $fpath)
 
-autoload -Uz compinit && compinit -i
-compinit
 
 export VISUAL=vim
 export EDITOR=$VISUAL

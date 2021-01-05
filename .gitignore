@@ -1,4 +1,3 @@
-.rc
 .config/*
 !.config/fontconfig
 !.config/i3

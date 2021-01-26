@@ -7,9 +7,6 @@
 [submodule ".vim/pack/plugins/start/devicons"]
 	path = .vim/pack/plugins/start/devicons
 	url = https://github.com/ryanoasis/vim-devicons.git
-[submodule ".vim/pack/plugins/start/nerdtree"]
-	path = .vim/pack/plugins/start/nerdtree
-	url = https://github.com/preservim/nerdtree.git
 [submodule ".vim/pack/plugins/start/colorizer"]
 	path = .vim/pack/plugins/start/colorizer
 	url = https://github.com/lilydjwg/colorizer.git

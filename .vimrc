@@ -30,15 +30,13 @@ set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<
 map <C-h>     <C-w>h
 map <C-j>     <C-w>j
 map <C-k>     <C-w>k
-map <C-l>     <C-w>l
+map <C-l>     <C-w>
 map <C-left>  <C-w><left>
 map <C-down>  <C-w><down>
 map <C-up>    <C-w><up>
 map <C-right> <C-w><right>
 
 nnoremap gb :ls<CR>:b
-nnoremap <C-n> :NERDTreeToggle<CR>
-nnoremap <C-m> :NERDTreeFind<CR>
 nnoremap <C-@> :set list! list?<CR>
 
 autocmd BufNewFile,BufRead *.ino set filetype=arduino

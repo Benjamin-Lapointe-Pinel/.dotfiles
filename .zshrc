@@ -18,6 +18,7 @@ fpath=($HOME/.zsh/zsh-completions/src $fpath)
 export VISUAL=vim
 export EDITOR=$VISUAL
 export FZF_BASE=/usr/bin/fzf
+export FZF_DEFAULT_COMMAND='find -L'
 export PATH=$PATH:$HOME/bin
 
 HISTFILE=$HOME/.histfile

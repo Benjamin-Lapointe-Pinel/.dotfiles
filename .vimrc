@@ -4,12 +4,12 @@ set encoding=UTF-8
 
 set autoindent
 set smartindent
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set smarttab
 
 set textwidth=120
-set formatoptions-=tc
+set formatoptions-=tcro
 filetype plugin indent on
 syntax on
 set t_Co=256
@@ -25,7 +25,7 @@ set wildmode=full
 set splitbelow
 set splitright
 
-set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<
+set listchars=tab:\|\ ,trail:~,extends:>,precedes:<
 
 map <C-h>     <C-w>h
 map <C-j>     <C-w>j

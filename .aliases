@@ -30,10 +30,10 @@ log() {
 
 
 docker() {
-    if [[ $@ == "container watch" ]]
+	if [[ $@ == "container watch" ]]
 	then
 		command watch -n 1 -t 'docker container ls -a --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
-    else
+	else
 		command docker "$@"
-    fi
+	fi
 }

@@ -1,12 +1,13 @@
-alias lb='br -dsp'
-alias la='ls -A'
-alias ll="ls -lhA"
-alias cs='cd;ls'
-alias ct='cd;tree'
+alias ls='ls -A1'
+alias ll="ls -lAh1"
 alias pacman='pacman --color=auto'
 alias yay='yay --color=auto'
 alias tmux='tmux -u'
 alias bat='bat --paging=never -p'
+
+function cs {
+	builtin cd "$@" && ls
+}
 
 log() {
 	LOG_DIR=$HOME/log/
@@ -21,17 +22,18 @@ log() {
 
 	if [ $# -eq 0 ]
 	then
-		cat $LOG_PATH
+		less $LOG_PATH
 	else
-		echo $(date -Is) "$@" >> $LOG_PATH
+		echo "$(date -Is) $@" >> $LOG_PATH
 	fi
 }
 
 
 docker() {
-    if [[ $@ == "container watch" ]]; then
-        command watch -n 1 -t 'docker container ls -a --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
+    if [[ $@ == "container watch" ]]
+	then
+		command watch -n 1 -t 'docker container ls -a --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
     else
-        command docker "$@"
+		command docker "$@"
     fi
 }

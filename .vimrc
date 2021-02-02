@@ -49,14 +49,11 @@ autocmd FileType dockerfile nnoremap <buffer> <F5> :w<CR>:!clear; docker build -
 autocmd FileType docker-compose nnoremap <buffer> <F5> :w<CR>:!clear; docker-compose down; docker-compose up -d<CR>
 autocmd FileType arduino nnoremap <buffer> <F5> :w<CR>:!clear; arduino -v --upload %<CR>
 
-set conceallevel=3
-
+let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-
-let g:airline#extensions#tabline#enabled = 1
 
 set rtp+=/usr/bin/fzf
 

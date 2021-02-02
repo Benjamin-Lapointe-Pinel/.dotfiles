@@ -10,7 +10,16 @@ alias bat='bat --paging=never -p'
 
 log() {
 	LOG_DIR=$HOME/log/
-	mkdir -p $LOG_DIR && echo $(date -Is) "$@" >> $LOG_DIR/personnal.log
+	LOG_FILE=personnal.log
+	LOG_PATH=$LOG_DIR$LOG_FILE
+	mkdir -p $LOG_DIR && touch $LOG_PATH && sudo chattr +a $LOG_PATH
+
+	if [ $# -eq 0 ]
+	then
+		cat $LOG_PATH
+	else
+		echo $(date -Is) "$@" >> $LOG_PATH
+	fi
 }
 
 

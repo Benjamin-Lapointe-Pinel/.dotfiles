@@ -12,7 +12,12 @@ log() {
 	LOG_DIR=$HOME/log/
 	LOG_FILE=personnal.log
 	LOG_PATH=$LOG_DIR$LOG_FILE
-	mkdir -p $LOG_DIR && touch $LOG_PATH && sudo chattr +a $LOG_PATH
+
+	if [ ! -f $LOG_PATH ]
+	then
+		mkdir -p $LOG_DIR && touch $LOG_PATH && sudo chattr +a $LOG_PATH
+    	echo "Created $LOG_PATH"
+	fi
 
 	if [ $# -eq 0 ]
 	then

@@ -1,4 +1,4 @@
-alias ls='ls -A1'
+alias ls='ls -1'
 alias ll="ls -lAh1"
 alias pacman='pacman --color=auto'
 alias yay='yay --color=auto'

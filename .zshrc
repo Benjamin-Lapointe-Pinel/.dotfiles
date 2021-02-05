@@ -11,7 +11,7 @@ source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 source $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
 if [ $commands[kubectl] ]; then source <(kubectl completion zsh); fi
 fpath=($HOME/.zsh/zsh-completions/src $fpath)
 
@@ -43,4 +43,4 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 zstyle ':completion:*' special-dirs true
 
 # Can be use for specific environment
-[[ ! -f ~/.rc ]] || source ~/.rc
+[[ ! -f $HOME/.rc ]] || source $HOME/.rc

@@ -1,7 +1,6 @@
-let g:netrw_banner=0
-let g:netrw_liststyle=3
-let g:netrw_dirhistmax=10
-let g:netrw_dirhistcnt=8
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/usr/share/vim'
 let g:netrw_dirhist_8='/home/admin/.dotfiles'
 let g:netrw_dirhist_7='/home/admin/.dotfiles/.vim/pack/plugins/start/airline'
 let g:netrw_dirhist_6='/home/admin/.dotfiles/.vim/pack/plugins/start'

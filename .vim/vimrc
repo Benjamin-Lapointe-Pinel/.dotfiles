@@ -26,6 +26,8 @@ set wildmode=full
 set splitbelow
 set splitright
 
+set mouse=a
+
 set listchars=tab:\|\ ,trail:~,extends:>,precedes:<
 
 map <C-h>     <C-w>h

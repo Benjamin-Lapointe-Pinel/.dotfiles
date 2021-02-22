@@ -16,7 +16,11 @@ log() {
 
 	if [ ! -f $LOG_PATH ]
 	then
-		mkdir -p $LOG_DIR && touch $LOG_PATH && sudo chattr +a $LOG_PATH
+		mkdir -p $LOG_DIR
+		touch $LOG_PATH
+		chmod 600 $LOG_PATH
+		chmod 500 $LOG_DIR
+		sudo chattr +a $LOG_PATH
 		echo "Created $LOG_PATH"
 	fi
 

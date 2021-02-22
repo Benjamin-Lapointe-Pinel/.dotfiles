@@ -39,18 +39,26 @@ map <C-down>  <C-w><down>
 map <C-up>    <C-w><up>
 map <C-right> <C-w><right>
 
+nnoremap <CR> :noh<CR><CR>
 nnoremap gb :ls<CR>:b
 nnoremap <C-@> :set list! list?<CR>
+nnoremap <F5> :w<CR>:make<CR>
+
+augroup auto_save_folds
+	autocmd!
+  autocmd BufWinLeave * mkview
+  autocmd BufWinEnter * silent! loadview
+augroup END
 
 autocmd BufNewFile,BufRead *.ino set filetype=arduino
 autocmd BufNewFile,BufRead docker-compose.{yaml,yml} set filetype=docker-compose
 autocmd BufNewFile,BufRead *.{yaml,yml} set filetype=yaml
 
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-autocmd FileType python nnoremap <buffer> <F5> :w<CR>:!clear; python %<CR>
-autocmd FileType dockerfile nnoremap <buffer> <F5> :w<CR>:!clear; docker build -t build . && docker run --rm -it $(docker build -q .)<CR>
-autocmd FileType docker-compose nnoremap <buffer> <F5> :w<CR>:!clear; docker-compose down; docker-compose up -d<CR>
-autocmd FileType arduino nnoremap <buffer> <F5> :w<CR>:!clear; arduino -v --upload %<CR>
+autocmd FileType python nnoremap <buffer> <F5> :w<CR>:!python %<CR>
+autocmd FileType dockerfile nnoremap <buffer> <F5> :w<CR>:!docker build -t build . && docker run --rm -it $(docker build -q .)<CR>
+autocmd FileType docker-compose nnoremap <buffer> <F5> :w<CR>:!docker-compose down; docker-compose up -d<CR>
+autocmd FileType arduino nnoremap <buffer> <F5> :w<CR>:!arduino -v --upload %<CR>
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1

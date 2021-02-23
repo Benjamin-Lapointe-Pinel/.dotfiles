@@ -27,6 +27,11 @@ set splitbelow
 set splitright
 
 set mouse=a
+augroup NO_CURSOR_MOVE_ON_FOCUS
+  au!
+  au FocusLost * let g:oldmouse=&mouse | set mouse=
+  au FocusGained * if exists('g:oldmouse') | let &mouse=g:oldmouse | unlet g:oldmouse | endif
+augroup END
 
 set listchars=tab:\|\ ,trail:~,extends:>,precedes:<
 
@@ -39,14 +44,15 @@ map <C-down>  <C-w><down>
 map <C-up>    <C-w><up>
 map <C-right> <C-w><right>
 
-nnoremap <CR> :noh<CR><CR>
+nnoremap <silent> <CR> :noh<CR><CR>
 nnoremap gb :ls<CR>:b
 nnoremap <C-@> :set list! list?<CR>
 nnoremap <F5> :w<CR>:make<CR>
+tnoremap <Esc> <C-\><C-n>
 
 augroup auto_save_folds
 	autocmd!
-  autocmd BufWinLeave * mkview
+  autocmd BufWinLeave * silent! mkview
   autocmd BufWinEnter * silent! loadview
 augroup END
 
@@ -59,6 +65,11 @@ autocmd FileType python nnoremap <buffer> <F5> :w<CR>:!python %<CR>
 autocmd FileType dockerfile nnoremap <buffer> <F5> :w<CR>:!docker build -t build . && docker run --rm -it $(docker build -q .)<CR>
 autocmd FileType docker-compose nnoremap <buffer> <F5> :w<CR>:!docker-compose down; docker-compose up -d<CR>
 autocmd FileType arduino nnoremap <buffer> <F5> :w<CR>:!arduino -v --upload %<CR>
+
+packadd termdebug
+let g:termdebug_wide = 1
+
+let g:airline#extensions#gutentags#enabled = 1
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1

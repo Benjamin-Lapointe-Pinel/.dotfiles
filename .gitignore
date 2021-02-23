@@ -4,3 +4,7 @@
 !.config/i3blocks
 !.config/termite
 !.config/nvim
+
+.vim/view
+
+tags

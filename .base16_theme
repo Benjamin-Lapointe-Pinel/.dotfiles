@@ -30,31 +30,31 @@ color_background="1d/20/21" # Base 00
 
 color_value() { echo ${1//\/} }
 
-if [ ! -f .terminal_theme ]; then
-    echo "*color0: #$(color_value $color00)" >> .terminal_theme
-    echo "*color1: #$(color_value $color01)" >> .terminal_theme
-    echo "*color2: #$(color_value $color02)" >> .terminal_theme
-    echo "*color3: #$(color_value $color03)" >> .terminal_theme
-    echo "*color4: #$(color_value $color04)" >> .terminal_theme
-    echo "*color5: #$(color_value $color05)" >> .terminal_theme
-    echo "*color6: #$(color_value $color06)" >> .terminal_theme
-    echo "*color7: #$(color_value $color07)" >> .terminal_theme
-    echo "*color8: #$(color_value $color08)" >> .terminal_theme
-    echo "*color9: #$(color_value $color09)" >> .terminal_theme
-    echo "*color10: #$(color_value $color10)" >> .terminal_theme
-    echo "*color11: #$(color_value $color11)" >> .terminal_theme
-    echo "*color12: #$(color_value $color12)" >> .terminal_theme
-    echo "*color13: #$(color_value $color13)" >> .terminal_theme
-    echo "*color14: #$(color_value $color14)" >> .terminal_theme
-    echo "*color15: #$(color_value $color15)" >> .terminal_theme
-    echo "*color16: #$(color_value $color16)" >> .terminal_theme
-    echo "*color17: #$(color_value $color17)" >> .terminal_theme
-    echo "*color18: #$(color_value $color18)" >> .terminal_theme
-    echo "*color19: #$(color_value $color19)" >> .terminal_theme
-    echo "*color20: #$(color_value $color20)" >> .terminal_theme
-    echo "*color21: #$(color_value $color21)" >> .terminal_theme
-    echo "*background: #$(color_value $color_background)" >> .terminal_theme
-    echo "*foreground: #$(color_value $color_foreground)" >> .terminal_theme
+if [ ! -f $HOME/.terminal_theme ]; then
+    echo "*color0: #$(color_value $color00)" >> $HOME/.terminal_theme
+    echo "*color1: #$(color_value $color01)" >> $HOME/.terminal_theme
+    echo "*color2: #$(color_value $color02)" >> $HOME/.terminal_theme
+    echo "*color3: #$(color_value $color03)" >> $HOME/.terminal_theme
+    echo "*color4: #$(color_value $color04)" >> $HOME/.terminal_theme
+    echo "*color5: #$(color_value $color05)" >> $HOME/.terminal_theme
+    echo "*color6: #$(color_value $color06)" >> $HOME/.terminal_theme
+    echo "*color7: #$(color_value $color07)" >> $HOME/.terminal_theme
+    echo "*color8: #$(color_value $color08)" >> $HOME/.terminal_theme
+    echo "*color9: #$(color_value $color09)" >> $HOME/.terminal_theme
+    echo "*color10: #$(color_value $color10)" >> $HOME/.terminal_theme
+    echo "*color11: #$(color_value $color11)" >> $HOME/.terminal_theme
+    echo "*color12: #$(color_value $color12)" >> $HOME/.terminal_theme
+    echo "*color13: #$(color_value $color13)" >> $HOME/.terminal_theme
+    echo "*color14: #$(color_value $color14)" >> $HOME/.terminal_theme
+    echo "*color15: #$(color_value $color15)" >> $HOME/.terminal_theme
+    echo "*color16: #$(color_value $color16)" >> $HOME/.terminal_theme
+    echo "*color17: #$(color_value $color17)" >> $HOME/.terminal_theme
+    echo "*color18: #$(color_value $color18)" >> $HOME/.terminal_theme
+    echo "*color19: #$(color_value $color19)" >> $HOME/.terminal_theme
+    echo "*color20: #$(color_value $color20)" >> $HOME/.terminal_theme
+    echo "*color21: #$(color_value $color21)" >> $HOME/.terminal_theme
+    echo "*background: #$(color_value $color_background)" >> $HOME/.terminal_theme
+    echo "*foreground: #$(color_value $color_foreground)" >> $HOME/.terminal_theme
 fi
 
 if [ -n "$TMUX" ]; then

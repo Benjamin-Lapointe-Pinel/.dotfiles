@@ -69,8 +69,6 @@ autocmd FileType arduino nnoremap <buffer> <F5> :w<CR>:!arduino -v --upload %<CR
 packadd termdebug
 let g:termdebug_wide = 1
 
-let g:airline#extensions#gutentags#enabled = 1
-
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')

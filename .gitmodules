@@ -40,9 +40,6 @@
 [submodule ".zsh/powerlevel10k"]
 	path = .zsh/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
-[submodule ".vim/pack/plugins/start/gutentags"]
-	path = .vim/pack/plugins/start/gutentags
-	url = https://github.com/ludovicchabant/vim-gutentags.git
 [submodule ".vim/pack/plugins/start/clang-format"]
 	path = .vim/pack/plugins/start/clang-format
 	url = https://github.com/rhysd/vim-clang-format.git

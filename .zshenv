@@ -1,1 +1,1 @@
-[[ ! -f $HOME/.env ]] || source $HOME/.env
+source $HOME/.env

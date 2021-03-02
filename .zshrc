@@ -2,11 +2,11 @@ autoload -Uz compinit && compinit -i
 
 source $HOME/.base16_theme
 source $HOME/.aliases
+source $HOME/.zsh/sudo/sudo.plugin.zsh
 source $HOME/.zsh/key-bindings/key-bindings.zsh
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 source $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh
-source $HOME/.zsh/sudo/sudo.plugin.zsh
 source $HOME/.zsh/extract/extract.plugin.zsh
 source $HOME/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 source /usr/share/fzf/key-bindings.zsh

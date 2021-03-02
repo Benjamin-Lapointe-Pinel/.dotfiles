@@ -8,7 +8,7 @@ signal=10
 
 [iface]
 interval=10
-label= 
+label= 
 separator=false
 separator_block_width=10
 
@@ -38,6 +38,6 @@ interval=3600
 separator=false
 
 [time]
-label= 
+label= 
 command=date '+%H:%M:%S '
 interval=1

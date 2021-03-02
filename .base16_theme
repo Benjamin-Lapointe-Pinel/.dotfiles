@@ -28,7 +28,9 @@ color21="dd/dd/dd" # Base 06
 color_foreground="d5/d5/d5" # Base 05
 color_background="1d/20/21" # Base 00
 
-color_value() { echo ${1//\/} }
+color_value() {
+	echo ${1//\/}
+}
 
 if [ ! -f $HOME/.terminal_theme ]; then
     echo "*color0: #$(color_value $color00)" >> $HOME/.terminal_theme

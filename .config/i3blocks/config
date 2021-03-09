@@ -6,6 +6,11 @@ STEP=1%
 interval=once
 signal=10
 
+[hostname]
+command=hostname
+interval=60
+separator=false
+
 [iface]
 interval=10
 label= 

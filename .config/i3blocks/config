@@ -10,12 +10,12 @@ signal=10
 command=hostname
 interval=60
 separator=false
+separator_block_width=6
 
 [iface]
 interval=10
 label= 
 separator=false
-separator_block_width=10
 
 [bandwidth]
 interval=2

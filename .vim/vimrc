@@ -1,6 +1,7 @@
 set nocompatible
 set hidden
 set encoding=UTF-8
+set autochdir
 
 set autoindent
 set smartindent

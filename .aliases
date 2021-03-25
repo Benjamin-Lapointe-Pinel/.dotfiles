@@ -9,6 +9,10 @@ function cs {
 	builtin cd "$@" && ls
 }
 
+c() {
+	echo "$(($@))"
+}
+
 log() {
 	LOG_DIR=$HOME/log/
 	LOG_FILE=personnal.log

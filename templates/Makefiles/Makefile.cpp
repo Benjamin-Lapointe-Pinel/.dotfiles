@@ -1,5 +1,5 @@
 MAKEFLAGS+=-j
-NAME=
+NAME=a.out
 SOURCES=$(shell find sources/ -type f -name '*.cpp')
 INCLUDES=-I. -Iincludes/
 OBJECTS=$(SOURCES:.cpp=.o)

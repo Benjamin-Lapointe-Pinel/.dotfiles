@@ -22,7 +22,7 @@ rebuild:
 	$(MAKE) build
 
 lint: $(SOURCES)
-	clang-tidy $? -- $(CXXFLAGS) $(INCLUDES)
+	clang-tidy -header-filter=.* $? -- $(CXXFLAGS) $(INCLUDES)
 
 tags:
 	ctags -R

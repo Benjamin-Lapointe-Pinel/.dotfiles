@@ -17,7 +17,9 @@ release: rebuild
 build: $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $? -o $(NAME)
 
-rebuild: | build clean
+rebuild:
+	$(MAKE) clean
+	$(MAKE) build
 
 lint: $(SOURCES)
 	clang-tidy $? -- $(CXXFLAGS) $(INCLUDES)

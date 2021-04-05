@@ -7,8 +7,6 @@ INCLUDES=-I. -Iincludes/
 LIBRARIES=
 CXXFLAGS=$(INCLUDES) $(LIBRARIES) -W -Wall -Wextra -Wno-unused-function
 
--include $(DEPENDS)
-
 .PHONY: debug release build rebuild tags lint clean
 
 debug: CXXFLAGS+=-g
@@ -38,3 +36,5 @@ clean:
 	rm -f *.o $(OBJECTS)
 	rm -f *.out $(NAME)
 	rm -f tags
+
+-include $(DEPENDS)

@@ -1,6 +1,6 @@
 MAKEFLAGS+=-j
 NAME=a.out
-SOURCES=$(shell find sources/ -type f -name '*.cpp')
+SOURCES=$(wildcard sources/*.cpp)
 OBJECTS=$(SOURCES:.cpp=.o)
 DEPENDS=$(OBJECTS:.o=.d)
 INCLUDES=-I. -Iincludes/
@@ -11,9 +11,6 @@ CXXFLAGS=$(INCLUDES) $(LIBRARIES) -W -Wall -Wextra -Wno-unused-function
 
 .PHONY: debug release build rebuild tags lint clean
 
-%.o: %.cpp
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -MMD -MP -c $< -o $@
-
 debug: CXXFLAGS+=-g
 debug: build tags
 
@@ -22,6 +19,9 @@ release: rebuild
 
 build: $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $? -o $(NAME)
+
+%.o: %.cpp
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -MMD -MP -c $< -o $@
 
 rebuild:
 	$(MAKE) clean
@@ -34,6 +34,7 @@ tags:
 	ctags -R
 
 clean:
+	rm -f *.d $(DEPENDS)
 	rm -f *.o $(OBJECTS)
 	rm -f *.out $(NAME)
 	rm -f tags

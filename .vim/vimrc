@@ -79,6 +79,8 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 
+let g:vimtex_view_method = 'mupdf'
+
 set rtp+=/usr/bin/fzf
 
 " These lines must be at the very end of the vimrc file.

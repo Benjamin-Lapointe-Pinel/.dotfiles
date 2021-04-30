@@ -4,6 +4,7 @@
 !.config/i3blocks
 !.config/termite
 !.config/nvim
+!.config/picom
 
 .vim/view
 .vim/.netrwhist

@@ -7,13 +7,13 @@ INCLUDES=-I. -Iincludes/
 LIBRARIES=
 CXXFLAGS=$(INCLUDES) $(LIBRARIES) -W -Wall -Wextra -Wno-unused-function
 
-.PHONY: debug release build rebuild tags lint clean
-
-debug: CXXFLAGS+=-g
-debug: build tags
+.PHONY: release debug build rebuild tags lint clean
 
 release: CXXFLAGS+=-O3
 release: rebuild
+
+debug: CXXFLAGS+=-g
+debug: build tags
 
 build: $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $? -o $(NAME)
@@ -25,11 +25,13 @@ rebuild:
 	$(MAKE) clean
 	$(MAKE) build
 
-lint: $(SOURCES)
-	clang-tidy -header-filter=.* $? -- $(CXXFLAGS) $(INCLUDES)
-
+# Verify if programs are present:
+# if which dot 1>/dev/null; then echo allo; fi (TODO also redirect stderr)
 tags:
 	ctags -R
+
+lint: $(SOURCES)
+	clang-tidy -header-filter=.* $? -- $(CXXFLAGS) $(INCLUDES)
 
 clean:
 	rm -f *.d $(DEPENDS)

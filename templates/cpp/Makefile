@@ -9,11 +9,11 @@ CXXFLAGS=$(INCLUDES) $(LIBRARIES) -W -Wall -Wextra -Wno-unused-function
 
 .PHONY: release debug build rebuild tags lint clean
 
-release: CXXFLAGS+=-O3
-release: rebuild
-
 debug: CXXFLAGS+=-g
 debug: build tags
+
+release: CXXFLAGS+=-O3
+release: rebuild
 
 build: $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $? -o $(NAME)

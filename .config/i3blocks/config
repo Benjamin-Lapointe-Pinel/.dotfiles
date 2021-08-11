@@ -32,9 +32,18 @@ T_WARN=75
 T_CRIT=90
 separator=false
 
+[memory]
+label= 
+interval=1
+
 [disk]
 label= 
 interval=60
+separator=false
+
+[disk-io]
+interval=persist
+WIDTH=1
 
 [time]
 label= 

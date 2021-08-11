@@ -26,7 +26,7 @@ TREAT_UNKNOWN_AS_UP=1
 [cpu_usage]
 label= 
 interval=1
-min_width=100%
+#min_width= 100%
 DECIMALS=0
 T_WARN=75
 T_CRIT=90
@@ -44,6 +44,8 @@ separator=false
 [disk-io]
 interval=persist
 WIDTH=1
+LABEL=↑
+SEPARATOR= ↓
 
 [time]
 label= 

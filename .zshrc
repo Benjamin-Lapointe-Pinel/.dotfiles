@@ -37,3 +37,5 @@ zstyle ':completion:*' special-dirs true
 
 # Can be use for specific environment
 [[ ! -f $HOME/.rc ]] || source $HOME/.rc
+
+neofetch

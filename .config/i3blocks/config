@@ -17,6 +17,7 @@ TREAT_UNKNOWN_AS_UP=1
 [ssid]
 INTERFACE=wlp2s0
 interval=5
+command=[[ -z "${BLOCK_BUTTON}" ]] || wpa_gui; $BLOCK_NAME/$BLOCK_NAME
 separator_block_width=6
 separator=false
 
@@ -24,6 +25,7 @@ separator=false
 label=直 
 INTERFACE=wlp2s0
 interval=5
+command=[[ -z "${BLOCK_BUTTON}" ]] || wpa_gui; $BLOCK_NAME/$BLOCK_NAME
 
 [disk]
 label= 
@@ -70,10 +72,13 @@ interval=20
 #STEP_SIZE=5
 #USE_SUDO=0
 
-[time]
-label= 
-command=date '+%Y-%m-%d'
+[rofi-calendar]
+LABEL= 
+BAR_POSITION=top
+WEEK_START=sunday
 interval=3600
+DATEFTM=+%Y-%m-%d
+SHORTFMT=+%Y-%m-%d
 separator=false
 
 [time]

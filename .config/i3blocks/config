@@ -1,20 +1,11 @@
 command=$BLOCK_NAME/$BLOCK_NAME
 
-[volume]
-label= 
-STEP=1%
-interval=once
-signal=10
-
 [hostname]
-command=hostname
-interval=60
-separator=false
-separator_block_width=6
+command=cat /etc/hostname
+interval=once
 
 [iface]
-interval=10
-label= 
+interval=5
 separator=false
 
 [bandwidth]
@@ -22,6 +13,30 @@ interval=2
 INLABEL=↑
 OUTLABEL=↓
 TREAT_UNKNOWN_AS_UP=1
+
+[ssid]
+INTERFACE=wlp2s0
+interval=5
+command=[[ -z "${BLOCK_BUTTON}" ]] || wpa_gui; $BLOCK_NAME/$BLOCK_NAME
+separator_block_width=6
+separator=false
+
+[wifi]
+label=直 
+INTERFACE=wlp2s0
+interval=5
+command=[[ -z "${BLOCK_BUTTON}" ]] || wpa_gui; $BLOCK_NAME/$BLOCK_NAME
+
+[disk]
+label= 
+interval=60
+separator=false
+
+[disk-io]
+interval=persist
+WIDTH=1
+LABEL=↑
+SEPARATOR= ↓
 
 [cpu_usage]
 label= 
@@ -36,21 +51,34 @@ separator=false
 label= 
 interval=1
 
-[disk]
-label= 
-interval=60
+[battery2]
+interval=5
 separator=false
 
-[disk-io]
-interval=persist
-WIDTH=1
-LABEL=↑
-SEPARATOR= ↓
+[temperature]
+label= 
+interval=5
 
-[time]
-label= 
-command=date '+%Y-%m-%d'
+[volume]
+label= 
+STEP=1%
+interval=once
+signal=10
+separator=false
+
+[backlight]
+label= 
+interval=20
+#STEP_SIZE=5
+#USE_SUDO=0
+
+[rofi-calendar]
+LABEL= 
+BAR_POSITION=top
+WEEK_START=sunday
 interval=3600
+DATEFTM=+%Y-%m-%d
+SHORTFMT=+%Y-%m-%d
 separator=false
 
 [time]

@@ -61,7 +61,7 @@ interval=5
 
 [volume]
 label= 
-STEP=1%
+STEP=5%
 interval=once
 signal=10
 separator=false

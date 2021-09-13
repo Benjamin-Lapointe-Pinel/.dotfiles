@@ -10,8 +10,8 @@ separator=false
 
 [bandwidth]
 interval=2
-INLABEL=↑
-OUTLABEL=↓
+INLABEL=↓
+OUTLABEL=↑
 TREAT_UNKNOWN_AS_UP=1
 
 [ssid]

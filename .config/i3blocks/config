@@ -12,13 +12,13 @@ separator=false
 interval=2
 INLABEL=↓
 OUTLABEL=↑
+WIDTH=4
 TREAT_UNKNOWN_AS_UP=1
 
 [ssid]
 INTERFACE=wlp2s0
 interval=5
 command=[[ -z "${BLOCK_BUTTON}" ]] || wpa_gui; $BLOCK_NAME/$BLOCK_NAME
-separator_block_width=6
 separator=false
 
 [wifi]
@@ -34,14 +34,13 @@ separator=false
 
 [disk-io]
 interval=persist
-WIDTH=1
-LABEL=↑
-SEPARATOR= ↓
+WIDTH=4
+LABEL=↓
+SEPARATOR= ↑
 
 [cpu_usage]
 label= 
 interval=1
-#min_width= 100%
 DECIMALS=0
 T_WARN=75
 T_CRIT=90
@@ -59,18 +58,17 @@ separator=false
 label= 
 interval=5
 
+[backlight]
+label= 
+interval=20
+STEP_SIZE=5
+separator=false
+
 [volume]
 label= 
 STEP=5%
 interval=once
 signal=10
-separator=false
-
-[backlight]
-label= 
-interval=20
-#STEP_SIZE=5
-#USE_SUDO=0
 
 [rofi-calendar]
 LABEL= 

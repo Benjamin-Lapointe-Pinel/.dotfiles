@@ -32,12 +32,13 @@ set foldlevel=1
 
 set mouse=a
 augroup NO_CURSOR_MOVE_ON_FOCUS
-  au!
-  au FocusLost * let g:oldmouse=&mouse | set mouse=
-  au FocusGained * if exists('g:oldmouse') | let &mouse=g:oldmouse | unlet g:oldmouse | endif
+	au!
+	au FocusLost * let g:oldmouse=&mouse | set mouse=
+	au FocusGained * if exists('g:oldmouse') | let &mouse=g:oldmouse | unlet g:oldmouse | endif
 augroup END
 
-set listchars=tab:\|\ ,trail:~,extends:>,precedes:<
+set showbreak=↳\ 
+set listchars=tab:→\ ,space:·,nbsp:·,trail:•,eol:¶,precedes:«,extends:»
 
 map <C-h>     <C-w>h
 map <C-j>     <C-w>j
@@ -50,7 +51,7 @@ map <C-right> <C-w><right>
 
 nnoremap <silent> <CR> :noh<CR><CR>
 nnoremap gb :ls<CR>:b
-nnoremap <C-@> :set list! list?<CR>
+nnoremap <C-space> :set list! list?<CR>
 nnoremap <F5> :wa<CR>:make<CR>
 tnoremap <Esc> <C-\><C-n>
 

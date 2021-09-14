@@ -93,10 +93,11 @@ format() {
 	value=$(( $1 >> 10 ))
 	if hash bc 2>/dev/null && [[ "$value" -ge 1024 ]]
 	then
-		unit='mB/s'
+		unit='MB/s'
 		value="`echo "scale=1; $value / 1024" | bc`"
 	fi
-	printf "%s %s" $value $unit
+	printf "%${WIDTH}s" $value | tr ' ' '-'
+	printf " %s" $unit
 }
 
-printf "%s%${WIDTH}s %s %s %${WIDTH}s %s\n" $INLABEL $(format $rx_rate) $OUTLABEL $(format $tx_rate)
+echo $INLABEL $(format $rx_rate) $OUTLABEL $(format $tx_rate)

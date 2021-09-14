@@ -5,7 +5,8 @@
 #
 # i3blocks blocklet script to monitor disk io
 
-label="${LABEL:-""}"
+inlabel="${INLABEL:-""}"
+outlabel="${OUTLABEL:-""}"
 dt="${DT:-5}"
 MB_only="${MB_ONLY:-0}"
 kB_only="${KB_ONLY:-0}"
@@ -16,7 +17,7 @@ regex="${REGEX:-$BLOCK_INSTANCE}"
 regex="${regex:-/^(s|h)d[a-zA-Z]+/}"
 threshold="${THRESHOLD:-0}"
 warn_color="${WARN_COLOR:-#FF0000}"
-sep="${SEPARATOR:-/}"
+sep="${SEPARATOR:-" "}"
 unit_suffix="${SUFFIX:-B/s}"
 
 function list_devices {
@@ -26,7 +27,8 @@ function list_devices {
 
 while getopts L:t:w:p:P:R:s:ST:C:lLMmKkh opt; do
     case "$opt" in
-        L) label="$OPTARG" ;;
+        I) inlabel="$OPTARG" ;;
+        O) outlabel="$OPTARG" ;;
         t) dt="$OPTARG" ;;
         w) width="$OPTARG" ;;
         p) kB_precision="$OPTARG" ;;
@@ -42,7 +44,8 @@ while getopts L:t:w:p:P:R:s:ST:C:lLMmKkh opt; do
         h) printf \
 "Usage: disk-io [-t time] [-w width] [-p kB_precision] [-P MB_precision] [-R regex] [-s separator] [-S] [-T threshold [-C warn_color]] [-k|-M] [-l] [-h]
 Options:
--L\tLabel to put in front of the text. Default: $label
+-I\tLabel to put in front of the read. Default: $inlabel
+-O\tLabel to put in front of the write. Default: $outlabel
 -t\tTime interval in seconds between measurements. Default: $dt
 -w\tThe width of printed floats. Default: $width 
 -p\tThe precision of kB/s floats. Default: $kB_precision 
@@ -69,13 +72,19 @@ iostat -dyz "$dt" | awk -v sep="$sep" "
             if ($threshold > 0 && (rx >= $threshold || wx >= $threshold)) {
                 printf \"<span color='$warn_color'>\";
             }
-            printf \"$label\";
             if(!$kB_only && ($MB_only || rx >= 1024 || wx >= 1024)) {
-                printf \"%$width.${MB_precision}f%s%$width.${MB_precision}f M$unit_suffix\", rx/1024, sep, wx/1024;
+							  unit = \"M$unit_suffix\";
+                rxf = sprintf(\"%${width}.${MB_precision}f\", rx / 1024);
+                txf = sprintf(\"%${width}.${MB_precision}f\", tx / 1024);
             }
             else {
-                printf \"%$width.${kB_precision}f%s%$width.${kB_precision}f k$unit_suffix\", rx, sep, wx;
+							  unit = \"k$unit_suffix\";
+                rxf = sprintf(\"%${width}.${kB_precision}f\", rx);
+                txf = sprintf(\"%${width}.${kB_precision}f\", tx);
             }
+					  gsub(\" \", \"-\", rxf);
+					  gsub(\" \", \"-\", txf);
+            printf \"$inlabel%s %s$sep$outlabel%s %s\", rxf, unit, txf, unit;
             if ($threshold > 0 && (rx >= $threshold || wx >= $threshold)) {
                 printf \"</span>\";
             }

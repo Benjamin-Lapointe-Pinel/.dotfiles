@@ -35,8 +35,8 @@ separator=false
 [disk-io]
 interval=persist
 WIDTH=4
-LABEL=↓
-SEPARATOR= ↑
+INLABEL=↓ 
+OUTLABEL=↑ 
 
 [cpu_usage]
 label= 

@@ -46,10 +46,10 @@ $cpu_usage eq -1 and die 'Can\'t find CPU information';
 
 # Print short_text, full_text
 print "${label}";
-print sprintf("%3.${decimals}f", $cpu_usage) =~ tr/ /-/r;
+print sprintf("%3.${decimals}f", $cpu_usage) =~ tr/ /‧/r;
 print "%\n";
 print "${label}";
-print sprintf("%3.${decimals}f", $cpu_usage) =~ tr/ /-/r;
+print sprintf("%3.${decimals}f", $cpu_usage) =~ tr/ /‧/r;
 print "%\n";
 
 my $crit_color = `xrdb -query | grep 'color1:' | awk '{print \$NF}'`;

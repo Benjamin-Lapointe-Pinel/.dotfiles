@@ -96,7 +96,7 @@ format() {
 		unit='MB/s'
 		value="`echo "scale=1; $value / 1024" | bc`"
 	fi
-	printf "%${WIDTH}s" $value | tr ' ' '-'
+	printf "%${WIDTH}s" $value | sed 'y/ /‧/'
 	printf " %s" $unit
 }
 

@@ -70,7 +70,7 @@ format() {
   perl_filter+='"; exit}'
   output=$(perl -ne "$perl_filter")
 	printf '%s' $LABEL
-	printf '%4s\n' $output | tr ' ' '-'
+	printf '%4s\n' $output | sed 'y/ /‧/'
 }
 
 #------------------------------------------------------------------------

@@ -82,8 +82,8 @@ iostat -dyz "$dt" | awk -v sep="$sep" "
                 rxf = sprintf(\"%${width}.${kB_precision}f\", rx);
                 txf = sprintf(\"%${width}.${kB_precision}f\", tx);
             }
-					  gsub(\" \", \"-\", rxf);
-					  gsub(\" \", \"-\", txf);
+					  gsub(\" \", \"‧\", rxf);
+					  gsub(\" \", \"‧\", txf);
             printf \"$inlabel%s %s$sep$outlabel%s %s\", rxf, unit, txf, unit;
             if ($threshold > 0 && (rx >= $threshold || wx >= $threshold)) {
                 printf \"</span>\";

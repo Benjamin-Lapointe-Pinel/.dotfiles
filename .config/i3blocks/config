@@ -5,6 +5,7 @@ command=cat /etc/hostname
 interval=once
 
 [iface]
+label= 
 interval=5
 separator=false
 
@@ -22,7 +23,7 @@ command=[[ -z "${BLOCK_BUTTON}" ]] || wpa_gui; $BLOCK_NAME/$BLOCK_NAME
 separator=false
 
 [wifi]
-label=直 
+label= 
 INTERFACE=wlp2s0
 interval=5
 command=[[ -z "${BLOCK_BUTTON}" ]] || wpa_gui; $BLOCK_NAME/$BLOCK_NAME

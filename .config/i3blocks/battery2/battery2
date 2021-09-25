@@ -57,8 +57,9 @@ else:
     elif percentleft > 20: fulltext = ""
     else: fulltext = ""
 
-    fulltext += ' {0:3d}%'.format(percentleft)
-    fulltext += timeleft
+    fulltext += ' ' + '{0:‧>3}%'.format(percentleft)
+
+    if percentleft <= 25: fulltext += timeleft
 
 print(fulltext)
 print(fulltext)

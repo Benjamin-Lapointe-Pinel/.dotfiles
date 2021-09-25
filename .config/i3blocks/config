@@ -4,6 +4,13 @@ command=$BLOCK_NAME/$BLOCK_NAME
 command=cat /etc/hostname
 interval=once
 
+[wifi]
+label= 
+INTERFACE=wlp2s0
+interval=5
+command=[[ -z "${BLOCK_BUTTON}" ]] || wpa_gui; $BLOCK_NAME/$BLOCK_NAME
+separator=false
+
 [iface]
 label= 
 interval=5
@@ -15,18 +22,6 @@ INLABEL=↓
 OUTLABEL=↑
 WIDTH=4
 TREAT_UNKNOWN_AS_UP=1
-
-[ssid]
-INTERFACE=wlp2s0
-interval=5
-command=[[ -z "${BLOCK_BUTTON}" ]] || wpa_gui; $BLOCK_NAME/$BLOCK_NAME
-separator=false
-
-[wifi]
-label= 
-INTERFACE=wlp2s0
-interval=5
-command=[[ -z "${BLOCK_BUTTON}" ]] || wpa_gui; $BLOCK_NAME/$BLOCK_NAME
 
 [disk]
 label= 

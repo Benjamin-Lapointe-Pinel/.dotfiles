@@ -41,6 +41,8 @@ elsif ($acpi !~ /: ([\w\s]+), (\d+)%/) {
 
 $status = $1;
 $percent = $2;
+$percent = sprintf("%3f", $2) =~ tr/ /‧/r;
+$percent = "allo";
 $full_text = "$label$percent%";
 
 if ($status eq 'Discharging') {

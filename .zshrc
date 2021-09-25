@@ -22,6 +22,19 @@ setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt extendedglob
 
+zstyle :bracketed-paste-magic paste-init pasteinit
+zstyle :bracketed-paste-magic paste-finish pastefinish
+zstyle ':completion:*' special-dirs true
+
+# https://unix.stackexchange.com/a/38941
+# function cd {
+# 	builtin cd $@
+# 	pwd > $HOME/last_dir
+# }
+# if [ -f $HOME/.last_dir ]
+# 	then cd `cat $HOME/.last_dir`
+# fi
+
 # This speeds up pasting w/ autosuggest
 # https://github.com/zsh-users/zsh-autosuggestions/issues/238
 pasteinit() {
@@ -31,9 +44,6 @@ pasteinit() {
 pastefinish() {
   zle -N self-insert $OLD_SELF_INSERT
 }
-zstyle :bracketed-paste-magic paste-init pasteinit
-zstyle :bracketed-paste-magic paste-finish pastefinish
-zstyle ':completion:*' special-dirs true
 
 # Can be use for specific environment
 [[ ! -f $HOME/.rc ]] || source $HOME/.rc

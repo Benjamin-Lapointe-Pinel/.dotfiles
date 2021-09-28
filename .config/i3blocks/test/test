@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+stats=/sys/class/net/eth0/statistics/rx_bytes
+
+old=$(cat $stats)
+sleep 0.25
+current=$(cat $stats)
+instant=$((current-old))
+
+echo $LABEL
+echo $LABEL
+if [ $instant -eq 0 ]
+then
+	echo "#ff0000"
+fi

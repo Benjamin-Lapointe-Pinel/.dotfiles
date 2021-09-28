@@ -1,5 +1,9 @@
 command=$BLOCK_NAME/$BLOCK_NAME
 
+[test]
+label=↓
+interval=1
+
 [hostname]
 command=cat /etc/hostname
 interval=once

@@ -8,7 +8,7 @@ interval=once
 label= 
 INTERFACE=wlp2s0
 interval=5
-command=[[ -z "${BLOCK_BUTTON}" ]] || wpa_gui; $BLOCK_NAME/$BLOCK_NAME
+command=[[ -n "${BLOCK_BUTTON}" ]] && [[ "${button}" -eq 1 ]] && wpa_gui; $BLOCK_NAME/$BLOCK_NAME
 separator=false
 
 [iface]

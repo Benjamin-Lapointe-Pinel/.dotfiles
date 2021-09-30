@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+
+if [[ -z $INTERFACE ]]
+then
+	INTERFACE=$(ip route | awk '/^default/ { print $5 ; exit }')
+fi
+
+# Exit if there is no default route
+[[ -z "$INTERFACE" ]] && exit 1
+
+INTERFACE=/sys/class/net/${INTERFACE}
+STATS=${INTERFACE}/statistics/${metric}_bytes
+
+! [[ -e "$STATS" ]] && exit 1
+
+if [[ -z $sleep_value ]]
+then
+	sleep_value=0.1
+fi
+
+color="#$(xrdb -query | grep "*color8:" | cut -f 2 | cut -c2- | tr '[:lower:]' '[:upper:]')"
+
+while true
+do
+	if [ "`cat $INTERFACE/operstate`" = "up" ]
+	then
+		current=$(cat $STATS)
+		instant=$((current-old))
+		old=$current
+
+		options=$(printf '"full_text":"%s"' $glyph)
+		if [ $instant -eq 0 ]
+		then
+			options=$(printf '%s,"color":"%s"' $options $color)
+		fi
+
+		printf '{%s}\n' $options
+	else
+		echo
+	fi
+
+	sleep "$sleep_value"
+done

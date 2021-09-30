@@ -1,9 +1,5 @@
 command=$BLOCK_NAME/$BLOCK_NAME
 
-[test]
-label=↓
-interval=1
-
 [hostname]
 command=cat /etc/hostname
 interval=once
@@ -16,16 +12,23 @@ command=[[ -z "${BLOCK_BUTTON}" ]] || wpa_gui; $BLOCK_NAME/$BLOCK_NAME
 separator=false
 
 [iface]
-label= 
+label= 
 interval=5
 separator=false
 
-[bandwidth]
-interval=2
-INLABEL=↓
-OUTLABEL=↑
-WIDTH=4
-TREAT_UNKNOWN_AS_UP=1
+[bandwidth-led]
+glyph=↓
+metric=rx
+format=json
+interval=persist
+separator=false
+separator_block_width=0
+
+[bandwidth-led]
+glyph=↑
+metric=tx
+format=json
+interval=persist
 
 [disk]
 label= 
@@ -37,6 +40,12 @@ interval=persist
 WIDTH=4
 INLABEL=↓ 
 OUTLABEL=↑ 
+
+[disk-led]
+glyph=↓
+metric=rx
+format=json
+interval=persist
 
 [cpu_usage]
 label= 
@@ -55,7 +64,7 @@ interval=5
 separator=false
 
 [temperature]
-label= 
+label= 
 interval=5
 
 [backlight]

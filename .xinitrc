@@ -38,5 +38,4 @@ fi
 hsetroot -solid "#$(xrdb -query | grep "*color19:" | cut -f 2 | cut -c2- | tr '[:lower:]' '[:upper:]')"
 
 numlockx &
-picom &
 exec i3

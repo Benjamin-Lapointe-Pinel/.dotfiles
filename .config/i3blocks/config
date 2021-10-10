@@ -4,18 +4,6 @@ command=$BLOCK_NAME/$BLOCK_NAME
 command=cat /etc/hostname
 interval=once
 
-[wifi]
-label= 
-INTERFACE=wlp2s0
-interval=5
-command=[[ -n "${BLOCK_BUTTON}" ]] && [[ "${button}" -eq 1 ]] && wpa_gui; $BLOCK_NAME/$BLOCK_NAME
-separator=false
-
-[iface]
-label= 
-interval=5
-separator=false
-
 [bandwidth-led]
 glyph=↓
 metric=rx
@@ -29,6 +17,18 @@ glyph=↑
 metric=tx
 format=json
 interval=persist
+separator=false
+separator_block_width=7
+
+[iface]
+interval=5
+separator=false
+
+[wifi]
+label= 
+INTERFACE=wlp2s0
+interval=5
+command=[[ -n "${BLOCK_BUTTON}" ]] && [[ "${button}" -eq 1 ]] && wpa_gui; $BLOCK_NAME/$BLOCK_NAME
 
 [disk]
 label= 

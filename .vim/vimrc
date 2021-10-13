@@ -39,7 +39,7 @@ augroup NO_CURSOR_MOVE_ON_FOCUS
 augroup END
 
 set showbreak=↳\ 
-set listchars=tab:→\ ,space:·,nbsp:·,trail:•,eol:¶,precedes:«,extends:»
+set listchars=tab:→\ ,space:·,nbsp:▓,trail:░,eol:¶,precedes:«,extends:»
 
 map <C-h>     <C-w>h
 map <C-j>     <C-w>j

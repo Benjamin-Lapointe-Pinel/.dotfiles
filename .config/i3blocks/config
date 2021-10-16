@@ -35,6 +35,7 @@ label=
 interval=60
 separator=false
 
+#TODO: migrate to led only
 [disk-io]
 interval=persist
 WIDTH=4
@@ -73,6 +74,8 @@ interval=20
 STEP_SIZE=5
 separator=false
 
+#TODO: detect volume change with pactl
+#TODO: also use this label: 婢
 [volume]
 label= 
 STEP=5%

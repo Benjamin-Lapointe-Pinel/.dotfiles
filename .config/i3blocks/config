@@ -1,7 +1,7 @@
 command=$BLOCK_NAME/$BLOCK_NAME
 
 [hostname]
-command=cat /etc/hostname
+command=hostnamectl hostname
 interval=once
 
 [bandwidth-led]
@@ -64,8 +64,8 @@ interval=5
 separator=false
 
 [temperature]
-label= 
 interval=5
+separator=false
 
 [backlight]
 label= 
@@ -78,6 +78,12 @@ label=
 STEP=5%
 interval=once
 signal=10
+
+[keyboard-layout]
+label= 
+command=xkb-switch | tr a-z A-Z; xkb-switch -W | stdbuf -oL tr a-z A-Z
+interval=persist
+separator=false
 
 [rofi-calendar]
 LABEL= 

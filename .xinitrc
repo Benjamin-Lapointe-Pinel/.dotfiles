@@ -35,8 +35,8 @@ fi
 # keyboard layouts
 setxkbmap -layout us,ca -option grp:win_space_toggle
 
-hsetroot -solid "#$(xrdb -query | grep "*color19:" | cut -f 2 | cut -c2- | tr '[:lower:]' '[:upper:]')"
-feh --bg-fill .wallpapers/robinwall02-notext.png
+# hsetroot -solid "#$(xrdb -query | grep "*color19:" | cut -f 2 | cut -c2- | tr '[:lower:]' '[:upper:]')"
+feh --bg-fill $HOME/.dotfiles/.wallpapers/robinwall02-notext.png
 
 numlockx &
 exec i3

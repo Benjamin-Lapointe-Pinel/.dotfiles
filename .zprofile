@@ -1,5 +1,2 @@
-[[ -f ~/.zshrc ]] && . ~/.zshrc
-
-if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-  exec startx
-fi
+[[ -f $HOME/.profile ]] && source $HOME/.profile 
+[[ -f $HOME/.zshrc ]] && source $HOME/.zshrc

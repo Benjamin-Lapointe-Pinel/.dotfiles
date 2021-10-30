@@ -4,6 +4,13 @@ command=$BLOCK_NAME/$BLOCK_NAME
 command=hostnamectl hostname
 interval=once
 
+[wifi]
+label= 
+INTERFACE=wlp2s0
+interval=1
+command=[[ -n "${BLOCK_BUTTON}" ]] && [[ "${button}" -eq 1 ]] && wpa_gui; $BLOCK_NAME/$BLOCK_NAME
+separator=false
+
 [bandwidth-led]
 glyph=↓
 metric=rx
@@ -22,13 +29,6 @@ separator_block_width=5
 
 [iface]
 interval=1
-separator=false
-
-[wifi]
-label= 
-INTERFACE=wlp2s0
-interval=1
-command=[[ -n "${BLOCK_BUTTON}" ]] && [[ "${button}" -eq 1 ]] && wpa_gui; $BLOCK_NAME/$BLOCK_NAME
 
 [disk]
 label= 

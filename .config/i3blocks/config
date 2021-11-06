@@ -74,7 +74,6 @@ label=
 interval=20
 STEP_SIZE=5
 
-#TODO: detect volume change with pactl subscribe
 [volume]
 STEP=5%
 interval=once

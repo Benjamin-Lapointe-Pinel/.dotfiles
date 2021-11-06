@@ -73,6 +73,7 @@ separator=false
 label= 
 interval=20
 STEP_SIZE=5
+signal=11
 
 [volume]
 STEP=5%

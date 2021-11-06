@@ -39,5 +39,5 @@ esac
 if command -v xbacklight &> /dev/null
 then
 	BRIGHTNESS=$(xbacklight -get | cut -f1 -d'.')
-	printf '%3s%%\n' $BRIGHTNESS
+	printf '%3s%%\n' $BRIGHTNESS | sed 'y/ /‧/'
 fi

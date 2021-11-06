@@ -64,12 +64,25 @@ volume() {
 format() {
   
   perl_filter='if (/.*\[(\d+%)\] (\[(-?\d+.\d+dB)\] )?\[(on|off)\]/)'
-  perl_filter+='{CORE::say $4 eq "off" ? "MUTE" : "'
+  perl_filter+='{CORE::say $4 eq "off" ? "" : "'
   # If dB was selected, print that instead
   perl_filter+=$([[ $STEP = *dB ]] && echo '$3' || echo '$1')
   perl_filter+='"; exit}'
   output=$(perl -ne "$perl_filter")
-	printf '%s' $LABEL
+	if [ -z $output ]
+	then
+		LABEL='婢'
+	elif [ ${output//\%} -eq 0 ]
+	then
+		LABEL='奄'
+	elif [ ${output//\%} -le 50 ]
+	then
+		LABEL='奔'
+	else
+		LABEL='墳'
+	fi
+	printf '%s ' $LABEL
+	# printf '%4s\n' $output
 	printf '%4s\n' $output | sed 'y/ /‧/'
 }
 

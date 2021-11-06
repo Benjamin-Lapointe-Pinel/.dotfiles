@@ -74,10 +74,8 @@ label=
 interval=20
 STEP_SIZE=5
 
-#TODO: detect volume change with pactl
-#TODO: also use this label: 婢
+#TODO: detect volume change with pactl subscribe
 [volume]
-label= 
 STEP=5%
 interval=once
 signal=10

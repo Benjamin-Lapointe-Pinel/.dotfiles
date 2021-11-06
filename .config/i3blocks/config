@@ -9,6 +9,10 @@ label=
 INTERFACE=wlp2s0
 interval=1
 command=[[ -n "${BLOCK_BUTTON}" ]] && [[ "${button}" -eq 1 ]] && wpa_gui; $BLOCK_NAME/$BLOCK_NAME
+
+[iface]
+label= 
+interval=1
 separator=false
 
 [bandwidth-led]
@@ -24,27 +28,24 @@ glyph=↑
 metric=tx
 format=json
 interval=persist
-separator=false
-separator_block_width=5
-
-[iface]
-interval=1
 
 [disk]
 label= 
 interval=60
 separator=false
-
-#TODO: migrate to led only
-[disk-io]
-interval=persist
-WIDTH=4
-INLABEL=↓ 
-OUTLABEL=↑ 
+separator_block_width=5
 
 [disk-led]
 glyph=↓
-metric=rx
+metric=read
+format=json
+interval=persist
+separator=false
+separator_block_width=0
+
+[disk-led]
+glyph=↑
+metric=write
 format=json
 interval=persist
 
@@ -72,7 +73,6 @@ separator=false
 label= 
 interval=20
 STEP_SIZE=5
-separator=false
 
 #TODO: detect volume change with pactl
 #TODO: also use this label: 婢

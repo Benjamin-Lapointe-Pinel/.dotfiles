@@ -37,7 +37,7 @@ do
 
 		printf '{%s}\n' $options
 	else
-		echo
+		echo '{"full_text":""}'
 	fi
 
 	sleep "$sleep_value"

@@ -38,6 +38,6 @@ esac
 
 if command -v xbacklight &> /dev/null
 then
-	BRIGHTNESS=$((xbacklight -get && exit $?) | cut -f1 -d'.') && exit $?
+	BRIGHTNESS=$(xbacklight -get | cut -f1 -d'.')
 	printf '%3s%%\n' $BRIGHTNESS
 fi

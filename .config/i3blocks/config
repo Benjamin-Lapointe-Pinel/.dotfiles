@@ -14,6 +14,7 @@ command=[[ -n "${BLOCK_BUTTON}" ]] && [[ "${button}" -eq 1 ]] && wpa_gui; $BLOCK
 label= 
 interval=1
 separator=false
+separator_block_width=5
 
 [bandwidth-led]
 glyph=↓

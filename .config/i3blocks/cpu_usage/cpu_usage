@@ -52,13 +52,13 @@ print "${label}";
 print sprintf("%3.${decimals}f", $cpu_usage) =~ tr/ /‧/r;
 print "%\n";
 
-my $crit_color = `xrdb -query | grep 'color1:' | awk '{print \$NF}'`;
-my $warn_color = `xrdb -query | grep 'color3:' | awk '{print \$NF}'`;
+my $crit_color = '#FF0000';
+my $warn_color = '#FFFF00';
 # Print color, if needed
 if ($cpu_usage >= $t_crit) {
-    print "$crit_color";
+    print "${crit_color}\n";
 } elsif ($cpu_usage >= $t_warn) {
-    print "$warn_color";
+    print "${warn_color}\n";
 }
 
 exit 0;

@@ -42,8 +42,7 @@ printf "%2s%%\n" $QUALITY # full text
 printf "%2s%%\n" $QUALITY # short text
 
 # color
-if [[ $QUALITY -ge 80 ]]; then
-    echo "#00FF00"
-elif [[ $QUALITY -le 20 ]]; then
-    echo "#FFAE00"
+if [[ $QUALITY -le 20 ]]
+then
+    echo "#FFFF00"
 fi

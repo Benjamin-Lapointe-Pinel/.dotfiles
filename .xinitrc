@@ -40,4 +40,5 @@ hsetroot -solid "#$(xrdb -query | grep "*color19:" | cut -f 2 | cut -c2- | tr '[
 $HOME/.fehbg &
 
 numlockx &
+urxvtd --quiet --opendisplay --fork &
 exec i3

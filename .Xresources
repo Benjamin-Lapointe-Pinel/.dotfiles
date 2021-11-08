@@ -1,9 +1,16 @@
 #include ".terminal_theme"
 
-URxvt*scrollBar: false
+URxvt.scrollBar: false
 URxvt*font: xft:Cozette:pixelsize=11
-URxvt*letterSpace: -1
+URxvt.letterSpace: -1
+URxvt.scrollTtyKeypress: true
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+URxvt.keysym.Control-Up: \033[1;5A
+URxvt.keysym.Control-Down: \033[1;5B
+URxvt.keysym.Control-Left: \033[1;5D
+URxvt.keysym.Control-Right: \033[1;5C
 
-XTerm*termName: xterm-256color
-XTerm*saveLines: 4096
+XTerm.termName: xterm-256color
+XTerm.saveLines: 4096
 XTerm*faceName: Cozette

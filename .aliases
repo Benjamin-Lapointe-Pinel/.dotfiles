@@ -9,7 +9,7 @@ alias ip='ip -color=auto'
 alias tmux='tmux -u'
 alias bat='bat --paging=never -p'
 
-function cs {
+cs() {
 	builtin cd "$@" && ls
 }
 
@@ -39,7 +39,6 @@ log() {
 		echo "$(date -Is) $@" >> $LOG_PATH
 	fi
 }
-
 
 docker() {
 	if [[ $@ == "container watch" ]]

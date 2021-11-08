@@ -61,9 +61,9 @@ END {
 	if (pct > 90) {
 		print("#FF0000")
 	} else if (pct > 80) {
-		print("#FFAE00")
+		print("#FF7F00")
 	} else if (pct > 70) {
-		print("#FFF600")
+		print("#FFFF00")
 	}
 }
 ' /proc/meminfo

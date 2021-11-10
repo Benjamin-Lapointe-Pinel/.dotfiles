@@ -6,6 +6,7 @@ URxvt*letterSpace: 0
 URxvt.scrollTtyOutput: false
 URxvt.scrollWithBuffer: true
 URxvt.scrollTtyKeypress: true
+URxvt.urgentOnBell: true
 URxvt.iso14755: false
 URxvt.iso14755_52: false
 URxvt.perl-ext-common: default,matcher,resize-font
@@ -22,3 +23,4 @@ XTerm.termName: xterm-256color
 XTerm.saveLines: 8192
 XTerm*faceName: monospace:pixelSize=10
 XTerm*selectToClipboard: true
+XTerm.vt100.bellIsUrgent: true

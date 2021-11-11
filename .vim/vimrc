@@ -14,9 +14,6 @@ set smarttab
 set textwidth=120
 set linebreak
 
-filetype plugin indent on
-syntax on
-
 set number relativenumber
 set showmatch
 set showcmd
@@ -41,6 +38,16 @@ augroup END
 set showbreak=↳\ 
 set listchars=tab:→\ ,space:·,nbsp:▓,trail:░,eol:¶,precedes:«,extends:»
 
+filetype plugin indent on
+syntax on
+
+hi clear SpellBad
+hi SpellBad cterm=undercurl ctermfg=red
+hi clear SpellRare
+hi SpellRare cterm=undercurl ctermfg=red
+hi clear SpellCap
+hi SpellCap cterm=undercurl ctermfg=red
+
 map <C-h>     <C-w>h
 map <C-j>     <C-w>j
 map <C-k>     <C-w>k
@@ -49,11 +56,15 @@ map <C-left>  <C-w><left>
 map <C-down>  <C-w><down>
 map <C-up>    <C-w><up>
 map <C-right> <C-w><right>
+map <C-s>			:setlocal spell!<CR>
 
 nnoremap <silent> <esc> :noh<return><esc>
 nnoremap gb :ls<CR>:b
 nnoremap <C-space> :set list! list?<CR>
 nnoremap <F5> :wa<CR>:make<CR>
+
+inoremap <c-space> <c-n>
+
 tnoremap <Esc> <C-\><C-n>
 
 augroup auto_save_folds
@@ -64,13 +75,15 @@ augroup END
 
 autocmd BufNewFile,BufRead *.ino set filetype=arduino
 autocmd BufNewFile,BufRead docker-compose.{yaml,yml} set filetype=docker-compose
-autocmd BufNewFile,BufRead *.{yaml,yml} set filetype=yaml
+autocmd BufRead,BufNewFile *.md setlocal spell
 
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType python nnoremap <buffer> <F5> :wa<CR>:!python %<CR>
 autocmd FileType dockerfile nnoremap <buffer> <F5> :wa<CR>:!docker build -t build . && docker run --rm -it $(docker build -q .)<CR>
 autocmd FileType docker-compose nnoremap <buffer> <F5> :wa<CR>:!docker-compose down; docker-compose up -d<CR>
 autocmd FileType arduino nnoremap <buffer> <F5> :wa<CR>:!arduino -v --upload %<CR>
+autocmd FileType tex,plaintex setlocal spell
+autocmd FileType gitcommit setlocal spell
 
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0

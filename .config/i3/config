@@ -60,6 +60,11 @@ bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5 && pkill -RTMIN+11 i3blocks
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5 && pkill -RTMIN+11 i3blocks
 
+# print screen
+bindsym --release Print exec scrot /tmp/ -e 'xclip -selection clipboard -t image/png -i $f'
+bindsym --release $mod+Print exec scrot /tmp/ -u -e 'xclip -selection clipboard -t image/png -i $f'
+bindsym --release $mod+Shift+s exec scrot /tmp/ -s -e 'xclip -selection clipboard -t image/png -i $f'
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 

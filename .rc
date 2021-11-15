@@ -7,4 +7,13 @@ source $HOME/.base16_theme
 
 [[ -f $HOME/.rc_custom ]] && source $HOME/.rc_custom
 
-if command -v neofetch &> /dev/null; then neofetch; fi
+if [[ $(tput cols) -ge 100 ]]
+then
+	sh $HOME/.color-scripts/color-scripts/pacman
+elif [[ $(tput cols) -ge 80 ]]
+then
+	sh $HOME/.color-scripts/color-scripts/space-invaders
+elif command -v neofetch &> /dev/null
+then
+	neofetch
+fi

@@ -61,6 +61,3 @@
 [submodule ".vim/pack/plugins/start/vimtex"]
 	path = .vim/pack/plugins/start/vimtex
 	url = https://github.com/lervag/vimtex.git
-[submodule ".color-scripts"]
-	path = .color-scripts
-	url = https://github.com/stark/Color-Scripts.git

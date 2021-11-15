@@ -9,10 +9,10 @@ source $HOME/.base16_theme
 
 if [[ $(tput cols) -ge 100 ]]
 then
-	sh $HOME/.color-scripts/color-scripts/pacman
+	sh $HOME/.color-scripts/pacman
 elif [[ $(tput cols) -ge 80 ]]
 then
-	sh $HOME/.color-scripts/color-scripts/space-invaders
+	sh $HOME/.color-scripts/space-invaders
 elif command -v neofetch &> /dev/null
 then
 	neofetch

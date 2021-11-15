@@ -65,7 +65,7 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 -- map buffer local keybindings when the language server attaches
 local servers = {
 	'bashls',
-	'pylsp',
+	'pyright',
 	'texlab',
 	'clangd',
 	'rust_analyzer',

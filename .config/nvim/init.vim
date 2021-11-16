@@ -65,7 +65,7 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 -- map buffer local keybindings when the language server attaches
 local servers = {
 	'bashls',
-	'pyright',
+	'pylsp',
 	'texlab',
 	'clangd',
 	'rust_analyzer',
@@ -96,11 +96,11 @@ cmp.setup {
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
-		['<CR>'] = cmp.mapping.confirm {
+    ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-		['<Right>'] = cmp.mapping.confirm {
+    ['<Right>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },

@@ -1,24 +1,33 @@
 [[ -f $HOME/.rc ]] && source $HOME/.rc
 
+# https://stackoverflow.com/a/10737906
+include () {
+	[[ -f "$1" ]] && source "$1"
+}
+
 autoload -Uz compinit && compinit -i
 
-source $HOME/.zsh/sudo/sudo.plugin.zsh
-source $HOME/.zsh/key-bindings/key-bindings.zsh
-source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
-source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
-source $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh
-source $HOME/.zsh/extract/extract.plugin.zsh
-source $HOME/.zsh/powerlevel10k/powerlevel10k.zsh-theme
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
-[[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
+include $HOME/.p10k.zsh
+include $HOME/.zsh/sudo/sudo.plugin.zsh
+include $HOME/.zsh/key-bindings/key-bindings.zsh
+include $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+include $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+include $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh
+include $HOME/.zsh/extract/extract.plugin.zsh
+include $HOME/.zsh/powerlevel10k/powerlevel10k.zsh-theme
+include /usr/share/fzf/completion.zsh
+include /usr/share/fzf/key-bindings.zsh
+include /usr/share/doc/fzf/examples/completion.zsh
+include /usr/share/doc/fzf/examples/key-bindings.zsh
 if [ $commands[kubectl] ]; then source <(kubectl completion zsh); fi
 fpath=($HOME/.zsh/zsh-completions/src $fpath)
 
+setopt histappend
 setopt share_history
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt extendedglob
+setopt globstarshort
 
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish

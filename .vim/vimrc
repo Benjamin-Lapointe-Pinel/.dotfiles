@@ -53,14 +53,17 @@ hi SpellLocal cterm=underline ctermfg=blue
 map <C-h>     <C-w>h
 map <C-j>     <C-w>j
 map <C-k>     <C-w>k
-map <C-l>     <C-w>
+map <C-l>     <C-w>l
 map <C-left>  <C-w><left>
 map <C-down>  <C-w><down>
 map <C-up>    <C-w><up>
 map <C-right> <C-w><right>
-map <C-s> :setlocal spell!<CR>
+map <f6> :setlocal spell!<CR>
 
-nnoremap <silent> <esc> :noh<return><esc>
+" https://stackoverflow.com/a/1037182
+nnoremap <esc> :noh<return><esc>
+nnoremap <esc>^[ <esc>^[
+
 nnoremap gb :ls<CR>:b
 nnoremap <C-space> :set list! list?<CR>
 nnoremap <F5> :wa<CR>:make<CR>

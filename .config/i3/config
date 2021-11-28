@@ -70,7 +70,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Shift+Return exec i3-sensible-terminal --class=__scratchpad
+bindsym $mod+Shift+Return exec i3-sensible-terminal -name __scratchpad
 for_window [instance="__scratchpad"] move scratchpad; scratchpad show
 
 for_window [instance="Godot_Engine" title="(DEBUG)"] floating enable

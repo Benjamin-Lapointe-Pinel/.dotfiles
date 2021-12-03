@@ -38,8 +38,8 @@ QUALITY=$(grep $INTERFACE /proc/net/wireless | awk '{ print int($3 * 100 / 70) }
 
 #------------------------------------------------------------------------
 
-printf "%2s%%\n" $QUALITY # full text
-printf "%2s%%\n" $QUALITY # short text
+printf "%3s%%\n" $QUALITY | sed 'y/ /‧/' # full text
+printf "%3s%%\n" $QUALITY | sed 'y/ /‧/' # short text
 
 # color
 if [[ $QUALITY -le 20 ]]

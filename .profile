@@ -26,5 +26,3 @@ then
 fi
 
 [[ -f $HOME/.profile_custom ]] && source $HOME/.profile_custom
-
-#rebase test

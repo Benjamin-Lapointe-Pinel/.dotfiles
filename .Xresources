@@ -1,8 +1,6 @@
 #include ".terminal_theme"
 
 URxvt.scrollBar: false
-URxvt*font: xft:monospace:pixelsize=10
-URxvt*letterSpace: 0
 URxvt.scrollTtyOutput: false
 URxvt.scrollWithBuffer: true
 URxvt.scrollTtyKeypress: true
@@ -21,6 +19,5 @@ URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 
 XTerm.termName: xterm-256color
 XTerm.saveLines: 8192
-XTerm*faceName: monospace:pixelsize=10
 XTerm.selectToClipboard: true
 XTerm.vt100.bellIsUrgent: true

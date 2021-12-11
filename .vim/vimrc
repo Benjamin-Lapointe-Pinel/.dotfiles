@@ -28,6 +28,7 @@ set splitright
 set foldmethod=syntax
 set nofoldenable
 set foldlevel=1
+set viewoptions+=localoptions
 
 set mouse=a
 augroup NO_CURSOR_MOVE_ON_FOCUS

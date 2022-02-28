@@ -28,6 +28,7 @@ set splitright
 set foldmethod=syntax
 set nofoldenable
 set foldlevel=1
+set viewoptions+=localoptions
 
 set mouse=a
 augroup NO_CURSOR_MOVE_ON_FOCUS
@@ -112,5 +113,6 @@ let g:vimtex_view_method = 'mupdf'
 set rtp+=/usr/bin/fzf
 
 " These lines must be at the very end of the vimrc file.
-packloadall
+" packloadall breaks nvim plugin loading
+" packloadall
 silent! helptags ALL

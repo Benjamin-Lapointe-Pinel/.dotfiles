@@ -60,14 +60,14 @@ map <C-left>  <C-w><left>
 map <C-down>  <C-w><down>
 map <C-up>    <C-w><up>
 map <C-right> <C-w><right>
-map <f6> :setlocal spell!<CR>
 
 " https://stackoverflow.com/a/1037182
-nnoremap <esc> :noh<return><esc>
+nnoremap <silent><esc> :noh<return><esc>
 nnoremap <esc>^[ <esc>^[
 
 nnoremap gb :ls<CR>:b
 nnoremap <C-space> :set list! list?<CR>
+nnoremap <F4> :w !$SHELL<CR>
 nnoremap <F5> :wa<CR>:make<CR>
 
 inoremap <c-space> <c-n>

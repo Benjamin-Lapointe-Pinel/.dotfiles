@@ -13,37 +13,23 @@ alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 alias ip='ip -color=auto'
 alias tmux='tmux -u'
-alias bat='bat --paging=never -p'
+alias bat='bat --paging=never -p --theme=base16'
 
-cs() {
+cd() {
 	builtin cd "$@" && ls
+}
+
+cat() {
+	if command -v bat>/dev/null 2>&1
+	then
+		bat "$@"
+	else
+		buitlin cat "$@"
+	fi
 }
 
 c() {
 	echo "$(($@))"
-}
-
-log() {
-	LOG_DIR=$HOME/log/
-	LOG_FILE=personnal.log
-	LOG_PATH=$LOG_DIR$LOG_FILE
-
-	if [ ! -f $LOG_PATH ]
-	then
-		mkdir -p $LOG_DIR
-		touch $LOG_PATH
-		chmod 600 $LOG_PATH
-		chmod 500 $LOG_DIR
-		sudo chattr +a $LOG_PATH
-		echo "Created $LOG_PATH"
-	fi
-
-	if [ $# -eq 0 ]
-	then
-		less $LOG_PATH
-	else
-		echo "$(date -Is) $@" >> $LOG_PATH
-	fi
 }
 
 docker() {

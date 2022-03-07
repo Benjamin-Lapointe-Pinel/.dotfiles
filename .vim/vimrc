@@ -3,7 +3,7 @@ set t_Co=256
 set hidden
 set encoding=UTF-8
 set clipboard^=unnamed,unnamedplus
-set completeopt+=noinsert
+set completeopt+=noinsert,menuone,preview
 
 set autoindent
 set smartindent
@@ -65,7 +65,7 @@ map <C-right> <C-w><right>
 nnoremap <silent><esc> :noh<return><esc>
 nnoremap <esc>^[ <esc>^[
 
-nnoremap gb :ls<CR>:b
+nnoremap gb :ls<CR>:b 
 nnoremap <C-space> :set list! list?<CR>
 nnoremap <F4> :w !$SHELL<CR>
 nnoremap <F5> :wa<CR>:make<CR>

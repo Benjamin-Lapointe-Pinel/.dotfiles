@@ -7,10 +7,10 @@ source $HOME/.base16_theme
 
 [[ -f $HOME/.rc_custom ]] && source $HOME/.rc_custom
 
-if [[ $(tput cols) -ge 100 ]]
-then
-	$HOME/.color-scripts/pacman
-elif [[ $(tput cols) -ge 80 ]]
-then
-	$HOME/.color-scripts/space-invaders
-fi
+#if [[ $(tput cols) -ge 100 ]]
+#then
+#	$HOME/.color-scripts/pacman
+#elif [[ $(tput cols) -ge 80 ]]
+#then
+#	$HOME/.color-scripts/space-invaders
+#fi

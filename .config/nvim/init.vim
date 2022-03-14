@@ -100,10 +100,6 @@ cmp.setup {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-    ['<Right>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    },
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				local entry = cmp.get_selected_entry()

@@ -13,7 +13,6 @@ alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 alias ip='ip -color=auto'
 alias tmux='tmux -u'
-alias bat='bat --paging=never -p --theme=base16'
 
 cd() {
 	builtin cd "$@" && ls
@@ -22,9 +21,9 @@ cd() {
 cat() {
 	if command -v bat>/dev/null 2>&1
 	then
-		bat "$@"
+		bat --paging=never -p --theme=base16 "$@"
 	else
-		buitlin cat "$@"
+		command cat "$@"
 	fi
 }
 

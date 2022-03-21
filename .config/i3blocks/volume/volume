@@ -69,21 +69,21 @@ format() {
   perl_filter+=$([[ $STEP = *dB ]] && echo '$3' || echo '$1')
   perl_filter+='"; exit}'
   output=$(perl -ne "$perl_filter")
+	output=${output//\%}
 	if [ -z $output ]
 	then
 		LABEL='婢'
-	elif [ ${output//\%} -eq 0 ]
+	elif [ ${output} -eq 0 ]
 	then
 		LABEL='奄'
-	elif [ ${output//\%} -le 50 ]
+	elif [ ${output} -le 50 ]
 	then
 		LABEL='奔'
 	else
 		LABEL='墳'
 	fi
 	printf '%s ' $LABEL
-	# printf '%4s\n' $output
-	printf '%4s\n' $output | sed 'y/ /‧/'
+	printf '%3s%%\n' $output | sed 'y/ /‧/'
 }
 
 #------------------------------------------------------------------------

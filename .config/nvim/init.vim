@@ -108,7 +108,7 @@ cmp.setup {
 			else
 				fallback()
 			end
-		end, {"i","s","c",}),
+		end, {"i","s"}),
     ['<Down>'] = function(fallback)
       if cmp.visible() then
         cmp.select_next_item()

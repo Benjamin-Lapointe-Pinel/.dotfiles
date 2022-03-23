@@ -20,7 +20,6 @@ set showmatch
 set showcmd
 
 set wildmenu
-set wildchar=<Tab>
 set wildmode=longest:full,full
 
 set splitbelow

@@ -1,5 +1,8 @@
 [[ -f $HOME/.rc ]] && source $HOME/.rc
 
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
 # append to the history file, don't overwrite it
 shopt -s histappend
 

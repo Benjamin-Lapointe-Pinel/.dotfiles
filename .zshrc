@@ -1,5 +1,8 @@
 [[ -f $HOME/.rc ]] && source $HOME/.rc
 
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
 # https://stackoverflow.com/a/10737906
 include () {
 	[[ -f "$1" ]] && source "$1"

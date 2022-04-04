@@ -43,14 +43,15 @@ set listchars=tab:→\ ,space:·,nbsp:▓,trail:░,eol:¶,precedes:«,extends:�
 filetype plugin indent on
 syntax on
 
-hi clear SpellBad
-hi SpellBad cterm=underline ctermfg=red
-hi clear SpellCap
-hi SpellCap cterm=underline ctermfg=red
-hi clear SpellRare
-hi SpellRare cterm=underline ctermfg=green
-hi clear SpellLocal
-hi SpellLocal cterm=underline ctermfg=blue
+highlight clear SpellBad
+highlight SpellBad cterm=underline ctermfg=red
+highlight clear SpellCap
+highlight SpellCap cterm=underline ctermfg=red
+highlight clear SpellRare
+highlight SpellRare cterm=underline ctermfg=green
+highlight clear SpellLocal
+highlight SpellLocal cterm=underline ctermfg=blue
+highlight Pmenu ctermbg=gray
 
 map <C-h>     <C-w>h
 map <C-j>     <C-w>j

@@ -37,8 +37,8 @@ augroup NO_CURSOR_MOVE_ON_FOCUS
 	au FocusGained * if exists('g:oldmouse') | let &mouse=g:oldmouse | unlet g:oldmouse | endif
 augroup END
 
-set showbreak=↳\ 
-set listchars=tab:→\ ,space:·,nbsp:▓,trail:░,eol:¶,precedes:«,extends:»
+set showbreak=¬\ 
+set listchars=tab:│\ ,space:·,nbsp:▓,trail:░,eol:¶,precedes:<,extends:>
 
 filetype plugin indent on
 syntax on

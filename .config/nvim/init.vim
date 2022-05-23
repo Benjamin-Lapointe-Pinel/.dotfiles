@@ -11,7 +11,7 @@ endif
 
 " Run PlugInstall if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \| PlugInstall --sync | source $MYVIMRC
+  \| PlugInstall --sync | source $MYVIMRC | quit
 \| endif
 
 call plug#begin()
@@ -22,6 +22,7 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/vim-vsnip'
 call plug#end()
 
 lua << EOF
@@ -83,6 +84,11 @@ end
 -- nvim-cmp setup
 local cmp = require 'cmp'
 cmp.setup {
+	snippet = {
+		expand = function(args)
+			vim.fn["vsnip#anonymous"](args.body)
+		end,
+	},
 	completion = {
     completeopt = 'menu,menuone,noinsert',
 	},

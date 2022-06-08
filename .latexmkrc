@@ -1,0 +1,1 @@
+$biber='biber --isbn-normalise';

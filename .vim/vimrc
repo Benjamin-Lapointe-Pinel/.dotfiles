@@ -35,6 +35,8 @@ set nofoldenable
 set foldlevel=1
 set viewoptions+=localoptions
 
+set complete+=k
+
 set mouse=a
 augroup NO_CURSOR_MOVE_ON_FOCUS
 	au!
@@ -72,8 +74,6 @@ nnoremap gb :ls<CR>:b
 nnoremap <C-space> :set list! list?<CR>
 nnoremap <F4> :wa<CR>:make<CR>
 nnoremap <F5> :w<CR>:!%:p<CR>
-
-inoremap <c-space> <c-n>
 
 tnoremap <Esc> <C-\><C-n>
 

@@ -70,18 +70,18 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
-tnoremap <A-left>     <C-\><C-N><C-w>h
-tnoremap <A-down>     <C-\><C-N><C-w>j
-tnoremap <A-up>       <C-\><C-N><C-w>k
-tnoremap <A-right>    <C-\><C-N><C-w>l
-inoremap <A-left>     <C-\><C-N><C-w>h
-inoremap <A-down>     <C-\><C-N><C-w>j
-inoremap <A-up>       <C-\><C-N><C-w>k
-inoremap <A-right>    <C-\><C-N><C-w>l
-nnoremap <A-left>     <C-w>h
-nnoremap <A-down>     <C-w>j
-nnoremap <A-up>       <C-w>k
-nnoremap <A-right>    <C-w>l
+tnoremap <A-left>  <C-\><C-N><C-w>h
+tnoremap <A-down>  <C-\><C-N><C-w>j
+tnoremap <A-up>    <C-\><C-N><C-w>k
+tnoremap <A-right> <C-\><C-N><C-w>l
+inoremap <A-left>  <C-\><C-N><C-w>h
+inoremap <A-down>  <C-\><C-N><C-w>j
+inoremap <A-up>    <C-\><C-N><C-w>k
+inoremap <A-right> <C-\><C-N><C-w>l
+nnoremap <A-left>  <C-w>h
+nnoremap <A-down>  <C-w>j
+nnoremap <A-up>    <C-w>k
+nnoremap <A-right> <C-w>l
 
 " terminal
 autocmd BufWinEnter,WinEnter term://* startinsert

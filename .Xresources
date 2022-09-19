@@ -23,5 +23,3 @@ XTerm.termName: xterm-256color
 XTerm.saveLines: 8192
 XTerm.selectToClipboard: true
 XTerm.vt100.bellIsUrgent: true
-
-#include ".Xresources_custom"

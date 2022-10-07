@@ -20,7 +20,7 @@ then
 	export PATH="$HOME/.local/bin:$PATH"
 fi
 
-if [[ `systemctl &>/dev/null` =~ -\.mount ]] && systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]
+if [[ `ps --no-headers -o comm 1` = 'systemd' ]] && systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]
 then
 	exec startx
 fi

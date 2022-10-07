@@ -84,9 +84,9 @@ nnoremap <A-up>    <C-w>k
 nnoremap <A-right> <C-w>l
 
 " terminal
-autocmd BufWinEnter,WinEnter term://* startinsert
-nnoremap <F12> :vsplit<CR>:terminal<CR>
 tnoremap <Esc> <C-\><C-n>
+nnoremap <F12> :vertical terminal<CR>
+tnoremap <F12> exit<CR>
 
 " miscellaneous
 nnoremap gb :ls<CR>:b

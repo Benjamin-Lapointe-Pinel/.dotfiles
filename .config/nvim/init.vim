@@ -24,9 +24,24 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'f3fora/cmp-spell'
+Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 call plug#end()
 
 lua << EOF
+
+require("toggleterm").setup{
+	open_mapping = [[<c-\>]],
+	direction = 'vertical',
+	size = 120
+}
+
+local Terminal  = require('toggleterm.terminal').Terminal
+local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = 'float' })
+function lazygit_toggle()
+	lazygit:toggle()
+end
+vim.cmd[[ command! LazyGit execute 'lua lazygit_toggle()' ]]
+
 -- Diagnostic keymaps
 vim.api.nvim_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { noremap = true, silent = true })

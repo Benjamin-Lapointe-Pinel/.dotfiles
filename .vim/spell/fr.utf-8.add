@@ -1,4 +1,3 @@
-#euresuement
 Adda
 Airy
 Antonin
@@ -9,10 +8,13 @@ CMOS
 Carpenter
 Conrady
 Défocalisation
+EKF
 Fletcher
 Fraunhofer
 Fresnel
 Goldfarb
+Huygens-Fresnel
+ISO
 Jean-Charles
 L-BFGS-B
 LL
@@ -30,6 +32,7 @@ Mozi
 PDC
 PSD
 Petzval
+Photodétecteur
 RMSE
 Rayleigh
 Rimouski
@@ -44,6 +47,7 @@ Theodore
 UQAR
 Young
 aplanat
+axicon
 centroïde
 centroïdes
 d'Airy
@@ -58,14 +62,20 @@ flare
 grandissement
 ingénieure
 l'UQAR
+lambertienne
 microfibre
+microfibres
+opto-mécaniques
 optoNCDT
 paraxial
 passe-bande
+photodétecteurs
 prétraitement
+qu'horizontal
 qu'horizontalement
 qu'illustré
+qu'inélégant
 qu'optionnelle
+semi-réfléchissant
 tilt-shift
 µm
-microfibres

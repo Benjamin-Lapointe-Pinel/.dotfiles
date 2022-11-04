@@ -24,6 +24,7 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'f3fora/cmp-spell'
+Plug 'mfussenegger/nvim-jdtls'
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 call plug#end()
 
@@ -70,7 +71,7 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
 	buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
 	buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-	buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+	buf_set_keymap('n', '<A-enter>', '<cmd>lua vim.lsp.buf.code_action({apply=true})<CR>', opts)
 	buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 	buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 	vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
@@ -89,6 +90,7 @@ local servers = {
 	'clangd',
 	'rust_analyzer',
 	'tsserver',
+	'jdtls',
 }
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup {

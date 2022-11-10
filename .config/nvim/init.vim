@@ -18,6 +18,7 @@ call plug#begin()
 Plug 'junegunn/vim-plug'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'mfussenegger/nvim-dap'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'

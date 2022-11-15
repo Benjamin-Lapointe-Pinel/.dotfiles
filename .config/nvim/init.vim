@@ -17,6 +17,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 call plug#begin()
 Plug 'junegunn/vim-plug'
 Plug 'neovim/nvim-lspconfig'
+Plug 'mfussenegger/nvim-jdtls'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'mfussenegger/nvim-dap'
 Plug 'hrsh7th/cmp-buffer'
@@ -25,9 +26,10 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'f3fora/cmp-spell'
-Plug 'mfussenegger/nvim-jdtls'
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 call plug#end()
+
+command! -range Range lua print(<line1>,<line2>)
 
 lua << EOF
 
@@ -52,8 +54,7 @@ vim.api.nvim_set_keymap('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local nvim_lsp = require('lspconfig')
-local on_attach = function(client, bufnr)
+on_attach = function(client, bufnr)
 	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -88,8 +89,8 @@ local servers = {
 	'clangd',
 	'rust_analyzer',
 	'tsserver',
-	'jdtls',
 }
+local nvim_lsp = require('lspconfig')
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup {
 		on_attach = on_attach,
@@ -98,7 +99,7 @@ for _, lsp in ipairs(servers) do
 end
 
 -- nvim-cmp setup
-local cmp = require 'cmp'
+local cmp = require('cmp')
 cmp.setup {
 	snippet = {
 		expand = function(args)
@@ -115,10 +116,6 @@ cmp.setup {
 		['<C-f>'] = cmp.mapping.scroll_docs(4),
 		['<C-Space>'] = cmp.mapping.complete(),
 		['<C-e>'] = cmp.mapping.close(),
-		['<CR>'] = cmp.mapping.confirm {
-			behavior = cmp.ConfirmBehavior.Replace,
-			select = true,
-		},
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				local entry = cmp.get_selected_entry()

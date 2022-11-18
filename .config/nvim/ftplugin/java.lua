@@ -1,7 +1,13 @@
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 local workspace_dir = os.getenv('HOME') .. '/.cache/jdtls/workspace/' .. project_name
 local config_dir = os.getenv('HOME') .. '/.cache/jdtls/config'
-local lombok_jar = os.getenv('HOME') .. '/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.24/13a394eed5c4f9efb2a6d956e2086f1d81e857d9/lombok-1.18.24.jar'
+local lombok_jar = vim.fn.glob(os.getenv('HOME') .. '/.gradle/caches/**/lombok-[0-9]*.*[0-9]*.*[0-9].jar')
+
+local on_attach = function(client, bufnr)
+	require('jdtls').setup_dap({ hotcodereplace = 'auto' })
+	require('jdtls.dap').setup_dap_main_class_configs()
+	on_attach(client, bufnr)
+end
 
 local config = {
 	cmd = {
@@ -10,6 +16,11 @@ local config = {
 		'-data', workspace_dir,
 		'--jvm-arg=-javaagent:' .. lombok_jar,
 	},
+	init_options = {
+    bundles = {
+			vim.fn.glob(os.getenv('HOME') .. "/.local/share/nvim/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar", 1)
+		}
+  },
 	on_attach = on_attach,
 }
 require('jdtls').start_or_attach(config)
@@ -25,3 +36,6 @@ vim.cmd [[ command! -buffer JdtUpdateConfig lua require('jdtls').update_project_
 vim.cmd [[ command! -buffer JdtJol lua require('jdtls').jol() ]]
 vim.cmd [[ command! -buffer JdtBytecode lua require('jdtls').javap() ]]
 vim.cmd [[ command! -buffer JdtJshell lua require('jdtls').jshell() ]]
+
+vim.cmd [[ command! -buffer TestClass lua require('jdtls').test_class() ]]
+vim.cmd [[ command! -buffer TestNearestMethod lua require('jdtls').test_nearest_method() ]]

@@ -17,15 +17,20 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 call plug#begin()
 Plug 'junegunn/vim-plug'
 Plug 'neovim/nvim-lspconfig'
-Plug 'mfussenegger/nvim-jdtls'
-Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'mfussenegger/nvim-dap'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'jayp0521/mason-nvim-dap.nvim'
+Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'f3fora/cmp-spell'
+Plug 'mfussenegger/nvim-jdtls'
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 call plug#end()
 
@@ -73,7 +78,20 @@ on_attach = function(client, bufnr)
 	vim.keymap.set('n', '<A-enter>', '<cmd>lua vim.lsp.buf.code_action({apply=true})<CR>', opts)
 	vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 	vim.keymap.set({'n', 'v'}, '<space>f', '<cmd>lua vim.lsp.buf.format()<CR>', opts)
+
+	vim.keymap.set('n', '<F5>', "<Cmd>lua require'dap'.continue()<CR>", opts)
+	vim.keymap.set('n', '<F6>', "<Cmd>lua require'dap'.step_over()<CR>", opts)
+	vim.keymap.set('n', '<F7>', "<Cmd>lua require'dap'.step_into()<CR>", opts)
+	vim.keymap.set('n', '<F8>', "<Cmd>lua require'dap'.step_out()<CR>", opts)
+	vim.keymap.set('n', '<F9>', "<Cmd>lua require'dap'.toggle_breakpoint()<CR>", opts)
+	vim.keymap.set('n', '<F10>', "<Cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", opts)
+	vim.keymap.set('n', '<F11>', "<Cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
+
+	vim.cmd [[ command! DapClearBreakpoints lua require'dap'.clear_breakpoints() ]]
+	vim.cmd [[ command! DapRepl lua require'dap'.repl.toggle() ]]
 	vim.cmd [[ command! -range=% Format lua vim.lsp.buf.format({range={['start']={<line1>,0},['end']={<line2>,0}}}) ]]
+
+	vim.cmd [[ au FileType dap-repl lua require('dap.ext.autocompl').attach() ]]
 end
 
 -- Add additional capabilities supported by nvim-cmp
@@ -90,12 +108,41 @@ local servers = {
 	'rust_analyzer',
 	'tsserver',
 }
+
+require("mason").setup()
+require("mason-lspconfig").setup({
+	ensure_installed = {
+		'jdtls',
+		unpack(servers)
+	}
+})
+require("mason-nvim-dap").setup({
+	ensure_installed = {
+		'javadbg',
+	},
+	automatic_installation = true,
+	automatic_setup = true,
+})
+require('mason-nvim-dap').setup_handlers()
+
 local nvim_lsp = require('lspconfig')
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup {
 		on_attach = on_attach,
 		capabilities = capabilities,
 	}
+end
+
+local dap, dapui = require("dap"), require("dapui")
+dapui.setup()
+dap.listeners.after.event_initialized["dapui_config"] = function()
+	dapui.open()
+end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+	dapui.close()
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+	dapui.close()
 end
 
 -- nvim-cmp setup

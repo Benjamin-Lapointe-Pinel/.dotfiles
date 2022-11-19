@@ -37,6 +37,8 @@ set viewoptions+=localoptions
 
 set complete+=k
 
+set undofile
+
 set mouse=a
 augroup NO_CURSOR_MOVE_ON_FOCUS
 	au!

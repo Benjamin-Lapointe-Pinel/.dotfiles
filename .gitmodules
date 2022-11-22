@@ -53,9 +53,12 @@
 [submodule ".vim/pack/plugins/start/vimtex"]
 	path = .vim/pack/plugins/start/vimtex
 	url = https://github.com/lervag/vimtex.git
+	ignore = dirty
 [submodule ".vim/pack/plugins/start/fugitive"]
 	path = .vim/pack/plugins/start/fugitive
 	url = https://github.com/tpope/vim-fugitive
+	ignore = dirty
 [submodule ".config/nvim/dependencies/vscode-java-test"]
 	path = .config/nvim/dependencies/vscode-java-test
 	url = https://github.com/microsoft/vscode-java-test.git
+	ignore = dirty

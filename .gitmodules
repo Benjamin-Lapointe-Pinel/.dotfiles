@@ -56,3 +56,6 @@
 [submodule ".vim/pack/plugins/start/fugitive"]
 	path = .vim/pack/plugins/start/fugitive
 	url = https://github.com/tpope/vim-fugitive
+[submodule ".config/nvim/dependencies/vscode-java-test"]
+	path = .config/nvim/dependencies/vscode-java-test
+	url = https://github.com/microsoft/vscode-java-test.git

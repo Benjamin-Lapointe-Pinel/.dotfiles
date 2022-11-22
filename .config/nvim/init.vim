@@ -18,6 +18,8 @@ call plug#begin()
 Plug 'junegunn/vim-plug'
 Plug 'neovim/nvim-lspconfig'
 Plug 'mfussenegger/nvim-dap'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'theHamsta/nvim-dap-virtual-text'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
@@ -91,10 +93,25 @@ on_attach = function(client, bufnr)
 
 	vim.cmd [[ command! DapClearBreakpoints lua require'dap'.clear_breakpoints() ]]
 	vim.cmd [[ command! DapRepl lua require'dap'.repl.toggle() ]]
+
 	vim.cmd [[ command! -range=% Format lua vim.lsp.buf.format({range={['start']={<line1>,0},['end']={<line2>,0}}}) ]]
 
 	vim.cmd [[ au FileType dap-repl lua require('dap.ext.autocompl').attach() ]]
 end
+
+require'nvim-treesitter.configs'.setup({
+	ensure_installed = {
+		'bash',
+		'python',
+		'latex',
+		'c',
+		'cpp',
+		'java',
+		'javascript',
+		'typescript',
+		'yaml',
+	}
+})
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -181,6 +198,7 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
 	dapui.close()
 end
+require("nvim-dap-virtual-text").setup()
 
 -- nvim-cmp setup
 local cmp = require('cmp')

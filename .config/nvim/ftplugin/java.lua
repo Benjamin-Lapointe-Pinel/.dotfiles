@@ -19,7 +19,7 @@ local config = {
 	init_options = {
     bundles = {
 			vim.fn.glob(os.getenv('HOME') .. "/.local/share/nvim/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar", 1),
-			vim.fn.glob("/path/to/microsoft/vscode-java-test/server/*.jar", 1),
+			vim.fn.glob(os.getenv('HOME') .. "/.config/nvim/dependencies/vscode-java-test/server/*.jar", 1)
 		}
   },
 	on_attach = on_attach,
@@ -38,5 +38,5 @@ vim.cmd [[ command! -buffer JdtJol lua require('jdtls').jol() ]]
 vim.cmd [[ command! -buffer JdtBytecode lua require('jdtls').javap() ]]
 vim.cmd [[ command! -buffer JdtJshell lua require('jdtls').jshell() ]]
 
-vim.cmd [[ command! -buffer TestClass lua require('jdtls').test_class() ]]
-vim.cmd [[ command! -buffer TestNearestMethod lua require('jdtls').test_nearest_method() ]]
+vim.cmd [[ command! -buffer JdtTestClass lua require('jdtls').test_class() ]]
+vim.cmd [[ command! -buffer JdtTestNearestMethod lua require('jdtls').test_nearest_method() ]]

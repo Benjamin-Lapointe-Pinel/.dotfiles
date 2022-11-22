@@ -18,7 +18,6 @@ call plug#begin()
 Plug 'junegunn/vim-plug'
 Plug 'neovim/nvim-lspconfig'
 Plug 'mfussenegger/nvim-dap'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
@@ -30,6 +29,7 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'f3fora/cmp-spell'
+Plug 'rcarriga/cmp-dap'
 Plug 'mfussenegger/nvim-jdtls'
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 call plug#end()
@@ -79,13 +79,15 @@ on_attach = function(client, bufnr)
 	vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 	vim.keymap.set({'n', 'v'}, '<space>f', '<cmd>lua vim.lsp.buf.format()<CR>', opts)
 
+	vim.keymap.set({'n', 'v'}, '<F4>', '<Cmd>lua require("dapui").eval()<CR>', opts)
 	vim.keymap.set('n', '<F5>', "<Cmd>lua require'dap'.continue()<CR>", opts)
 	vim.keymap.set('n', '<F6>', "<Cmd>lua require'dap'.step_over()<CR>", opts)
 	vim.keymap.set('n', '<F7>', "<Cmd>lua require'dap'.step_into()<CR>", opts)
 	vim.keymap.set('n', '<F8>', "<Cmd>lua require'dap'.step_out()<CR>", opts)
 	vim.keymap.set('n', '<F9>', "<Cmd>lua require'dap'.toggle_breakpoint()<CR>", opts)
-	vim.keymap.set('n', '<F10>', "<Cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", opts)
-	vim.keymap.set('n', '<F11>', "<Cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
+	vim.keymap.set('n', '<F10>', "<Cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
+	vim.keymap.set('n', '<F11>', "<Cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", opts)
+	vim.keymap.set('n', '<F12>', ":DapTerminate<CR>", opts)
 
 	vim.cmd [[ command! DapClearBreakpoints lua require'dap'.clear_breakpoints() ]]
 	vim.cmd [[ command! DapRepl lua require'dap'.repl.toggle() ]]
@@ -134,7 +136,42 @@ for _, lsp in ipairs(servers) do
 end
 
 local dap, dapui = require("dap"), require("dapui")
-dapui.setup()
+vim.fn.sign_define('DapStopped', {text='>'})
+dapui.setup({
+	 icons = { collapsed = "─", expanded = "│" },
+	layouts = {
+		{
+			elements = {
+				{ id = "scopes", size = 0.5 },
+				"watches",
+			},
+			size = 40,
+			position = "left",
+		},
+		{
+			elements = {
+				"repl",
+				"console",
+			},
+			size = 0.25,
+			position = "bottom",
+		}
+	},
+	controls = {
+    enabled = true,
+    element = "repl",
+    icons = {
+      pause = "PAUSE",
+      play = "PLAY",
+      step_into = "STEP_INTO",
+      step_over = "STEP_OVER",
+      step_out = "STEP_OUT",
+      step_back = "STEP_BACK",
+      run_last = "RUN_LAST",
+      terminate = "TERMINATE",
+    },
+  },
+})
 dap.listeners.after.event_initialized["dapui_config"] = function()
 	dapui.open()
 end
@@ -198,6 +235,16 @@ cmp.setup {
 	},
 	{
 		{ name = 'buffer' },
-	})
+	}),
+	enabled = function()
+		return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or require("cmp_dap").is_dap_buffer()
+  end
 }
+
+require("cmp").setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
+  sources = {
+    { name = "dap" },
+  },
+})
+
 EOF

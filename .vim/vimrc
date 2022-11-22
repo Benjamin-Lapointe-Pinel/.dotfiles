@@ -87,8 +87,8 @@ nnoremap <A-right> <C-w>l
 
 " terminal
 tnoremap <Esc> <C-\><C-n>
-nnoremap <F12> :vertical terminal<CR>
-tnoremap <F12> exit<CR>
+nnoremap <C-\> :vertical terminal<CR>
+tnoremap <C-\> exit<CR>
 
 " miscellaneous
 nnoremap gb :ls<CR>:b 

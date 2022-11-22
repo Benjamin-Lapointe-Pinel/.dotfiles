@@ -18,7 +18,8 @@ local config = {
 	},
 	init_options = {
     bundles = {
-			vim.fn.glob(os.getenv('HOME') .. "/.local/share/nvim/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar", 1)
+			vim.fn.glob(os.getenv('HOME') .. "/.local/share/nvim/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar", 1),
+			vim.fn.glob("/path/to/microsoft/vscode-java-test/server/*.jar", 1),
 		}
   },
 	on_attach = on_attach,

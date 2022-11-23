@@ -44,8 +44,6 @@ lua << EOF
 
 require("toggleterm").setup{
 	open_mapping = [[<c-\>]],
-	direction = 'vertical',
-	size = 120
 }
 
 local Terminal  = require('toggleterm.terminal').Terminal

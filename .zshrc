@@ -11,7 +11,6 @@ include () {
 autoload -Uz compinit && compinit -i
 
 include $HOME/.p10k.zsh
-include $HOME/.zsh/fzf-tab/fzf-tab.plugin.zsh
 include $HOME/.zsh/key-bindings/key-bindings.zsh
 include $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 include $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh

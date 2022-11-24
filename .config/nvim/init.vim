@@ -18,7 +18,7 @@ call plug#begin()
 Plug 'junegunn/vim-plug'
 Plug 'neovim/nvim-lspconfig'
 Plug 'mfussenegger/nvim-dap'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'theHamsta/nvim-dap-virtual-text'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'williamboman/mason.nvim'

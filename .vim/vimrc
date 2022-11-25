@@ -103,7 +103,7 @@ nnoremap <esc>^[ <esc>^[
 " file explorer
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
-map <C-E> :Lexplore 48<CR>
+map <C-E> :Lexplore<CR>
 
 augroup auto_save_view
 	autocmd!

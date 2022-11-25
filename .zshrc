@@ -22,6 +22,7 @@ include /usr/share/fzf/key-bindings.zsh
 include /usr/share/doc/fzf/examples/completion.zsh
 include /usr/share/doc/fzf/examples/key-bindings.zsh
 command -v kubectl &> /dev/null && source <(kubectl completion zsh)
+command -v ng &> /dev/null && source <(ng completion zsh)
 fpath=($HOME/.zsh/zsh-completions/src $fpath)
 
 setopt histappend

@@ -50,7 +50,7 @@ then
 	}
 fi
 
-if command -v fzf>/dev/null 2>&1
+if [ command -v kubectl>/dev/null 2>&1 ] && [ command -v fzf>/dev/null 2>&1 ]
 then
 	kubectl() {
 		if [[ $@ == "switch-context" ]]

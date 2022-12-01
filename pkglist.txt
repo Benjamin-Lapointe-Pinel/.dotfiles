@@ -1,0 +1,14 @@
+bat
+btop
+clang
+fzf
+git
+neovim
+stow
+tmux
+tree
+unzip
+vi
+which
+yay
+zsh

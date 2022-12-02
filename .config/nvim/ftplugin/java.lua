@@ -26,10 +26,10 @@ local config = {
 }
 require('jdtls').start_or_attach(config)
 
-vim.cmd [[ command! -buffer OrganizeImports lua require'jdtls'.organize_imports() ]]
-vim.cmd [[ command! -buffer -range ExtractVariable lua require('jdtls').extract_variable(true,{range={['start']={<line1>,0},['end']={<line2>,0}}}) ]]
-vim.cmd [[ command! -buffer -range ExtractConstant lua require('jdtls').extract_constant(true,{range={['start']={<line1>,0},['end']={<line2>,0}}}) ]]
-vim.cmd [[ command! -buffer -range ExtractMethod lua require('jdtls').extract_method(true,{range={['start']={<line1>,0},['end']={<line2>,0}}}) ]]
+vim.cmd [[ command! -buffer JtdOrganizeImports lua require'jdtls'.organize_imports() ]]
+vim.cmd [[ command! -buffer -range JdtExtractVariable lua require('jdtls').extract_variable(true,{range={['start']={<line1>,0},['end']={<line2>,0}}}) ]]
+vim.cmd [[ command! -buffer -range JdtExtractConstant lua require('jdtls').extract_constant(true,{range={['start']={<line1>,0},['end']={<line2>,0}}}) ]]
+vim.cmd [[ command! -buffer -range JdtExtractMethod lua require('jdtls').extract_method(true,{range={['start']={<line1>,0},['end']={<line2>,0}}}) ]]
 
 vim.cmd [[ command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_compile JdtCompile lua require('jdtls').compile(<f-args>) ]]
 vim.cmd [[ command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_set_runtime JdtSetRuntime lua require('jdtls').set_runtime(<f-args>) ]]

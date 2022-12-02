@@ -129,6 +129,8 @@ autocmd FileType arduino nnoremap <buffer> <F4> :wa<CR>:!arduino -v --upload %<C
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 
+let g:indentLine_char = '│'
+
 packadd termdebug
 let g:termdebug_wide = 1
 

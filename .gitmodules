@@ -62,3 +62,7 @@
 	path = .config/nvim/dependencies/vscode-java-test
 	url = https://github.com/microsoft/vscode-java-test.git
 	ignore = dirty
+[submodule ".vim/pack/plugins/start/identLine"]
+	path = .vim/pack/plugins/start/identLine
+	url = https://github.com/Yggdroot/indentLine.git
+	ignore = dirty

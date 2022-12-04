@@ -1,4 +1,5 @@
 bat
+openssh
 btop
 clang
 fzf

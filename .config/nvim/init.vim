@@ -122,6 +122,7 @@ local tools = {
 	'clangd',
 	'java-debug-adapter',
 	'jdtls',
+	'gradle-language-server',
 	'python-lsp-server',
 	'texlab',
 	'rust-analyzer',
@@ -139,6 +140,7 @@ require('mason-nvim-dap').setup_handlers()
 local servers = {
 	'bashls',
 	'clangd',
+	'gradle_ls',
 	'pylsp',
 	'texlab',
 	'rust_analyzer',

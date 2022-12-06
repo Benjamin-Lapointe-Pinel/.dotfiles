@@ -22,7 +22,7 @@ Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'theHamsta/nvim-dap-virtual-text'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'williamboman/mason.nvim'
-Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'WhoIsSethDaniel/mason-tool-installer.nvim'
 Plug 'jayp0521/mason-nvim-dap.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'jose-elias-alvarez/null-ls.nvim'
@@ -53,19 +53,14 @@ function lazygit_toggle()
 end
 vim.cmd[[ command! LazyGit execute 'lua lazygit_toggle()' ]]
 
--- Diagnostic keymaps
 vim.api.nvim_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', { noremap = true, silent = true })
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
 on_attach = function(client, bufnr)
-	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-	-- See `:help vim.lsp.*` for documentation on any of the below functions
 	local opts = { noremap=true, silent=true }
 	vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
 	vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
@@ -81,18 +76,18 @@ on_attach = function(client, bufnr)
 	vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 	vim.keymap.set({'n', 'v'}, '<space>f', '<cmd>lua vim.lsp.buf.format()<CR>', opts)
 
-	vim.keymap.set({'n', 'v'}, '<F4>', '<Cmd>lua require("dapui").eval()<CR>', opts)
 	vim.keymap.set('n', '<F5>', "<Cmd>lua require'dap'.continue()<CR>", opts)
-	vim.keymap.set('n', '<F6>', "<Cmd>lua require'dap'.step_over()<CR>", opts)
-	vim.keymap.set('n', '<F7>', "<Cmd>lua require'dap'.step_into()<CR>", opts)
-	vim.keymap.set('n', '<F8>', "<Cmd>lua require'dap'.step_out()<CR>", opts)
-	vim.keymap.set('n', '<F9>', "<Cmd>lua require'dap'.toggle_breakpoint()<CR>", opts)
-	vim.keymap.set('n', '<F10>', "<Cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
-	vim.keymap.set('n', '<F11>', "<Cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", opts)
-	vim.keymap.set('n', '<F12>', ":DapTerminate<CR>", opts)
+	vim.keymap.set('n', '<F6>', ":DapTerminate<CR>", opts)
+	vim.keymap.set('n', '<F7>', "<Cmd>lua require'dap'.toggle_breakpoint()<CR>", opts)
+	vim.keymap.set('n', '<F8>', "<Cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
+	vim.keymap.set('n', '<F9>', "<Cmd>lua require'dap'.step_over()<CR>", opts)
+	vim.keymap.set('n', '<F10>', "<Cmd>lua require'dap'.step_into()<CR>", opts)
+	vim.keymap.set('n', '<F11>', "<Cmd>lua require'dap'.step_out()<CR>", opts)
+	vim.keymap.set({'n', 'v'}, '<F12>', '<Cmd>lua require("dapui").eval()<CR>', opts)
 
 	vim.cmd [[ command! DapClearBreakpoints lua require'dap'.clear_breakpoints() ]]
 	vim.cmd [[ command! DapRepl lua require'dap'.repl.toggle() ]]
+	vim.cmd [[ command! DapUiToggle lua require("dapui").toggle() ]]
 
 	vim.cmd [[ command! -range=% Format lua vim.lsp.buf.format({range={['start']={<line1>,0},['end']={<line2>,0}}}) ]]
 
@@ -122,37 +117,35 @@ null_ls.setup({
 	},
 })
 
--- Add additional capabilities supported by nvim-cmp
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+local tools = {
+	'bash-language-server',
+	'clangd',
+	'java-debug-adapter',
+	'jdtls',
+	'python-lsp-server',
+	'texlab',
+	'rust-analyzer',
+	'typescript-language-server',
+}
+require("mason").setup()
+require('mason-tool-installer').setup {
+  ensure_installed = tools,
+  run_on_start = true,
+  auto_update = true,
+}
+require("mason-nvim-dap").setup()
+require('mason-nvim-dap').setup_handlers()
 
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
 local servers = {
 	'bashls',
+	'clangd',
 	'pylsp',
 	'texlab',
-	'clangd',
 	'rust_analyzer',
 	'tsserver',
 }
-
-require("mason").setup()
-require("mason-lspconfig").setup({
-	ensure_installed = {
-		'jdtls',
-		unpack(servers)
-	}
-})
-require("mason-nvim-dap").setup({
-	ensure_installed = {
-		'javadbg',
-	},
-	automatic_installation = true,
-	automatic_setup = true,
-})
-require('mason-nvim-dap').setup_handlers()
-
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local nvim_lsp = require('lspconfig')
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup {
@@ -161,6 +154,7 @@ for _, lsp in ipairs(servers) do
 	}
 end
 
+require("nvim-dap-virtual-text").setup()
 local dap, dapui = require("dap"), require("dapui")
 vim.fn.sign_define('DapStopped', {text='>'})
 dapui.setup({
@@ -207,9 +201,7 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
 	dapui.close()
 end
-require("nvim-dap-virtual-text").setup()
 
--- nvim-cmp setup
 local cmp = require('cmp')
 cmp.setup {
 	snippet = {
@@ -268,7 +260,7 @@ cmp.setup {
   end
 }
 
-require("cmp").setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
+cmp.setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
   sources = {
     { name = "dap" },
   },

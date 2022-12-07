@@ -111,31 +111,37 @@ require'nvim-treesitter.configs'.setup({
 local null_ls = require("null-ls")
 null_ls.setup({
 	sources = {
+		null_ls.builtins.code_actions.eslint,
+		null_ls.builtins.code_actions.refactoring,
+		null_ls.builtins.diagnostics.eslint,
+		null_ls.builtins.diagnostics.jshint,
+		null_ls.builtins.diagnostics.standardjs,
 		null_ls.builtins.formatting.astyle,
 		null_ls.builtins.formatting.clang_format,
+		null_ls.builtins.formatting.eslint,
 		null_ls.builtins.formatting.npm_groovy_lint,
+		null_ls.builtins.formatting.standardjs,
 	},
 })
 
-local tools = {
-	'bash-language-server',
-	'clangd',
-	'java-debug-adapter',
-	'jdtls',
-	'gradle-language-server',
-	'python-lsp-server',
-	'texlab',
-	'rust-analyzer',
-	'typescript-language-server',
-}
 require("mason").setup()
 require('mason-tool-installer').setup {
-  ensure_installed = tools,
+  ensure_installed = {
+		'bash-language-server',
+		'clangd',
+		'java-debug-adapter',
+		'jdtls',
+		'js-debug-adapter',
+		'gradle-language-server',
+		'node-debug2-adapter',
+		'python-lsp-server',
+		'texlab',
+		'rust-analyzer',
+		'typescript-language-server',
+	},
   run_on_start = true,
   auto_update = true,
 }
-require("mason-nvim-dap").setup()
-require('mason-nvim-dap').setup_handlers()
 
 local servers = {
 	'bashls',
@@ -156,6 +162,8 @@ for _, lsp in ipairs(servers) do
 	}
 end
 
+require("mason-nvim-dap").setup()
+require('mason-nvim-dap').setup_handlers()
 require("nvim-dap-virtual-text").setup()
 local dap, dapui = require("dap"), require("dapui")
 vim.fn.sign_define('DapStopped', {text='>'})

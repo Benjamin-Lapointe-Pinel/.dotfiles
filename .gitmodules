@@ -66,3 +66,7 @@
 	path = .vim/pack/plugins/start/identLine
 	url = https://github.com/Yggdroot/indentLine.git
 	ignore = dirty
+[submodule ".vim/pack/plugins/start/editorconfig"]
+	path = .vim/pack/plugins/start/editorconfig
+	url = https://github.com/editorconfig/editorconfig-vim.git
+	ignore = dirty

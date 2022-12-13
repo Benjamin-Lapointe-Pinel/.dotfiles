@@ -22,6 +22,7 @@ set number relativenumber
 set showmatch
 set showcmd
 set signcolumn=yes
+set colorcolumn=0
 
 set wildmenu
 set wildmode=longest:full,full
@@ -49,7 +50,6 @@ augroup END
 filetype plugin indent on
 syntax on
 
-highlight ColorColumn ctermbg=darkgrey
 highlight clear SpellBad
 highlight SpellBad cterm=underline ctermfg=red
 highlight clear SpellCap

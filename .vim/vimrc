@@ -49,6 +49,7 @@ augroup END
 filetype plugin indent on
 syntax on
 
+highlight ColorColumn ctermbg=darkgrey
 highlight clear SpellBad
 highlight SpellBad cterm=underline ctermfg=red
 highlight clear SpellCap

@@ -4,12 +4,15 @@ set hidden
 set encoding=UTF-8
 set clipboard^=unnamed,unnamedplus
 
-set textwidth=120
+let textwidth=160
+let &textwidth=textwidth
+
 set linebreak
 set breakindent
 set breakindentopt+=shift:-2
 set showbreak=├\ 
 set listchars=tab:│\ ,nbsp:▓,trail:░,eol:$,precedes:<,extends:>
+set colorcolumn=0
 
 set smartindent
 set shiftwidth=2
@@ -22,7 +25,6 @@ set number relativenumber
 set showmatch
 set showcmd
 set signcolumn=yes
-set colorcolumn=0
 
 set wildmenu
 set wildmode=longest:full,full
@@ -41,7 +43,7 @@ set complete+=k
 set undofile
 
 set mouse=a
-augroup NO_CURSOR_MOVE_ON_FOCUS
+augroup no_cursor_move_on_focus
 	au!
 	au FocusLost * let g:oldmouse=&mouse | set mouse=
 	au FocusGained * if exists('g:oldmouse') | let &mouse=g:oldmouse | unlet g:oldmouse | endif
@@ -59,6 +61,7 @@ highlight SpellRare cterm=underline ctermfg=green
 highlight clear SpellLocal
 highlight SpellLocal cterm=underline ctermfg=blue
 highlight Pmenu ctermbg=gray
+highlight ColorColumn ctermbg=18
 
 " navigate windows from any mode
 tnoremap <M-h> <C-\><C-N><C-w>h
@@ -125,6 +128,7 @@ autocmd FileType tex,plaintex nnoremap <F4> :w<CR>:VimtexCompile<CR>
 autocmd FileType dockerfile nnoremap <buffer> <F4> :wa<CR>:!docker build -t build . && docker run --rm -it $(docker build -q .)<CR>
 autocmd FileType docker-compose nnoremap <buffer> <F4> :wa<CR>:!docker-compose down; docker-compose up -d<CR>
 autocmd FileType arduino nnoremap <buffer> <F4> :wa<CR>:!arduino -v --upload %<CR>
+autocmd FileType java let &l:colorcolumn=join(range(textwidth,textwidth+256),",")
 
 " https://vim.fandom.com/wiki/Automatically_open_the_quickfix_window_on_:make
 autocmd QuickFixCmdPost [^l]* nested cwindow

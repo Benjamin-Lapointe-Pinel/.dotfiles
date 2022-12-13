@@ -1,15 +1,16 @@
 bat
-openssh
 btop
 clang
 fzf
 git
 neovim
+openssh
 stow
 tmux
 tree
 unzip
 vi
+wget
 which
 yay
 zsh

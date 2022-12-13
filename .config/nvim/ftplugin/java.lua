@@ -17,11 +17,21 @@ local config = {
 		'--jvm-arg=-javaagent:' .. lombok_jar,
 	},
 	init_options = {
-    bundles = {
+		bundles = {
 			vim.fn.glob(os.getenv('HOME') .. "/.local/share/nvim/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar", 1),
 			vim.fn.glob(os.getenv('HOME') .. "/.config/nvim/dependencies/vscode-java-test/server/*.jar", 1),
 		}
-  },
+	},
+	settings = {
+		java = {
+			format = {
+          settings = {
+						url = os.getenv('HOME') .. '/.config/nvim/ftplugin/eclipse-java-style.xml',
+						profile = 'ProjectCodeStyle',
+					}
+      }
+		}
+	},
 	on_attach = on_attach,
 }
 require('jdtls').start_or_attach(config)
@@ -40,3 +50,12 @@ vim.cmd [[ command! -buffer JdtJshell lua require('jdtls').jshell() ]]
 
 vim.cmd [[ command! -buffer JdtTestClass lua require('jdtls').test_class() ]]
 vim.cmd [[ command! -buffer JdtTestNearestMethod lua require('jdtls').test_nearest_method() ]]
+
+vim.api.nvim_create_user_command(
+	"JdtFormat",
+	function(args)
+		vim.lsp.buf.format({range={['start']={args.line1,0},['end']={args.line2,0}}})
+		require('jdtls').organize_imports()
+	end,
+	{ range = '%' }
+)

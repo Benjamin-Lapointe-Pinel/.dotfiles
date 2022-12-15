@@ -42,6 +42,8 @@ set complete+=k
 
 set undofile
 
+set nomore
+
 set mouse=a
 augroup no_cursor_move_on_focus
 	au!

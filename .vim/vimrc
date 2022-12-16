@@ -11,15 +11,14 @@ set linebreak
 set breakindent
 set breakindentopt+=shift:-2
 set showbreak=├\ 
-set listchars=tab:│\ ,nbsp:▓,trail:░,eol:$,precedes:<,extends:>
-set colorcolumn=0
+set listchars=tab:->,nbsp:▓,trail:░,eol:$,precedes:<,extends:>
 
 set smartindent
 set shiftwidth=2
 set tabstop=2
 set softtabstop=2
 set smarttab
-set noexpandtab
+set expandtab
 
 set number relativenumber
 set showmatch
@@ -39,9 +38,8 @@ set foldlevel=1
 set viewoptions+=localoptions
 
 set complete+=k
-
+set colorcolumn=0
 set undofile
-
 set nomore
 
 set mouse=a
@@ -130,7 +128,7 @@ autocmd FileType tex,plaintex nnoremap <F4> :w<CR>:VimtexCompile<CR>
 autocmd FileType dockerfile nnoremap <buffer> <F4> :wa<CR>:!docker build -t build . && docker run --rm -it $(docker build -q .)<CR>
 autocmd FileType docker-compose nnoremap <buffer> <F4> :wa<CR>:!docker-compose down; docker-compose up -d<CR>
 autocmd FileType arduino nnoremap <buffer> <F4> :wa<CR>:!arduino -v --upload %<CR>
-autocmd FileType java let &l:colorcolumn=join(range(textwidth,textwidth+256),",")
+autocmd FileType java match ColorColumn /\%160v/
 
 " https://vim.fandom.com/wiki/Automatically_open_the_quickfix_window_on_:make
 autocmd QuickFixCmdPost [^l]* nested cwindow

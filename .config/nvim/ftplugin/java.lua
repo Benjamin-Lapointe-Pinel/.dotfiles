@@ -50,12 +50,3 @@ vim.cmd [[ command! -buffer JdtJshell lua require('jdtls').jshell() ]]
 
 vim.cmd [[ command! -buffer JdtTestClass lua require('jdtls').test_class() ]]
 vim.cmd [[ command! -buffer JdtTestNearestMethod lua require('jdtls').test_nearest_method() ]]
-
-vim.api.nvim_create_user_command(
-	"JdtFormat",
-	function(args)
-		vim.lsp.buf.format({range={['start']={args.line1,0},['end']={args.line2,0}}})
-		require('jdtls').organize_imports()
-	end,
-	{ range = '%' }
-)

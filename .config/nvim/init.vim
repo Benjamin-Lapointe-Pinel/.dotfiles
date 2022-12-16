@@ -25,7 +25,6 @@ Plug 'williamboman/mason.nvim'
 Plug 'WhoIsSethDaniel/mason-tool-installer.nvim'
 Plug 'jayp0521/mason-nvim-dap.nvim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -107,22 +106,6 @@ require'nvim-treesitter.configs'.setup({
 		'typescript',
 		'yaml',
 	}
-})
-
-local null_ls = require("null-ls")
-null_ls.setup({
-	sources = {
-		null_ls.builtins.code_actions.eslint,
-		null_ls.builtins.code_actions.refactoring,
-		null_ls.builtins.diagnostics.eslint,
-		null_ls.builtins.diagnostics.jshint,
-		null_ls.builtins.diagnostics.standardjs,
-		null_ls.builtins.formatting.astyle,
-		null_ls.builtins.formatting.clang_format,
-		null_ls.builtins.formatting.eslint,
-		null_ls.builtins.formatting.npm_groovy_lint,
-		null_ls.builtins.formatting.standardjs,
-	},
 })
 
 require("mason").setup()

@@ -11,7 +11,7 @@ set linebreak
 set breakindent
 set breakindentopt+=shift:-2
 set showbreak=├\ 
-set listchars=tab:->,nbsp:▓,trail:░,eol:$,precedes:<,extends:>
+set listchars=space:.,tab:->,nbsp:█,trail:█,eol:$,precedes:<,extends:>
 
 set smartindent
 set shiftwidth=2

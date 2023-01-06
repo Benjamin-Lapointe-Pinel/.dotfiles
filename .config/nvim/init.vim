@@ -111,6 +111,7 @@ require'nvim-treesitter.configs'.setup({
 require("mason").setup()
 require('mason-tool-installer').setup {
   ensure_installed = {
+		'angular-language-server',
 		'bash-language-server',
 		'clangd',
 		'java-debug-adapter',
@@ -128,6 +129,7 @@ require('mason-tool-installer').setup {
 }
 
 local servers = {
+	'angularls',
 	'bashls',
 	'clangd',
 	'gradle_ls',

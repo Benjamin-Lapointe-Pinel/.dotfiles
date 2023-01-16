@@ -41,6 +41,7 @@ set complete+=k
 set colorcolumn=0
 set undofile
 set nomore
+set conceallevel=0
 
 set mouse=a
 augroup no_cursor_move_on_focus

@@ -41,7 +41,6 @@ set complete+=k
 set colorcolumn=0
 set undofile
 set nomore
-set conceallevel=0
 
 set mouse=a
 augroup no_cursor_move_on_focus
@@ -136,6 +135,7 @@ autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 
 let g:indentLine_char = '│'
+let g:indentLine_setConceal = 0
 
 packadd termdebug
 let g:termdebug_wide = 1

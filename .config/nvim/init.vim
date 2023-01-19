@@ -77,12 +77,12 @@ on_attach = function(client, bufnr)
 	vim.keymap.set({'n', 'v'}, '<space>f', '<cmd>lua vim.lsp.buf.format()<CR>', opts)
 
 	vim.keymap.set('n', '<F5>', "<Cmd>lua require'dap'.continue()<CR>", opts)
-	vim.keymap.set('n', '<F6>', "<Cmd>lua require'dap'.toggle_breakpoint()<CR>", opts)
-	vim.keymap.set('n', '<F7>', "<Cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
-	vim.keymap.set('n', '<F8>', ":DapTerminate<CR>", opts)
-	vim.keymap.set('n', '<F9>', "<Cmd>lua require'dap'.step_over()<CR>", opts)
-	vim.keymap.set('n', '<F10>', "<Cmd>lua require'dap'.step_into()<CR>", opts)
-	vim.keymap.set('n', '<F11>', "<Cmd>lua require'dap'.step_out()<CR>", opts)
+	vim.keymap.set('n', '<F6>', "<Cmd>lua require'dap'.step_over()<CR>", opts)
+	vim.keymap.set('n', '<F7>', "<Cmd>lua require'dap'.step_into()<CR>", opts)
+	vim.keymap.set('n', '<F8>', "<Cmd>lua require'dap'.step_out()<CR>", opts)
+	vim.keymap.set('n', '<F9>', "<Cmd>lua require'dap'.toggle_breakpoint()<CR>", opts)
+	vim.keymap.set('n', '<F10>', "<Cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
+	vim.keymap.set('n', '<F11>', ":DapTerminate<CR>", opts)
 	vim.keymap.set({'n', 'v'}, '<F12>', '<Cmd>lua require("dapui").eval()<CR>', opts)
 
 	vim.cmd [[ command! DapClearBreakpoints lua require'dap'.clear_breakpoints() ]]

@@ -3,6 +3,7 @@
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
+userresources_custom=$HOME/.Xresources_custom
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
 # merge in defaults and keymaps
@@ -17,6 +18,10 @@ fi
 
 if [ -f "$userresources" ]; then
     xrdb -merge "$userresources"
+fi
+
+if [ -f "$userresources_custom" ]; then
+    xrdb -merge "$userresources_custom"
 fi
 
 if [ -f "$usermodmap" ]; then

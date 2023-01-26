@@ -1,7 +1,7 @@
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 local workspace_dir = os.getenv('HOME') .. '/.cache/jdtls/workspace/' .. project_name
 local config_dir = os.getenv('HOME') .. '/.cache/jdtls/config'
-local lombok_jar = vim.fn.glob(os.getenv('HOME') .. '/.gradle/caches/**/lombok-[0-9]*.*[0-9]*.*[0-9].jar')
+local lombok_jar = vim.fn.glob(os.getenv('HOME') .. '/.gradle/caches/**/lombok-[0-9]*.*[0-9]*.*[0-9].jar', 0, 1)[1]
 
 local on_attach = function(client, bufnr)
 	require('jdtls').setup_dap({ hotcodereplace = 'auto' })

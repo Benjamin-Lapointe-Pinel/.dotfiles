@@ -85,6 +85,8 @@ on_attach = function(client, bufnr)
 	vim.keymap.set({'n', 'v'}, '<F11>', '<Cmd>lua require("dapui").eval()<CR>', opts)
 	vim.keymap.set('n', '<F12>', ":DapTerminate<CR>", opts)
 
+	vim.cmd [[ command! Diagnostic lua vim.diagnostic.setqflist() ]]
+
 	vim.cmd [[ command! DapClearBreakpoints lua require'dap'.clear_breakpoints() ]]
 	vim.cmd [[ command! DapRepl lua require'dap'.repl.toggle() ]]
 	vim.cmd [[ command! DapUiToggle lua require("dapui").toggle() ]]

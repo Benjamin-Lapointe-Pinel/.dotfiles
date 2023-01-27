@@ -1,5 +1,6 @@
 [user]
 	name = Benjamin Lapointe-Pinel
+	email = Benjamin.Lapointe-Pinel@dfo-mpo.gc.ca
 [alias]
 	supdate = submodule update --remote --merge
 	adog = log --all --decorate --oneline --graph --topo-order

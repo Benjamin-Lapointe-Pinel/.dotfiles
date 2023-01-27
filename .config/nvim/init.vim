@@ -34,6 +34,7 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'f3fora/cmp-spell'
 Plug 'rcarriga/cmp-dap'
 Plug 'mfussenegger/nvim-jdtls'
+Plug 'folke/trouble.nvim'
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 call plug#end()
 
@@ -41,7 +42,22 @@ command! -range Range lua print(<line1>,<line2>)
 
 lua << EOF
 
-require("toggleterm").setup{
+require("trouble").setup {
+  icons = false,
+  fold_open = "v",
+  fold_closed = ">",
+  indent_lines = false,
+  signs = {
+    error = "error",
+    warning = "warn",
+    hint = "hint",
+    information = "info"
+  },
+  use_diagnostic_signs = false,
+  auto_jump = {},
+}
+
+require("toggleterm").setup {
 	open_mapping = [[<c-\>]],
 }
 

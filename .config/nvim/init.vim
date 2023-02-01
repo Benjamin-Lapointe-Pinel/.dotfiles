@@ -54,6 +54,7 @@ require("trouble").setup {
     information = "info"
   },
   use_diagnostic_signs = false,
+  auto_preview = false,
   auto_jump = {},
 }
 

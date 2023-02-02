@@ -12,4 +12,6 @@ unzip
 vi
 wget
 which
+xsel
+xclip
 zsh

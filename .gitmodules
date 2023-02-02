@@ -70,3 +70,6 @@
 	path = .vim/pack/plugins/start/editorconfig
 	url = https://github.com/editorconfig/editorconfig-vim.git
 	ignore = dirty
+[submodule ".config/tmux/plugins/tpm"]
+	path = .config/tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm

@@ -7,6 +7,8 @@ source $HOME/.base16_theme
 
 [[ -f $HOME/.rc_custom ]] && source $HOME/.rc_custom
 
+[ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ] && tmux
+
 #if [[ $(tput cols) -ge 100 ]]
 #then
 #	$HOME/.color-scripts/pacman

@@ -48,10 +48,10 @@ then
 	}
 fi
 
-if [ command -v kubectl>/dev/null 2>&1 ] && [ command -v fzf>/dev/null 2>&1 ]
+if command -v kubectl>/dev/null 2>&1 && command -v fzf>/dev/null 2>&1
 then
 	kubectl() {
-		if [[ $@ == "switch-context" ]]
+		if [[ $@ == "context-switch" ]]
 		then
 			command kubectl config use-context $(kubectl config get-contexts | fzf --height 10% --reverse --inline-info --bind 'tab:down' --bind 'shift-tab:up' --delimiter=' ' --nth=2.. --header-lines=1 | cut -c 2- | awk '{print $1}')
 		else
@@ -59,3 +59,16 @@ then
 		fi
 	}
 fi
+
+if command -v az>/dev/null 2>&1 && command -v fzf>/dev/null 2>&1
+then
+  az() {
+		if [[ $@ == "account-switch" ]]
+		then
+			command az account set -s "$(az account list | jq -r '.[] | [(if .isDefault then "*" else " " end), .name]|@tsv' | fzf --height 10% --reverse --inline-info --bind 'tab:down' --bind 'shift-tab:up' | cut -f 2)"
+		else
+			command az "$@"
+		fi
+  }
+fi
+

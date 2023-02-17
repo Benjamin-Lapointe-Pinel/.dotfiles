@@ -73,7 +73,6 @@ highlight clear SpellLocal
 highlight SpellLocal cterm=underline ctermfg=blue
 highlight Pmenu ctermbg=gray
 highlight ColorColumn ctermbg=18
-highlight IndentBlanklineChar ctermfg=19
 
 " navigate windows from any mode
 tnoremap <M-h> <C-\><C-N><C-w>h

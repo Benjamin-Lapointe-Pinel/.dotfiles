@@ -16,10 +16,10 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 call plug#begin()
 Plug 'junegunn/vim-plug'
-Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'mfussenegger/nvim-dap'
 Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'theHamsta/nvim-dap-virtual-text'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'williamboman/mason.nvim'
@@ -127,6 +127,12 @@ require'nvim-treesitter.configs'.setup({
 		'yaml',
 	}
 })
+
+vim.cmd [[highlight IndentBlanklineChar ctermfg=19]]
+require("indent_blankline").setup {
+  use_treesitter = true,
+  max_indent_increase = 1,
+}
 
 require("mason").setup()
 require('mason-tool-installer').setup {

@@ -141,6 +141,9 @@ require('mason-tool-installer').setup {
 		'bash-language-server',
 		'clangd',
 		'java-debug-adapter',
+    --TODO
+    --java-test,
+    --debugpy
 		'jdtls',
 		'js-debug-adapter',
 		'gradle-language-server',

@@ -16,6 +16,8 @@ endif
 let textwidth=160
 let &textwidth=textwidth
 
+set statusline=%f\ %h%w%m%r\ %=%(%l:%c\ %=\ %P%)
+
 set linebreak
 set breakindent
 set breakindentopt+=shift:-2
@@ -105,6 +107,7 @@ tnoremap <C-\> exit<CR>
 
 " miscellaneous
 nnoremap gb :ls<CR>:b 
+nnoremap gB :Buffers<CR>
 nnoremap <C-space> :set list! list?<CR>
 nnoremap <F5> :w<CR>:!%:p<CR>
 nnoremap <C-s> :setlocal spell!<CR>
@@ -148,10 +151,6 @@ let g:indentLine_setConceal = 0
 
 packadd termdebug
 let g:termdebug_wide = 1
-
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_symbols_ascii = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_syntax_conceal_disable = 1

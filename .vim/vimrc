@@ -47,6 +47,7 @@ set foldmethod=syntax
 set nofoldenable
 set foldlevel=1
 set viewoptions+=localoptions
+set sessionoptions+=localoptions
 
 set complete+=k
 set colorcolumn=0
@@ -121,13 +122,6 @@ let g:netrw_liststyle = 3
 let g:netrw_banner = 0
 map <C-E> :Lexplore<CR>
 
-augroup auto_save_view
-	autocmd!
-	autocmd BufWinLeave * set spellfile& " needed for spellcheck to work with view
-	autocmd BufWinLeave * silent! mkview
-	autocmd BufWinEnter * silent! loadview
-augroup END
-
 autocmd BufNewFile,BufRead *.ino set filetype=arduino
 autocmd BufNewFile,BufRead docker-compose.{yaml,yml} set filetype=docker-compose
 autocmd BufRead,BufNewFile *.md set filetype=markdown
@@ -151,6 +145,12 @@ let g:indentLine_setConceal = 0
 
 packadd termdebug
 let g:termdebug_wide = 1
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_symbols_ascii = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline_detect_spell=1
+let g:airline_detect_spelllang=1
 
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_syntax_conceal_disable = 1

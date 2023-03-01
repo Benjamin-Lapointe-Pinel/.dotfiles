@@ -6,12 +6,14 @@ git
 neovim
 openssh
 stow
+task
+taskwarrior-tui
 tmux
 tree
 unzip
 vi
 wget
 which
-xsel
 xclip
+xsel
 zsh

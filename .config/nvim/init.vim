@@ -26,6 +26,7 @@ Plug 'williamboman/mason.nvim'
 Plug 'WhoIsSethDaniel/mason-tool-installer.nvim'
 Plug 'jayp0521/mason-nvim-dap.nvim'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -35,13 +36,17 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'f3fora/cmp-spell'
 Plug 'rcarriga/cmp-dap'
 Plug 'mfussenegger/nvim-jdtls'
-Plug 'folke/trouble.nvim'
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 call plug#end()
 
 command! -range Range lua print(<line1>,<line2>)
 
 lua << EOF
+
+vim.cmd[[hi! link NormalFloat Normal]] -- https://vi.stackexchange.com/a/39079
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', 'ge', builtin.find_files, {})
+vim.keymap.set('n', 'gb', builtin.buffers, {})
 
 require("trouble").setup {
   icons = false,

@@ -48,22 +48,6 @@ local builtin = require('telescope.builtin')
 vim.keymap.set('n', 'ge', builtin.find_files, {})
 vim.keymap.set('n', 'gb', builtin.buffers, {})
 
-require("trouble").setup {
-  icons = false,
-  fold_open = "v",
-  fold_closed = ">",
-  indent_lines = false,
-  signs = {
-    error = "error",
-    warning = "warn",
-    hint = "hint",
-    information = "info"
-  },
-  use_diagnostic_signs = false,
-  auto_preview = false,
-  auto_jump = {},
-}
-
 require("toggleterm").setup {
 	open_mapping = [[<c-\>]],
 }

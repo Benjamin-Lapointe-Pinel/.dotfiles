@@ -19,6 +19,7 @@ Plug 'junegunn/vim-plug'
 Plug 'neovim/nvim-lspconfig'
 Plug 'mfussenegger/nvim-dap'
 Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'romgrk/barbar.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'theHamsta/nvim-dap-virtual-text'
 Plug 'rcarriga/nvim-dap-ui'
@@ -43,6 +44,20 @@ command! -range Range lua print(<line1>,<line2>)
 
 lua << EOF
 
+vim.cmd[[highlight BufferCurrent ctermbg=grey ctermfg=black]]
+vim.cmd[[highlight BufferCurrentSign ctermbg=grey]]
+vim.cmd[[highlight BufferCurrentMod ctermbg=grey ctermfg=blue]]
+vim.cmd[[highlight BufferInactiveMod ctermfg=blue]]
+require('bufferline').setup{
+  animation = false,
+  closable = false,
+  icons = false,
+  icon_custom_colors = true,
+  icon_pinned = '+',
+  icon_separator_active = '▎',
+  icon_separator_inactive = '▎',
+}
+
 vim.cmd[[hi! link NormalFloat Normal]] -- https://vi.stackexchange.com/a/39079
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', 'ge', builtin.find_files, {})
@@ -52,7 +67,7 @@ require("toggleterm").setup {
 	open_mapping = [[<c-\>]],
 }
 
-local Terminal  = require('toggleterm.terminal').Terminal
+local Terminal = require('toggleterm.terminal').Terminal
 local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = 'float' })
 function lazygit_toggle()
 	lazygit:toggle()

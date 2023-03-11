@@ -76,6 +76,7 @@ require('bufferline').setup{
   icon_pinned = '+',
   icon_separator_active = '',
   icon_separator_inactive = '',
+  exclude_ft = {'qf'},
 }
 
 vim.cmd[[hi! link NormalFloat Normal]] -- https://vi.stackexchange.com/a/39079

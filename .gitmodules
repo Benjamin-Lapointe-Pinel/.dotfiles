@@ -66,6 +66,3 @@
 	path = .config/tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
 	ignore = all
-[submodule ".vim/pack/plugins/start/lightline"]
-	path = .vim/pack/plugins/start/lightline
-	url = https://github.com/itchyny/lightline.vim

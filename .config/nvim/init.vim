@@ -45,7 +45,7 @@ command! -range Range lua print(<line1>,<line2>)
 function! LspStatusError() abort
   let error_number = luaeval('#vim.diagnostic.get(nill, { severity = { min = vim.diagnostic.severity.ERROR } })')
   if error_number > 0
-    return 'E ' . error_number
+    return '%#error# E ' . error_number . ' %*'
   endif
   return ''
 endfunction
@@ -53,40 +53,29 @@ endfunction
 function! LspStatusWarning() abort
   let warning_number = luaeval('#vim.diagnostic.get(nill, { severity = { min = vim.diagnostic.severity.WARNING } }) - #vim.diagnostic.get(nill, { severity = { min = vim.diagnostic.severity.ERROR } })')
   if warning_number > 0
-    return 'W ' . warning_number
+    return '%#search# W ' . warning_number . ' %*'
   endif
   return ''
 endfunction
 
-let g:lightline={
-\ 'colorscheme': '16color',
-\ 'subseparator': {'left': '│', 'right': '│'},
-\ 'enable': {'statusline': 1, 'tabline': 0},
-\ 'active': {
-\   'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-\   'right': [ ['lineinfo' ], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype' ], [ 'errordiagnostics', 'warningdiagnostics' ] ]
-\ },
-\ 'component_function': {
-\   'gitbranch': 'FugitiveHead',
-\   'warningdiagnostics': 'LspStatusWarning',
-\   'errordiagnostics': 'LspStatusError',
-\ },
-\ }
+set statusline+=%{%LspStatusWarning()%}
+set statusline+=%{%LspStatusError()%}
 
 lua << EOF
 
-vim.cmd[[highlight BufferCurrent ctermbg=grey ctermfg=black]]
-vim.cmd[[highlight BufferCurrentSign ctermbg=grey]]
-vim.cmd[[highlight BufferCurrentMod ctermbg=grey ctermfg=blue]]
+vim.cmd[[highlight BufferCurrent ctermbg=white ctermfg=black]]
+vim.cmd[[highlight BufferCurrentSign ctermbg=white ctermfg=gray]]
+vim.cmd[[highlight BufferCurrentMod ctermbg=white ctermfg=blue]]
 vim.cmd[[highlight BufferInactiveMod ctermfg=blue]]
+vim.cmd[[highlight BufferInactiveSign ctermfg=gray]]
 require('bufferline').setup{
   animation = false,
   closable = false,
   icons = false,
   icon_custom_colors = true,
   icon_pinned = '+',
-  icon_separator_active = '▎',
-  icon_separator_inactive = '▎',
+  icon_separator_active = '',
+  icon_separator_inactive = '',
 }
 
 vim.cmd[[hi! link NormalFloat Normal]] -- https://vi.stackexchange.com/a/39079

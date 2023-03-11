@@ -66,6 +66,31 @@ augroup vimStartup
     \ | endif
 augroup END
 
+function! StatuslineGitBranch()
+  let b:gitbranch=""
+  if &modifiable
+    try
+      let l:dir=expand('%:p:h')
+      let l:gitrevparse = system("git -C ".l:dir." rev-parse --abbrev-ref HEAD")
+      if !v:shell_error
+        let b:gitbranch="".substitute(l:gitrevparse, '\n', '', 'g').""
+      endif
+    catch
+    endtry
+  endif
+endfunction
+
+augroup GetGitBranch
+  autocmd!
+  autocmd VimEnter,WinEnter,BufEnter * call StatuslineGitBranch()
+augroup END
+
+set statusline=
+set statusline+=%#debugpc#\ %{b:gitbranch}\ %*
+set statusline+=\ %<%f\ %m%{&readonly?'':''}\ 
+set statusline+=│\ %Y\ \[%{&ff}\]\[%{strlen(&fenc)?&fenc:'none'}\]\ │
+set statusline+=%=│\ %5(%l%):%-3(%v%)\ %3(%p%)%%\ 
+
 highlight clear SpellBad
 highlight SpellBad cterm=underline ctermfg=red
 highlight clear SpellCap
@@ -143,16 +168,6 @@ autocmd FileType java match ColorColumn /\%160v/
 " https://vim.fandom.com/wiki/Automatically_open_the_quickfix_window_on_:make
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
-
-let g:lightline={
-\ 'colorscheme': '16color',
-\ 'subseparator': {'left': '│', 'right': '│'},
-\ 'enable': {'statusline': 1, 'tabline': 0},
-\ 'active': {
-\   'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-\ },
-\ 'component_function': { 'gitbranch': 'FugitiveHead' },
-\ }
 
 let g:indentLine_char = '│'
 let g:indentLine_setConceal = 0

@@ -7,8 +7,6 @@ set clipboard^=unnamed,unnamedplus
 let textwidth=160
 let &textwidth=textwidth
 
-set statusline=%f\ %h%w%m%r\ %=%(%l:%c\ %=\ %P%)
-
 set linebreak
 set breakindent
 set breakindentopt+=shift:-2
@@ -45,6 +43,9 @@ set colorcolumn=0
 set undofile
 set nomore
 
+filetype plugin indent on
+syntax on
+
 set mouse=a
 augroup no_cursor_move_on_focus
 	au!
@@ -52,8 +53,18 @@ augroup no_cursor_move_on_focus
 	au FocusGained * if exists('g:oldmouse') | let &mouse=g:oldmouse | unlet g:oldmouse | endif
 augroup END
 
-filetype plugin indent on
-syntax on
+" https://github.com/vim/vim/blob/3c01c4a02897163996639f6f2604c68eab2bd18b/runtime/defaults.vim#L109-L123
+augroup vimStartup
+  au!
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it when the position is invalid, when inside an event handler
+  " (happens when dropping a file on gvim) and for a commit message (it's
+  " likely a different one than last time).
+  autocmd BufReadPost *
+    \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+    \ |   exe "normal! g`\""
+    \ | endif
+augroup END
 
 highlight clear SpellBad
 highlight SpellBad cterm=underline ctermfg=red
@@ -132,6 +143,16 @@ autocmd FileType java match ColorColumn /\%160v/
 " https://vim.fandom.com/wiki/Automatically_open_the_quickfix_window_on_:make
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
+
+let g:lightline={
+\ 'colorscheme': '16color',
+\ 'subseparator': {'left': '│', 'right': '│'},
+\ 'enable': {'statusline': 1, 'tabline': 0},
+\ 'active': {
+\   'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+\ },
+\ 'component_function': { 'gitbranch': 'FugitiveHead' },
+\ }
 
 let g:indentLine_char = '│'
 let g:indentLine_setConceal = 0

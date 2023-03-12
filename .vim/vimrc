@@ -77,11 +77,10 @@ highlight SpellLocal cterm=underline ctermfg=blue
 highlight Pmenu ctermbg=gray
 highlight ColorColumn ctermbg=18
 
-highlight StatusLine ctermfg=white ctermbg=black
 highlight User1 ctermbg=0 ctermfg=white
 highlight User2 ctermbg=1 ctermfg=black
 highlight User3 ctermbg=2 ctermfg=black
-highlight User4 ctermbg=3 ctermfg=black
+highlight User4 ctermbg=3 ctermfg=white
 highlight User5 ctermbg=4 ctermfg=black
 highlight User6 ctermbg=5 ctermfg=black
 highlight User7 ctermbg=6 ctermfg=black
@@ -91,8 +90,25 @@ highlight User9 ctermbg=8 ctermfg=black
 set statusline=
 set statusline+=%{%b:gitbranch%}
 set statusline+=\ %<%f\ %m%{&readonly?'':''}\ 
-set statusline+=│\ %Y\ \[%{&ff}\]\[%{strlen(&fenc)?&fenc:'none'}\]\ │
+set statusline+=│\ %Y\ [%{&ff}][%{strlen(&fenc)?&fenc:'none'}][%{&spelllang}]\ │
 set statusline+=%=│\ %5(%l%):%-3(%v%)\ %3(%p%)%%\ 
+set statusline+=%@ToggleQuickFix@%{%GetQuickFixNumber()%}%T
+
+function! GetQuickFixNumber()
+  let quickfix_number = len(getqflist())
+  if quickfix_number > 0
+    return '%7* Q ' . quickfix_number . ' %*'
+  endif
+  return ''
+endfunction
+
+function! ToggleQuickFix(minwid, number_of_clicks, mouse_button, modifier) abort
+  if empty(filter(getwininfo(), 'v:val.quickfix'))
+    copen
+  else
+    cclose
+  endif
+endfunction
 
 function! StatuslineGitBranch()
   let b:gitbranch=""
@@ -101,7 +117,7 @@ function! StatuslineGitBranch()
       let l:dir=expand('%:p:h')
       let l:gitrevparse = system("git -C ".l:dir." rev-parse --abbrev-ref HEAD")
       if !v:shell_error
-        let b:gitbranch="%5* ".substitute(l:gitrevparse, '\n', '', 'g')." %*"
+        let b:gitbranch="%3* ".substitute(l:gitrevparse, '\n', '', 'g')." %*"
       endif
     catch
     endtry

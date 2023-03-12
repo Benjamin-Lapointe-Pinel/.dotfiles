@@ -37,7 +37,7 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'f3fora/cmp-spell'
 Plug 'rcarriga/cmp-dap'
 Plug 'mfussenegger/nvim-jdtls'
-Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
+Plug 'akinsho/toggleterm.nvim'
 call plug#end()
 
 command! -range Range lua print(<line1>,<line2>)
@@ -53,7 +53,7 @@ endfunction
 function! LspStatusWarning() abort
   let warning_number = luaeval('#vim.diagnostic.get(nill, { severity = { min = vim.diagnostic.severity.WARNING } }) - #vim.diagnostic.get(nill, { severity = { min = vim.diagnostic.severity.ERROR } })')
   if warning_number > 0
-    return '%#search# W ' . warning_number . ' %*'
+    return '%4* W ' . warning_number . ' %*'
   endif
   return ''
 endfunction

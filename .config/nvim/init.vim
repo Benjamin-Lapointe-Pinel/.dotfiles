@@ -58,8 +58,11 @@ function! LspStatusWarning() abort
   return ''
 endfunction
 
-set statusline+=%{%LspStatusWarning()%}
-set statusline+=%{%LspStatusError()%}
+set statusline+=%@DisplayDiagnostics@%{%LspStatusWarning()%}%{%LspStatusError()%}%T
+
+function! DisplayDiagnostics(minwid, number_of_clicks, mouse_button, modifier) abort
+  :Telescope diagnostics
+endfunction
 
 lua << EOF
 

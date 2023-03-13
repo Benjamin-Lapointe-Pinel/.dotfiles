@@ -45,7 +45,7 @@ command! -range Range lua print(<line1>,<line2>)
 function! LspStatusError() abort
   let error_number = luaeval('#vim.diagnostic.get(nill, { severity = { min = vim.diagnostic.severity.ERROR } })')
   if error_number > 0
-    return '%#error# E ' . error_number . ' %*'
+    return '%1* E ' . error_number . ' %*'
   endif
   return ''
 endfunction
@@ -53,7 +53,7 @@ endfunction
 function! LspStatusWarning() abort
   let warning_number = luaeval('#vim.diagnostic.get(nill, { severity = { min = vim.diagnostic.severity.WARNING } }) - #vim.diagnostic.get(nill, { severity = { min = vim.diagnostic.severity.ERROR } })')
   if warning_number > 0
-    return '%4* W ' . warning_number . ' %*'
+    return '%3* W ' . warning_number . ' %*'
   endif
   return ''
 endfunction

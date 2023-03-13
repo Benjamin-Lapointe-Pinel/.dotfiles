@@ -77,27 +77,37 @@ highlight SpellLocal cterm=underline ctermfg=blue
 highlight Pmenu ctermbg=gray
 highlight ColorColumn ctermbg=18
 
-highlight User1 ctermbg=0 ctermfg=white
-highlight User2 ctermbg=1 ctermfg=black
-highlight User3 ctermbg=2 ctermfg=black
-highlight User4 ctermbg=3 ctermfg=white
-highlight User5 ctermbg=4 ctermfg=black
-highlight User6 ctermbg=5 ctermfg=black
-highlight User7 ctermbg=6 ctermfg=black
-highlight User8 ctermbg=7 ctermfg=black
-highlight User9 ctermbg=8 ctermfg=black
+highlight StatusLineNC ctermfg=darkgray
+highlight User1 ctermbg=1 ctermfg=white cterm=bold
+highlight User2 ctermbg=2 ctermfg=white cterm=bold
+highlight User3 ctermbg=3 ctermfg=white cterm=bold
+highlight User4 ctermbg=4 ctermfg=white cterm=bold
+highlight User5 ctermbg=5 ctermfg=black cterm=bold
+highlight User6 ctermbg=6 ctermfg=white cterm=bold
+highlight User7 ctermbg=7 ctermfg=black cterm=bold
+highlight User8 ctermfg=0 ctermfg=white cterm=bold
 
 set statusline=
 set statusline+=%{%b:gitbranch%}
-set statusline+=\ %<%f\ %m%{&readonly?'':''}\ 
-set statusline+=│\ %Y\ [%{&ff}][%{strlen(&fenc)?&fenc:'none'}][%{&spelllang}]\ │
-set statusline+=%=│\ %5(%l%):%-3(%v%)\ %3(%p%)%%\ 
+set statusline+=%<%{%GetFileName()%}
+set statusline+=%{&readonly?'\ ':''}\ %Y\ [%{&ff}][%{strlen(&fenc)?&fenc:'none'}][%{&spelllang}]▕
+set statusline+=%=▕\ %{wordcount().words}\ words\ %5(%l%):%-3(%v%)\ %3(%p%)%%\ 
 set statusline+=%@ToggleQuickFix@%{%GetQuickFixNumber()%}%T
+
+function! GetFileName()
+  let filename = expand('@%')
+  let buffinfo = getbufinfo(bufnr('%'))[0]
+  let filename = ' '.buffinfo.name.'▕'
+  if buffinfo.changed
+    let filename = '%4*'.filename.'%*'
+  endif
+  return filename
+endfunction
 
 function! GetQuickFixNumber()
   let quickfix_number = len(getqflist())
   if quickfix_number > 0
-    return '%7* Q ' . quickfix_number . ' %*'
+    return '%6* Q ' . quickfix_number . ' %*'
   endif
   return ''
 endfunction
@@ -117,7 +127,7 @@ function! StatuslineGitBranch()
       let l:dir=expand('%:p:h')
       let l:gitrevparse = system("git -C ".l:dir." rev-parse --abbrev-ref HEAD")
       if !v:shell_error
-        let b:gitbranch="%3* ".substitute(l:gitrevparse, '\n', '', 'g')." %*"
+        let b:gitbranch="%2* ".substitute(l:gitrevparse, '\n', '', 'g')." %*"
       endif
     catch
     endtry

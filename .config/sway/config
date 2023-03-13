@@ -1,0 +1,216 @@
+# set_from_resource $color0 color0
+# set_from_resource $color1 color1
+# set_from_resource $color2 color2
+# set_from_resource $color3 color3
+# set_from_resource $color4 color4
+# set_from_resource $color5 color5
+# set_from_resource $color6 color6
+# set_from_resource $color7 color7
+# set_from_resource $color8 color8
+# set_from_resource $color9 color9
+# set_from_resource $color10 color10
+# set_from_resource $color11 color11
+# set_from_resource $color12 color12
+# set_from_resource $color13 color13
+# set_from_resource $color14 color14
+# set_from_resource $color15 color15
+# set_from_resource $color16 color16
+# set_from_resource $color17 color17
+# set_from_resource $color18 color18
+# set_from_resource $color19 color19
+# set_from_resource $background background
+# set_from_resource $foreground foreground
+# set_from_resource $cursorColor cursorColor
+
+set $mod Mod4
+
+font pango:monospace 10
+
+focus_follows_mouse no
+
+default_border pixel 1
+
+# client.focused $foreground $background $color7 $foreground $foreground
+# client.unfocused $color18 $background $color18 $color18 $color18
+# client.urgent $foreground $color1 $color7 $color1 $color1
+# client.placeholder $background $background $color7 $background $background
+# client.background $background
+
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+# NetworkManager is the most popular way to manage wireless networks on Linux,
+# and nm-applet is a desktop environment-independent system tray GUI for it.
+exec --no-startup-id nm-applet
+
+# compositor
+exec --no-startup-id picom
+
+# vm guest integration
+exec --no-startup-id VBoxClient-all
+
+# change volume or toggle mute
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ unmute && pkill -RTMIN+10 i3blocks 
+bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- unmute && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
+
+# screen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5 && pkill -RTMIN+11 i3blocks
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5 && pkill -RTMIN+11 i3blocks
+
+# print screen
+bindsym --release Print exec scrot /tmp/ -e 'xclip -selection clipboard -t image/png -i $f'
+bindsym --release $mod+Print exec scrot /tmp/ -u -e 'xclip -selection clipboard -t image/png -i $f'
+bindsym --release $mod+Shift+s exec scrot /tmp/ -s -e 'xclip -selection clipboard -t image/png -i $f'
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Shift+Return exec i3-sensible-terminal -name __scratchpad
+for_window [instance="__scratchpad"] move scratchpad, scratchpad show, move position 0 0, resize set 100 ppt 100 ppt
+
+for_window [instance="Godot_Engine" title="(DEBUG)"] floating enable
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu (a program launcher)
+#bindsym $mod+d exec dmenu_run
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -b -i -nb $foreground -nf $background -sb $background -sf $foreground"
+
+# change focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# split
+bindsym $mod+v split vertical
+bindsym $mod+h split horizontal
+bindsym $mod+t split toggle
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# back and forth between workspaces
+bindsym $mod+Tab workspace back_and_forth
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+
+# switch to workspace
+bindsym $mod+0 scratchpad show, move position 0 0, resize set 100 ppt 100 ppt
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+
+# move focused container to workspace
+bindsym $mod+Shift+0 move scratchpad
+bindsym $mod+Shift+1 floating disable, move container to workspace number $ws1
+bindsym $mod+Shift+2 floating disable, move container to workspace number $ws2
+bindsym $mod+Shift+3 floating disable, move container to workspace number $ws3
+bindsym $mod+Shift+4 floating disable, move container to workspace number $ws4
+bindsym $mod+Shift+5 floating disable, move container to workspace number $ws5
+bindsym $mod+Shift+6 floating disable, move container to workspace number $ws6
+bindsym $mod+Shift+7 floating disable, move container to workspace number $ws7
+bindsym $mod+Shift+8 floating disable, move container to workspace number $ws8
+bindsym $mod+Shift+9 floating disable, move container to workspace number $ws9
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+	# These bindings trigger as soon as you enter the resize mode
+
+	# Pressing left will shrink the window’s width.
+	# Pressing right will grow the window’s width.
+	# Pressing up will shrink the window’s height.
+	# Pressing down will grow the window’s height.
+	bindsym j resize shrink width 8 px
+	bindsym k resize grow height 17 px
+	bindsym l resize shrink height 17 px
+	bindsym semicolon resize grow width 8 px
+
+	# same bindings, but for the arrow keys
+	bindsym Left resize shrink width 8 px
+	bindsym Down resize grow height 17 px
+	bindsym Up resize shrink height 17 px
+	bindsym Right resize grow width 8 px
+
+	# back to normal: Enter or Escape or $mod+r
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+bindsym Shift+$mod+l exec xautolock -locknow
+
+bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
+bindsym --release Num_Lock exec pkill -SIGRTMIN+11 i3blocks
+
+bar {
+	status_command i3blocks
+	position top
+	tray_output none
+	# colors {
+	# 	background #000000
+	# 	statusline $foreground
+	# 	separator $foreground
+
+	# 	focused_workspace $foreground $foreground $background
+	# 	active_workspace $background $background $foreground
+	# 	inactive_workspace $background $background $color8
+	# 	urgent_workspace $color1 $color1 $foreground
+	# 	binding_mode $color1 $color1 $foreground
+	# }
+}

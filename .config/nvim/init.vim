@@ -53,15 +53,31 @@ endfunction
 function! LspStatusWarning() abort
   let warning_number = luaeval('#vim.diagnostic.get(nill, { severity = { min = vim.diagnostic.severity.WARNING } }) - #vim.diagnostic.get(nill, { severity = { min = vim.diagnostic.severity.ERROR } })')
   if warning_number > 0
-    return '%3* W ' . warning_number . ' %*'
+    return '%8* W ' . warning_number . ' %*'
   endif
   return ''
 endfunction
 
-set statusline+=%@DisplayDiagnostics@%{%LspStatusWarning()%}%{%LspStatusError()%}%T
+function! LspStatusInfo() abort
+  let info_number = luaeval('#vim.diagnostic.get(nill, { severity = { min = vim.diagnostic.severity.INFO } }) - #vim.diagnostic.get(nill, { severity = { min = vim.diagnostic.severity.WARNING } }) - #vim.diagnostic.get(nill, { severity = { min = vim.diagnostic.severity.ERROR } })')
+  if info_number > 0
+    return '%4* I ' . info_number . ' %*'
+  endif
+  return ''
+endfunction
+
+function! LspStatusHint() abort
+  let hint_number = luaeval('#vim.diagnostic.get(nill, { severity = { min = vim.diagnostic.severity.HINT } }) - #vim.diagnostic.get(nill, { severity = { min = vim.diagnostic.severity.INFO } }) - #vim.diagnostic.get(nill, { severity = { min = vim.diagnostic.severity.WARNING } }) - #vim.diagnostic.get(nill, { severity = { min = vim.diagnostic.severity.ERROR } })')
+  if hint_number > 0
+    return '%6* H ' . hint_number . ' %*'
+  endif
+  return ''
+endfunction
+
+set statusline+=%@DisplayDiagnostics@%{%LspStatusWarning()%}%{%LspStatusError()%}%{%LspStatusInfo()%}%{%LspStatusHint()%}%T
 
 function! DisplayDiagnostics(minwid, number_of_clicks, mouse_button, modifier) abort
-  :Telescope diagnostics
+   call v:lua.vim.diagnostic.setqflist()
 endfunction
 
 lua << EOF

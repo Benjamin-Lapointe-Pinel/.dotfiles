@@ -185,6 +185,13 @@ let g:netrw_liststyle = 3
 let g:netrw_banner = 0
 map <C-E> :Lexplore<CR>
 
+augroup auto_save_view
+  autocmd!
+  " autocmd BufWinLeave * set spellfile& " needed for spellcheck to work with view?
+  autocmd BufWinLeave * silent! mkview
+  autocmd BufWinEnter * silent! loadview
+augroup END
+
 " https://peps.python.org/pep-0350/
 command! -nargs=1 Codetags silent vimgrep /TODO\|FIXME\|BUG\|NOBUG\|RFE\|IDEA\|HACK\||CAVEAT\|NOTE\|FAQ\|SEE\|TODOC\|CRED\|RVD/j <args>
 

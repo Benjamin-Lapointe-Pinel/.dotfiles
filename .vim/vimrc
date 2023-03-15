@@ -89,17 +89,19 @@ highlight User8 ctermbg=16 ctermfg=white cterm=bold
 
 set statusline=
 set statusline+=%{%b:gitbranch%}
-set statusline+=%<%{%GetFileName()%}
-set statusline+=%{&readonly?'\ ':''}\ %Y\ [%{&ff}][%{strlen(&fenc)?&fenc:'none'}][%{&spelllang}]▕
+set statusline+=%{%GetFileName()%}
+set statusline+=%{&readonly?'\ ':''}%{strlen(&ft)?join(['\ ',toupper(&ft)]):''}\ [%{&ff}][%{strlen(&fenc)?&fenc:'none'}][%{&spelllang}]▕
 set statusline+=%=▕\ %{wordcount().words}\ words\ %5(%l%):%-3(%v%)\ %3(%p%)%%\ 
 set statusline+=%@ToggleQuickFix@%{%GetQuickFixNumber()%}%T
 
 function! GetFileName()
-  let filename = expand('@%')
-  let buffinfo = getbufinfo(bufnr('%'))[0]
-  let filename = ' '.buffinfo.name.'▕'
-  if buffinfo.changed
-    let filename = '%4*'.filename.'%*'
+  let filename = expand("%:~:.")
+  if len(filename) == 0
+    return ''
+  endif
+  let filename = ' '.filename.'▕'
+  if getbufinfo(bufnr('%'))[0].changed
+    let filename = '%4*%<'.filename.'%*'
   endif
   return filename
 endfunction

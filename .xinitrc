@@ -38,9 +38,9 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 # keyboard layouts
-setxkbmap -layout us,ca -option grp:win_space_toggle
-# background
+setxkbmap -layout us,ca -option grp:ctrl_space_toggle
 
+# background
 hsetroot -solid "#$(xrdb -query | grep "*color19:" | cut -f 2 | cut -c2- | tr '[:lower:]' '[:upper:]')"
 $HOME/.fehbg &
 

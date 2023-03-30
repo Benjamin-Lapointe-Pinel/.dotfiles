@@ -15,7 +15,7 @@
 # Use the command 'task show' to see all defaults and overrides
 
 # Files
-data.location=/home/lapointepinelb/.task
+#data.location=/home/lapointepinelb/.task
 
 # To use the default location of the XDG directories,
 # move this configuration file from ~/.taskrc to ~/.config/task/taskrc and uncomment below
@@ -39,4 +39,6 @@ data.location=/home/lapointepinelb/.task
 #include solarized-light-256.theme
 #include no-color.theme
 
-news.version=2.6.0
+#news.version=2.6.0
+
+uda.taskwarrior-tui.task-report.show-info=false

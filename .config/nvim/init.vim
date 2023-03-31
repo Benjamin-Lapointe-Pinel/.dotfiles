@@ -47,7 +47,7 @@ lua << EOF
 vim.api.nvim_create_user_command(
   'Diagnostic',
   function(opts)
-    if 'all' then
+    if opts.args == 'all' then
       vim.diagnostic.setqflist()
     elseif opts.args == 'error' then
       vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })

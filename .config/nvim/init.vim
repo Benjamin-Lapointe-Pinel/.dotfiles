@@ -42,45 +42,86 @@ call plug#end()
 
 command! -range Range lua print(<line1>,<line2>)
 
-function! LspStatusError() abort
-  let error_number = luaeval('#vim.diagnostic.get(nill, { severity = { min = vim.diagnostic.severity.ERROR } })')
-  if error_number > 0
-    return '%1* E ' . error_number . ' %*'
-  endif
-  return ''
-endfunction
-
-function! LspStatusWarning() abort
-  let warning_number = luaeval('#vim.diagnostic.get(nill, { severity = { min = vim.diagnostic.severity.WARNING } }) - #vim.diagnostic.get(nill, { severity = { min = vim.diagnostic.severity.ERROR } })')
-  if warning_number > 0
-    return '%8* W ' . warning_number . ' %*'
-  endif
-  return ''
-endfunction
-
-function! LspStatusInfo() abort
-  let info_number = luaeval('#vim.diagnostic.get(nill, { severity = { min = vim.diagnostic.severity.INFO } }) - #vim.diagnostic.get(nill, { severity = { min = vim.diagnostic.severity.WARNING } }) - #vim.diagnostic.get(nill, { severity = { min = vim.diagnostic.severity.ERROR } })')
-  if info_number > 0
-    return '%4* I ' . info_number . ' %*'
-  endif
-  return ''
-endfunction
-
-function! LspStatusHint() abort
-  let hint_number = luaeval('#vim.diagnostic.get(nill, { severity = { min = vim.diagnostic.severity.HINT } }) - #vim.diagnostic.get(nill, { severity = { min = vim.diagnostic.severity.INFO } }) - #vim.diagnostic.get(nill, { severity = { min = vim.diagnostic.severity.WARNING } }) - #vim.diagnostic.get(nill, { severity = { min = vim.diagnostic.severity.ERROR } })')
-  if hint_number > 0
-    return '%6* H ' . hint_number . ' %*'
-  endif
-  return ''
-endfunction
-
-set statusline+=%@DisplayDiagnostics@%{%LspStatusWarning()%}%{%LspStatusError()%}%{%LspStatusInfo()%}%{%LspStatusHint()%}%T
-
-function! DisplayDiagnostics(minwid, number_of_clicks, mouse_button, modifier) abort
-   call v:lua.vim.diagnostic.setqflist()
-endfunction
-
 lua << EOF
+
+vim.api.nvim_create_user_command(
+  'Diagnostic',
+  function(opts)
+    if 'all' then
+      vim.diagnostic.setqflist()
+    elseif opts.args == 'error' then
+      vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })
+    elseif opts.args == 'warning' then
+      vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.WARNING })
+    elseif opts.args == 'info' then
+      vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.INFO })
+    elseif opts.args == 'hint' then
+      vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.HINT })
+    else
+      vim.diagnostic.setqflist()
+    end
+  end,
+  {
+    nargs = 1,
+    complete = function(ArgLead, CmdLine, CursorPos)
+        return { 'all', 'error', 'warning', 'info', 'hint' }
+    end,
+    desc = 'Set diagnostic errors to quickfix list'
+  }
+)
+
+function SetErrorsQuickfixList(minwid, number_of_clicks, mouse_button, modifier)
+  vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })
+end
+
+function SetWarningsQuickfixList(minwid, number_of_clicks, mouse_button, modifier)
+  vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.WARNING })
+end
+
+function SetInfosQuickfixList(minwid, number_of_clicks, mouse_button, modifier)
+  vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.INFO })
+end
+
+function SetHintsQuickfixList(minwid, number_of_clicks, mouse_button, modifier)
+  vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.HINT })
+end
+
+function LspStatusError()
+  local error_number = #vim.diagnostic.get(nill, { severity = vim.diagnostic.severity.ERROR })
+  if error_number > 0 then
+    return '%1* E '..error_number..' %*'
+  end
+  return ''
+end
+
+function LspStatusWarning()
+  local warning_number = #vim.diagnostic.get(nill, { severity = vim.diagnostic.severity.WARNING })
+  if warning_number > 0 then
+    return '%8* W '..warning_number..' %*'
+  end
+  return ''
+end
+
+function LspStatusInfo()
+  local info_number = #vim.diagnostic.get(nill, { severity = vim.diagnostic.severity.INFO })
+  if info_number > 0 then
+    return '%4* I '..info_number..' %*'
+  end
+  return ''
+end
+
+function LspStatusHint()
+  local hint_number = #vim.diagnostic.get(nill, { severity = vim.diagnostic.severity.HINT })
+  if hint_number > 0 then
+    return '%6* H '..hint_number..' %*'
+  end
+  return ''
+end
+
+vim.opt.statusline:append('%@v:lua.SetWarningsQuickfixList@%{%v:lua.LspStatusWarning()%}%T')
+vim.opt.statusline:append('%@v:lua.SetErrorsQuickfixList@%{%v:lua.LspStatusError()%}%T')
+vim.opt.statusline:append('%@v:lua.SetInfosQuickfixList@%{%v:lua.LspStatusInfo()%}%T')
+vim.opt.statusline:append('%@v:lua.SetHintssQuickfixList@%{%v:lua.LspStatusHint()%}%T')
 
 vim.cmd[[highlight BufferCurrent ctermbg=white ctermfg=black]]
 vim.cmd[[highlight BufferCurrentSign ctermbg=white ctermfg=gray]]
@@ -146,8 +187,6 @@ on_attach = function(client, bufnr)
 	vim.keymap.set('n', '<F10>', "<Cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
 	vim.keymap.set({'n', 'v'}, '<F11>', '<Cmd>lua require("dapui").eval()<CR>', opts)
 	vim.keymap.set('n', '<F12>', ":DapTerminate<CR>", opts)
-
-	vim.cmd [[ command! Diagnostic lua vim.diagnostic.setqflist() ]]
 
 	vim.cmd [[ command! DapClearBreakpoints lua require'dap'.clear_breakpoints() ]]
 	vim.cmd [[ command! DapRepl lua require'dap'.repl.toggle() ]]

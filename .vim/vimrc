@@ -87,6 +87,7 @@ highlight User6 ctermbg=6 ctermfg=white cterm=bold
 highlight User7 ctermbg=7 ctermfg=black cterm=bold
 highlight User8 ctermbg=16 ctermfg=white cterm=bold
 
+set laststatus=2
 set statusline=
 set statusline+=%{%b:gitbranch%}
 set statusline+=%<%{%GetFileName()%}

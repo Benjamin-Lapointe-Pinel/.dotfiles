@@ -43,6 +43,9 @@ set colorcolumn=0
 set undofile
 set nomore
 
+set cursorline
+set cursorlineopt=line
+
 filetype plugin indent on
 syntax on
 
@@ -66,6 +69,7 @@ augroup vimStartup
     \ | endif
 augroup END
 
+highlight CursorLine cterm=none ctermbg=18
 highlight clear SpellBad
 highlight SpellBad cterm=underline ctermfg=red
 highlight clear SpellCap

@@ -228,7 +228,7 @@ require('mason-tool-installer').setup {
 		'gradle-language-server',
 		'java-debug-adapter',
 		'jdtls',
-		'js-debug-adapter',
+		--'js-debug-adapter',
 		'node-debug2-adapter',
 		'python-lsp-server',
 		'rust-analyzer',

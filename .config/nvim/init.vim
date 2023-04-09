@@ -18,6 +18,7 @@ call plug#begin()
 Plug 'junegunn/vim-plug'
 Plug 'neovim/nvim-lspconfig'
 Plug 'mfussenegger/nvim-dap'
+Plug 'mfussenegger/nvim-dap-python'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'romgrk/barbar.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
@@ -224,18 +225,16 @@ require('mason-tool-installer').setup {
 		'angular-language-server',
 		'bash-language-server',
 		'clangd',
+		'gradle-language-server',
 		'java-debug-adapter',
-    --TODO
-    --java-test,
-    --debugpy
 		'jdtls',
 		'js-debug-adapter',
-		'gradle-language-server',
 		'node-debug2-adapter',
 		'python-lsp-server',
-		'texlab',
 		'rust-analyzer',
+		'texlab',
 		'typescript-language-server',
+    'debugpy',
 	},
   run_on_start = true,
   auto_update = true,
@@ -262,6 +261,7 @@ for _, lsp in ipairs(servers) do
 end
 
 require("mason-nvim-dap").setup()
+require('dap-python').setup('~/.local/share/nvim/mason/bin/debugpy')
 require('mason-nvim-dap').setup_handlers()
 require("nvim-dap-virtual-text").setup()
 local dap, dapui = require("dap"), require("dapui")

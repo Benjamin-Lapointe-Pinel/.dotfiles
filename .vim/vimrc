@@ -94,7 +94,7 @@ highlight User8 ctermbg=16 ctermfg=white cterm=bold
 set laststatus=2
 set statusline=
 set statusline+=%{%b:gitbranch%}
-set statusline+=%<%{%GetFileName()%}
+set statusline+=\ %<%{%GetFileName()%}
 set statusline+=%{&readonly?'\ \ ':''}%{strlen(&ft)?join(['\ ',toupper(&ft)]):''}\ [%{&ff}][%{strlen(&fenc)?&fenc:'none'}][%{&spelllang}]▕
 set statusline+=\ %=\ ▕\ %{wordcount().words}\ words\ %5(%l%):%-3(%v%)\ %3(%p%)%%\ 
 set statusline+=%@ToggleQuickFix@%{%GetQuickFixNumber()%}%T
@@ -104,7 +104,7 @@ function! GetFileName()
   if len(filename) == 0
     return ''
   endif
-  let filename = ' '.filename.'▕'
+  let filename = filename.'▕'
   if getbufinfo(bufnr('%'))[0].changed
     let filename = '%4*'.filename.'%*'
   endif
@@ -128,7 +128,7 @@ function! ToggleQuickFix(minwid, number_of_clicks, mouse_button, modifier) abort
 endfunction
 
 function! StatuslineGitBranch()
-  let b:gitbranch=" "
+  let b:gitbranch=""
   if &modifiable
     try
       let l:dir=expand('%:p:h')

@@ -108,7 +108,7 @@ function! GetFileName()
   if getbufinfo(bufnr('%'))[0].changed
     return '%4* '.filename.'%*'
   else
-    return '  '.filename
+    return '%1  '.filename.'%*'
   endif
 endfunction
 

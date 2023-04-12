@@ -6,6 +6,7 @@ git
 neovim
 openssh
 stow
+sxiv
 task
 taskwarrior-tui
 tmux

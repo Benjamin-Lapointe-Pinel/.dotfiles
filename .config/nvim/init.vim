@@ -127,17 +127,20 @@ vim.opt.statusline:append('%@v:lua.SetHintssQuickfixList@%{%v:lua.LspStatusHint(
 
 vim.cmd[[highlight BufferCurrent ctermbg=white ctermfg=black]]
 vim.cmd[[highlight BufferCurrentSign ctermbg=white ctermfg=gray]]
-vim.cmd[[highlight BufferCurrentMod ctermbg=white ctermfg=blue]]
-vim.cmd[[highlight BufferInactiveMod ctermfg=blue]]
+vim.cmd[[highlight BufferCurrentMod cterm=bold ctermbg=white ctermfg=blue]]
+vim.cmd[[highlight BufferInactiveMod cterm=bold ctermfg=blue]]
 vim.cmd[[highlight BufferInactiveSign ctermfg=gray]]
-require('bufferline').setup{
+vim.g.barbar_auto_setup = false
+require('barbar').setup{
   animation = false,
-  closable = false,
-  icons = false,
-  icon_custom_colors = true,
-  icon_pinned = '+',
-  icon_separator_active = '',
-  icon_separator_inactive = '',
+  icons = {
+    button = '',
+    modified = {button = ''},
+    pinned = {button = '+'},
+    filetype = {
+      enabled = false,
+    },
+  },
   exclude_ft = {'qf'},
 }
 
@@ -262,7 +265,6 @@ end
 
 require("mason-nvim-dap").setup()
 require('dap-python').setup('~/.local/share/nvim/mason/bin/debugpy')
-require('mason-nvim-dap').setup_handlers()
 require("nvim-dap-virtual-text").setup()
 local dap, dapui = require("dap"), require("dapui")
 vim.fn.sign_define('DapStopped', {text='>'})

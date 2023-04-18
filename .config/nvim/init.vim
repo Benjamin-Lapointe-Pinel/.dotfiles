@@ -229,7 +229,6 @@ require('mason-tool-installer').setup {
 		'bash-language-server',
 		'clangd',
 		'gradle-language-server',
-		'java-debug-adapter',
 		'jdtls',
 		--'js-debug-adapter',
 		'node-debug2-adapter',
@@ -237,7 +236,6 @@ require('mason-tool-installer').setup {
 		'rust-analyzer',
 		'texlab',
 		'typescript-language-server',
-    'debugpy',
 	},
   run_on_start = true,
   auto_update = true,
@@ -263,8 +261,14 @@ for _, lsp in ipairs(servers) do
 	}
 end
 
-require("mason-nvim-dap").setup()
-require('dap-python').setup('~/.local/share/nvim/mason/bin/debugpy')
+require("mason-nvim-dap").setup{
+  ensure_installed = {
+    'javadbg',
+    'python'
+  },
+  automatic_installation = true,
+}
+require('dap-python').setup('/usr/bin/python')
 require("nvim-dap-virtual-text").setup()
 local dap, dapui = require("dap"), require("dapui")
 vim.fn.sign_define('DapStopped', {text='>'})

@@ -78,7 +78,9 @@ highlight clear SpellRare
 highlight SpellRare cterm=underline ctermfg=green
 highlight clear SpellLocal
 highlight SpellLocal cterm=underline ctermfg=blue
-highlight Pmenu ctermbg=gray
+highlight Pmenu ctermbg=gray ctermfg=black
+highlight PmenuSel ctermbg=yellow ctermfg=black
+highlight PmenuSbar ctermbg=gray ctermfg=white
 highlight ColorColumn ctermbg=18
 
 highlight StatusLineNC ctermfg=darkgray

@@ -40,7 +40,6 @@ set sessionoptions+=localoptions
 
 set complete+=k
 set colorcolumn=0
-set undofile
 set nomore
 
 set cursorline

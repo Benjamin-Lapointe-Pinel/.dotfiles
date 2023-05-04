@@ -137,9 +137,16 @@ require('barbar').setup{
     button = '',
     modified = {button = ''},
     pinned = {button = '+'},
+    separator = {left = '', right = '▕'},
+    gitsigns = {
+      added = {enabled = true, icon = '+'},
+      changed = {enabled = true, icon = '~'},
+      deleted = {enabled = true, icon = '-'},
+    },
     filetype = {
       enabled = false,
     },
+    inactive = {separator = {left = '', right = '▕'}},
   },
   exclude_ft = {'qf'},
 }

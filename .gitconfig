@@ -16,6 +16,7 @@
 	fileMode = false
 	autocrlf = input
 	preloadindex = true
+	ignorecase = false
 [pager]
 	branch = false
 [push]

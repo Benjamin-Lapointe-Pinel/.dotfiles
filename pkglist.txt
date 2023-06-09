@@ -1,6 +1,7 @@
 bat
 btop
 clang
+exa
 fzf
 git
 neovim

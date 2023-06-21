@@ -41,4 +41,5 @@
 
 #news.version=2.6.0
 
+defaultwidth=$COLUMNS
 uda.taskwarrior-tui.task-report.show-info=false

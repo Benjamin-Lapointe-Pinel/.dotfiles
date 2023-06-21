@@ -243,6 +243,7 @@ require('mason-tool-installer').setup {
 		'rust-analyzer',
 		'texlab',
 		'typescript-language-server',
+    'yaml-language-server',
 	},
   run_on_start = true,
   auto_update = true,
@@ -257,6 +258,7 @@ local servers = {
 	'texlab',
 	'rust_analyzer',
 	'tsserver',
+  'yamlls',
 }
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)

@@ -71,6 +71,10 @@ vim.api.nvim_create_user_command(
   }
 )
 
+function SetQuickfixList(minwid, number_of_clicks, mouse_button, modifier)
+  vim.cmd[[ :ToggleQuickfix ]]
+end
+
 function SetErrorsQuickfixList(minwid, number_of_clicks, mouse_button, modifier)
   vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })
 end
@@ -120,6 +124,7 @@ function LspStatusHint()
 end
 
 vim.opt.laststatus = 3
+vim.opt.statusline = vim.opt.statusline:get():gsub('%%%{%%GetQuickfixNumber%(%)%%%}','%%@v:lua.SetQuickfixList@%%{%%GetQuickfixNumber()%%}%%T')
 vim.opt.statusline:append('%@v:lua.SetWarningsQuickfixList@%{%v:lua.LspStatusWarning()%}%T')
 vim.opt.statusline:append('%@v:lua.SetErrorsQuickfixList@%{%v:lua.LspStatusError()%}%T')
 vim.opt.statusline:append('%@v:lua.SetInfosQuickfixList@%{%v:lua.LspStatusInfo()%}%T')

@@ -96,9 +96,19 @@ set laststatus=2
 set statusline=
 set statusline+=%{%b:gitbranch%}
 set statusline+=%<%{%GetFileName()%}
-set statusline+=%{&readonly?'\ \ ':''}%{strlen(&ft)?join(['\ ',toupper(&ft)],''):''}\ [%{&ff}][%{strlen(&fenc)?&fenc:'none'}][%{&spelllang}]▕
+set statusline+=%{&readonly?'\ \ ':''}%{strlen(&ft)?join(['\ ',toupper(&ft)],''):''}\ [%{&ff}][%{strlen(&fenc)?&fenc:'none'}][%{&spelllang}]▕
 set statusline+=\ %=\ ▕\ %{wordcount().words}\ words\ %5(%l%):%-3(%v%)\ %3(%p%)%%\ 
-set statusline+=%@ToggleQuickFix@%{%GetQuickFixNumber()%}%T
+set statusline+=%{%GetQuickfixNumber()%}
+
+command ToggleQuickfix if empty(filter(getwininfo(), 'v:val.quickfix')) | copen | else | cclose | endif
+
+function! GetQuickfixNumber()
+  let quickfix_number = len(getqflist())
+  if quickfix_number > 0
+    return '%3* Q ' . quickfix_number . ' %*'
+  endif
+  return ''
+endfunction
 
 function! GetFileName()
   let filename = expand("%:~:.")
@@ -110,22 +120,6 @@ function! GetFileName()
     return '%4* '.filename.'%*'
   else
     return '%1  '.filename.'%*'
-  endif
-endfunction
-
-function! GetQuickFixNumber()
-  let quickfix_number = len(getqflist())
-  if quickfix_number > 0
-    return '%3* Q ' . quickfix_number . ' %*'
-  endif
-  return ''
-endfunction
-
-function! ToggleQuickFix(minwid, number_of_clicks, mouse_button, modifier) abort
-  if empty(filter(getwininfo(), 'v:val.quickfix'))
-    copen
-  else
-    cclose
   endif
 endfunction
 
@@ -180,6 +174,7 @@ nnoremap <C-\> :vertical terminal<CR>
 tnoremap <C-\> exit<CR>
 
 " miscellaneous
+nnoremap Q gq
 nnoremap gb :ls<CR>:b 
 nnoremap <C-space> :set list! list?<CR>
 nnoremap <F5> :w<CR>:!%:p<CR>
@@ -219,8 +214,8 @@ autocmd FileType arduino nnoremap <buffer> <F4> :wa<CR>:!arduino -v --upload %<C
 autocmd FileType java match ColorColumn /\%160v/
 
 " https://vim.fandom.com/wiki/Automatically_open_the_quickfix_window_on_:make
-autocmd QuickFixCmdPost [^l]* nested cwindow
-autocmd QuickFixCmdPost    l* nested lwindow
+autocmd QuickfixCmdPost [^l]* nested cwindow
+autocmd QuickfixCmdPost    l* nested lwindow
 
 let g:indentLine_char = '│'
 let g:indentLine_setConceal = 0

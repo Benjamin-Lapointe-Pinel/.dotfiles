@@ -189,7 +189,6 @@ on_attach = function(client, bufnr)
 	vim.keymap.set('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 	vim.keymap.set('n', '<A-enter>', '<cmd>lua vim.lsp.buf.code_action({apply=true})<CR>', opts)
 	vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-	vim.keymap.set({'n', 'v'}, '<space>f', '<cmd>lua vim.lsp.buf.format()<CR>', opts)
 
 	vim.keymap.set('n', '<F5>', "<Cmd>lua require'dap'.continue()<CR>", opts)
 	vim.keymap.set('n', '<F6>', "<Cmd>lua require'dap'.step_over()<CR>", opts)
@@ -203,10 +202,10 @@ on_attach = function(client, bufnr)
 	vim.cmd [[ command! DapClearBreakpoints lua require'dap'.clear_breakpoints() ]]
 	vim.cmd [[ command! DapRepl lua require'dap'.repl.toggle() ]]
 	vim.cmd [[ command! DapUiToggle lua require("dapui").toggle() ]]
-
+	vim.cmd [[ au FileType dap-repl lua require('dap.ext.autocompl').attach() ]]
 	vim.cmd [[ command! -range=% Format lua vim.lsp.buf.format({range={['start']={<line1>,0},['end']={<line2>,0}}}) ]]
 
-	vim.cmd [[ au FileType dap-repl lua require('dap.ext.autocompl').attach() ]]
+  api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
 end
 
 require'nvim-treesitter.configs'.setup({

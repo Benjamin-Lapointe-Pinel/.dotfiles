@@ -80,6 +80,8 @@ highlight SpellLocal cterm=underline ctermfg=blue
 highlight Pmenu ctermbg=gray ctermfg=black
 highlight PmenuSel ctermbg=yellow ctermfg=black
 highlight PmenuSbar ctermbg=gray ctermfg=white
+highlight TabLine cterm=NONE ctermbg=gray ctermfg=black
+highlight TabLineSel ctermbg=white ctermfg=black
 highlight ColorColumn ctermbg=18
 
 highlight StatusLineNC ctermfg=darkgray

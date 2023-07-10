@@ -130,11 +130,10 @@ vim.opt.statusline:append('%@v:lua.SetErrorsQuickfixList@%{%v:lua.LspStatusError
 vim.opt.statusline:append('%@v:lua.SetInfosQuickfixList@%{%v:lua.LspStatusInfo()%}%T')
 vim.opt.statusline:append('%@v:lua.SetHintssQuickfixList@%{%v:lua.LspStatusHint()%}%T')
 
-vim.cmd[[highlight BufferCurrent ctermbg=white ctermfg=black]]
-vim.cmd[[highlight BufferCurrentSign ctermbg=white ctermfg=gray]]
+vim.cmd[[highlight BufferCurrentSignRight ctermbg=white ctermfg=black]]
+vim.cmd[[highlight BufferInactiveSignRight ctermbg=gray ctermfg=black]]
 vim.cmd[[highlight BufferCurrentMod cterm=bold ctermbg=white ctermfg=blue]]
-vim.cmd[[highlight BufferInactiveMod cterm=bold ctermfg=blue]]
-vim.cmd[[highlight BufferInactiveSign ctermfg=gray]]
+vim.cmd[[highlight BufferInactiveMod ctermbg=gray ctermfg=blue]]
 vim.g.barbar_auto_setup = false
 require('barbar').setup{
   animation = false,
@@ -144,6 +143,7 @@ require('barbar').setup{
     pinned = {button = '+'},
     separator = {left = '', right = '▕'},
     gitsigns = {
+			enabled = true,
       added = {enabled = true, icon = '+'},
       changed = {enabled = true, icon = '~'},
       deleted = {enabled = true, icon = '-'},

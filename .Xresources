@@ -1,6 +1,7 @@
 #include ".terminal_theme"
 
 URxvt.font: xft:monospace
+URxvt.intensityStyles: false
 URxvt.scrollBar: false
 URxvt.scrollTtyOutput: false
 URxvt.scrollWithBuffer: true

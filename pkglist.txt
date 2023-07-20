@@ -4,6 +4,7 @@ clang
 exa
 fzf
 git
+jq
 neovim
 openssh
 stow

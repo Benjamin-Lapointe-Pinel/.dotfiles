@@ -4,7 +4,7 @@ set hidden
 set encoding=UTF-8
 set clipboard^=unnamed,unnamedplus
 
-let textwidth=160
+let textwidth=240
 let &textwidth=textwidth
 
 set linebreak

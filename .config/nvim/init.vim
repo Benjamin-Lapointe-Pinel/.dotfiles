@@ -129,7 +129,7 @@ vim.opt.statusline = vim.opt.statusline:get():gsub('%%%{%%GetQuickfixNumber%(%)%
 vim.opt.statusline:append('%@v:lua.SetWarningsQuickfixList@%{%v:lua.LspStatusWarning()%}%T')
 vim.opt.statusline:append('%@v:lua.SetErrorsQuickfixList@%{%v:lua.LspStatusError()%}%T')
 vim.opt.statusline:append('%@v:lua.SetInfosQuickfixList@%{%v:lua.LspStatusInfo()%}%T')
-vim.opt.statusline:append('%@v:lua.SetHintssQuickfixList@%{%v:lua.LspStatusHint()%}%T')
+vim.opt.statusline:append('%@v:lua.SetHintsQuickfixList@%{%v:lua.LspStatusHint()%}%T')
 
 vim.cmd[[highlight BufferCurrentSignRight ctermbg=white ctermfg=black]]
 vim.cmd[[highlight BufferInactiveSignRight ctermbg=gray ctermfg=black]]

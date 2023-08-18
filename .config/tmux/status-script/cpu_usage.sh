@@ -18,4 +18,4 @@ else
   fg='red'
 fi
 
-printf "#[fg=$fg]cpu: %6.2f%%" $cpu_usage
+printf "#[fg=$fg]cpu: %3i%%" $cpu_usage

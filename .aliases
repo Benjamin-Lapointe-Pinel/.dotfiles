@@ -8,6 +8,8 @@ alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 alias ip='ip -color=auto'
 
+alias spider='echo "/╲/\\╭( ͡°͡° ͜ʖ ͡°͡°)╮/\╱\\"'
+
 if command -v exa>/dev/null 2>&1
 then
   alias ls='exa -1 --time-style long-iso --git'
@@ -77,3 +79,4 @@ then
   }
 fi
 
+[[ -f $HOME/.aliases_custom ]] && source $HOME/.aliases_custom

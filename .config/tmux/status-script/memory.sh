@@ -54,7 +54,7 @@ END {
 	if (pct >= 90) {
     fg="red"
 	} else if (pct >= 80) {
-    fg="color17"
+    fg="color16"
   } else if (pct >= 70) {
     fg="yellow"
 	} else {

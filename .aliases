@@ -10,9 +10,9 @@ alias ip='ip -color=auto'
 
 alias spider='echo "/╲/\\╭( ͡°͡° ͜ʖ ͡°͡°)╮/\╱\\"'
 
-if command -v exa>/dev/null 2>&1
+if command -v eza>/dev/null 2>&1
 then
-  alias ls='exa -1 --time-style long-iso --git'
+  alias ls='eza -1 --time-style long-iso --git'
 else
   alias ls='ls -1 --color=auto'
 fi

@@ -92,7 +92,7 @@ highlight User4 ctermbg=4 ctermfg=white cterm=bold
 highlight User5 ctermbg=5 ctermfg=black cterm=bold
 highlight User6 ctermbg=6 ctermfg=white cterm=bold
 highlight User7 ctermbg=7 ctermfg=black cterm=bold
-highlight User8 ctermbg=17 ctermfg=white cterm=bold
+highlight User8 ctermbg=16 ctermfg=white cterm=bold
 
 " statusline
 command ToggleQuickfix if empty(filter(getwininfo(), 'v:val.quickfix')) | copen | else | cclose | endif
@@ -213,6 +213,8 @@ autocmd BufNewFile,BufRead *.ino set filetype=arduino
 autocmd BufNewFile,BufRead docker-compose.{yaml,yml} set filetype=docker-compose
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 
+" TODO customize netrw
+" TODO: migrate in ftplugins
 autocmd FileType tex,plaintex,gitcommit,markdown setlocal spell
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType python compiler pylint
@@ -222,6 +224,7 @@ autocmd FileType dockerfile nnoremap <buffer> <F4> :wa<CR>:!docker build -t buil
 autocmd FileType docker-compose nnoremap <buffer> <F4> :wa<CR>:!docker-compose down; docker-compose up -d<CR>
 autocmd FileType arduino nnoremap <buffer> <F4> :wa<CR>:!arduino -v --upload %<CR>
 autocmd FileType java match ColorColumn /\%160v/
+" TODO: reuse textwidth instead of hardcoding 160
 
 " https://vim.fandom.com/wiki/Automatically_open_the_quickfix_window_on_:make
 autocmd QuickfixCmdPost [^l]* nested cwindow

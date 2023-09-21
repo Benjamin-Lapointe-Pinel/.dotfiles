@@ -8,7 +8,7 @@ df -h -P -l / | awk '/\/.*/ {
 	if (percent >= 90) {
     fg="red"
 	} else if (percent >= 80) {
-    fg="color17"
+    fg="color16"
   } else if (percent >= 70) {
     fg="yellow"
 	} else {

@@ -13,7 +13,7 @@ then
   fg='yellow'
 elif [ "$cpu_usage_int" -lt 90 ]
 then
-  fg='color17'
+  fg='color16'
 else
   fg='red'
 fi

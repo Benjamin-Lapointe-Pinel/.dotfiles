@@ -75,3 +75,6 @@
 [submodule ".vim/pack/plugins/start/nerdtree-syntax-highlight"]
 	path = .vim/pack/plugins/start/nerdtree-syntax-highlight
 	url = https://github.com/tiagofumo/vim-nerdtree-syntax-highlight.git
+[submodule ".vim/pack/plugins/start/vinegar"]
+	path = .vim/pack/plugins/start/vinegar
+	url = https://github.com/tpope/vim-vinegar.git

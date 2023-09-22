@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <profiles version="13">
 	<profile kind="CodeFormatterProfile" name="ProjectCodeStyle" version="13">
-		<setting id="org.eclipse.jdt.core.formatter.lineSplit" value="160"/>
+		<setting id="org.eclipse.jdt.core.formatter.lineSplit" value="240"/>
 		<setting id="org.eclipse.jdt.core.formatter.join_wrapped_lines" value="false"/>
 		<setting id="org.eclipse.jdt.core.formatter.tabulation.char" value="space"/>
 		<setting id="org.eclipse.jdt.core.formatter.tabulation.size" value="2"/>
@@ -18,7 +18,7 @@
 		<setting id="org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_package" value="insert"/>
 		<setting id="org.eclipse.jdt.core.formatter.insert_new_line_at_end_of_file_if_missing" value="do not insert"/>
 
-		<setting id="org.eclipse.jdt.core.formatter.comment.line_length" value="160"/>
+		<setting id="org.eclipse.jdt.core.formatter.comment.line_length" value="240"/>
 		<setting id="org.eclipse.jdt.core.formatter.comment.format_line_comments" value="false"/>
 		<setting id="org.eclipse.jdt.core.formatter.join_lines_in_comments" value="false"/>
 

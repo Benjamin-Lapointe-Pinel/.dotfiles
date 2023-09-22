@@ -6,6 +6,7 @@ set clipboard^=unnamed,unnamedplus
 
 let textwidth=240
 let &textwidth=textwidth
+let &colorcolumn=textwidth
 
 set linebreak
 set breakindent
@@ -39,7 +40,6 @@ set viewoptions+=localoptions
 set sessionoptions+=localoptions
 
 set complete+=k
-set colorcolumn=0
 set nomore
 
 set cursorline

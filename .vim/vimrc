@@ -130,12 +130,14 @@ function! StatuslineGitBranch()
     catch
     endtry
   endif
+  return ""
 endfunction
 
 augroup GetGitBranch
   autocmd!
   autocmd VimEnter,WinEnter,BufEnter * call StatuslineGitBranch()
 augroup END
+
 
 set laststatus=2
 set statusline=
@@ -191,27 +193,23 @@ nnoremap <silent> <esc> :noh<return><esc>
 
 " file explorer
 let g:netrw_banner=0
-let g:netrw_liststyle = 3
-let g:netrw_fastbrowse = 2
-let g:netrw_localcopydircmd = 'cp -r'
-if &columns < 80
-  let g:netrw_winsize = 50
-else
-  let g:netrw_winsize = 25
-endif
-let g:NetrwHasOpen=0
+let g:netrw_liststyle=3
+let g:netrw_fastbrowse=2
+let g:netrw_localcopydircmd='cp -r'
+autocmd BufNewFile,BufRead * let b:NetrwHasOpen=0
 function! ToggleNetrw()
-  if g:NetrwHasOpen
+  if b:NetrwHasOpen
     :Rexplore
   else
     :Explore
-    let g:NetrwHasOpen=1
+    let b:NetrwHasOpen=1
   endif
 endfunction
-noremap <C-e> :call ToggleNetrw()<CR>
+nnoremap <silent> <C-e> :call ToggleNetrw()<CR>
 autocmd FileType netrw nnoremap <buffer> <C-c> :Rexplore<CR>
 autocmd FileType netrw nnoremap <buffer> <escape> :Rexplore<CR>
 autocmd FileType netrw setlocal bufhidden=wipe
+autocmd FileType netrw setlocal statusline=\ 
 
 augroup auto_save_view
   autocmd!
@@ -232,7 +230,7 @@ endfunction
 
 autocmd BufNewFile,BufRead *.ino set filetype=arduino
 autocmd BufNewFile,BufRead docker-compose.{yaml,yml} set filetype=docker-compose
-autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufNewFile,BufRead *.md set filetype=markdown
 
 autocmd FileType tex,plaintex,gitcommit,markdown setlocal spell
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
@@ -243,6 +241,7 @@ autocmd FileType dockerfile nnoremap <buffer> <F4> :wa<CR>:!docker build -t buil
 autocmd FileType docker-compose nnoremap <buffer> <F4> :wa<CR>:!docker-compose down; docker-compose up -d<CR>
 autocmd FileType arduino nnoremap <buffer> <F4> :wa<CR>:!arduino -v --upload %<CR>
 autocmd FileType java execute 'match ColorColumn /\%'.textwidth.'v/'
+autocmd FileType qf set colorcolumn=0
 
 " https://vim.fandom.com/wiki/Automatically_open_the_quickfix_window_on_:make
 autocmd QuickfixCmdPost [^l]* nested cwindow
@@ -258,42 +257,18 @@ let g:vimtex_compiler_engine = 'lualatex'
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_syntax_conceal_disable = 1
 
-" nerdtree
-let g:NERDTreeShowHidden = 1
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeDirArrowExpandable = ''
-let g:NERDTreeDirArrowCollapsible = ''
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
-" Alernate between NERDTree and last buffer
-autocmd FileType nerdtree nnoremap <buffer> <C-n> <C-w><C-p>
-" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 | let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
-" If more than one window and previous buffer was NERDTree, go back to it.
-autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" && winnr('$') > 1 | b# | endif
-
-" nerdtree git plugin
-let g:NERDTreeGitStatusConcealBrackets = 1
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-\ 'Modified'  :'M',
-\ 'Staged'    :'S',
-\ 'Untracked' :'U',
-\ 'Renamed'   :'R',
-\ 'Unmerged'  :'═',
-\ 'Deleted'   :'X',
-\ 'Dirty'     :'D',
-\ 'Ignored'   :'I',
-\ 'Clean'     :'C',
-\ 'Unknown'   :'?',
-\ }
-
-" nerdtree syntax highlight
-let g:NERDTreeFileExtensionHighlightFullName = 1
-let g:NERDTreeExactMatchHighlightFullName = 1
-let g:NERDTreePatternMatchHighlightFullName = 1
-
+" fzf
 set rtp+=/usr/bin/fzf
+function! s:build_quickfix_list(lines)
+  call setqflist(map(copy(a:lines), '{ "filename": v:val, "lnum": 1 }'))
+  copen
+  cc
+endfunction
+let g:fzf_action = {
+  \ 'ctrl-q': function('s:build_quickfix_list'),
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit' }
 
 " These lines must be at the very end of the vimrc file.
 " packloadall breaks nvim plugin loading

@@ -287,7 +287,7 @@ require("nvim-dap-virtual-text").setup()
 local dap, dapui = require("dap"), require("dapui")
 vim.fn.sign_define('DapStopped', {text='>'})
 dapui.setup({
-	icons = { collapsed = ">", expanded = "|" },
+	icons = { collapsed = ">", expanded = "-" },
 	layouts = {
 		{
 			elements = {

@@ -4,6 +4,7 @@ clang
 exa
 fzf
 git
+git-delta
 jq
 neovim
 openssh

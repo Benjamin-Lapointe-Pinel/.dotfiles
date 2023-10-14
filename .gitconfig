@@ -1,9 +1,11 @@
+[diff]
+    colorMoved = default
 [user]
 	name = Benjamin Lapointe-Pinel
 [alias]
   aliases = "!git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'"
   conflicts = "diff --name-only --diff-filter=U --relative"
-  branch-prune = "fetch -p ; git branch -r | awk '{print $1}' | grep -E -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -D"
+  branch-prune = "!git fetch -p && git branch -r | awk '{print $1}' | grep -E -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -D"
 	submodule-update = "submodule update --remote --merge"
 	adog = "log --all --decorate --oneline --graph --topo-order"
 	lg = "!git lg1"
@@ -18,9 +20,17 @@
 	autocrlf = input
 	preloadindex = true
 	ignorecase = false
+  pager = delta --color-only
 [pager]
 	branch = false
 [push]
 	autoSetupRemote = true
 [pull]
 	rebase = false
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true
+  light = false
+[merge]
+  conflictstyle = diff3

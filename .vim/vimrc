@@ -19,7 +19,7 @@ set shiftwidth=2
 set tabstop=2
 set softtabstop=2
 set smarttab
-set expandtab
+set noexpandtab
 
 set number relativenumber
 set showmatch
@@ -57,15 +57,15 @@ augroup END
 
 " https://github.com/vim/vim/blob/3c01c4a02897163996639f6f2604c68eab2bd18b/runtime/defaults.vim#L109-L123
 augroup vimStartup
-  au!
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid, when inside an event handler
-  " (happens when dropping a file on gvim) and for a commit message (it's
-  " likely a different one than last time).
-  autocmd BufReadPost *
-    \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
-    \ |   exe "normal! g`\""
-    \ | endif
+	au!
+	" When editing a file, always jump to the last known cursor position.
+	" Don't do it when the position is invalid, when inside an event handler
+	" (happens when dropping a file on gvim) and for a commit message (it's
+	" likely a different one than last time).
+	autocmd BufReadPost *
+	\ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+	\ |   exe "normal! g`\""
+	\ | endif
 augroup END
 
 highlight CursorLine cterm=none ctermbg=18
@@ -98,44 +98,44 @@ highlight User8 ctermbg=16 ctermfg=white cterm=bold
 command ToggleQuickfix if empty(filter(getwininfo(), 'v:val.quickfix')) | copen | else | cclose | endif
 
 function! GetQuickfixNumber()
-  let quickfix_number = len(getqflist())
-  if quickfix_number > 0
-    return '%3* Q ' . quickfix_number . ' %*'
-  endif
-  return ''
+	let quickfix_number = len(getqflist())
+	if quickfix_number > 0
+		return '%3* Q ' . quickfix_number . ' %*'
+	endif
+	return ''
 endfunction
 
 function! GetFileName()
-  let filename = expand("%:~:.")
-  if len(filename) == 0
-    return ''
-  endif
-  let filename = filename.'▕'
-  if getbufinfo(bufnr('%'))[0].changed
-    return '%4* '.filename.'%*'
-  else
-    return '%1  '.filename.'%*'
-  endif
+	let filename = expand("%:~:.")
+	if len(filename) == 0
+		return ''
+	endif
+	let filename = filename.'▕'
+	if getbufinfo(bufnr('%'))[0].changed
+		return '%4* '.filename.'%*'
+	else
+		return '%1  '.filename.'%*'
+	endif
 endfunction
 
 function! StatuslineGitBranch()
-  let b:gitbranch=""
-  if &modifiable
-    try
-      let l:dir=expand('%:p:h')
-      let l:gitrevparse = system("git -C ".l:dir." rev-parse --abbrev-ref HEAD")
-      if !v:shell_error
-        let b:gitbranch="%2* ".substitute(l:gitrevparse, '\n', '', 'g')." %*"
-      endif
-    catch
-    endtry
-  endif
-  return ""
+	let b:gitbranch=""
+	if &modifiable
+		try
+			let l:dir=expand('%:p:h')
+			let l:gitrevparse = system("git -C ".l:dir." rev-parse --abbrev-ref HEAD")
+			if !v:shell_error
+				let b:gitbranch="%2* ".substitute(l:gitrevparse, '\n', '', 'g')." %*"
+			endif
+		catch
+		endtry
+	endif
+	return ""
 endfunction
 
 augroup GetGitBranch
-  autocmd!
-  autocmd VimEnter,WinEnter,BufEnter * call StatuslineGitBranch()
+	autocmd!
+	autocmd VimEnter,WinEnter,BufEnter * call StatuslineGitBranch()
 augroup END
 
 
@@ -199,12 +199,12 @@ let g:netrw_fastbrowse=2
 let g:netrw_localcopydircmd='cp -r'
 autocmd BufNewFile,BufRead * let b:NetrwHasOpen=0
 function! ToggleNetrw()
-  if b:NetrwHasOpen
-    :Rexplore
-  else
-    :Explore
-    let b:NetrwHasOpen=1
-  endif
+	if b:NetrwHasOpen
+		:Rexplore
+	else
+		:Explore
+		let b:NetrwHasOpen=1
+	endif
 endfunction
 nnoremap <silent> <C-e> :call ToggleNetrw()<CR>
 autocmd FileType netrw nnoremap <buffer> <C-c> :Rexplore<CR>
@@ -213,10 +213,10 @@ autocmd FileType netrw setlocal bufhidden=wipe
 autocmd FileType netrw setlocal statusline=\ 
 
 augroup auto_save_view
-  autocmd!
-  " autocmd BufWinLeave * set spellfile& " needed for spellcheck to work with view?
-  autocmd BufWinLeave * silent! mkview
-  autocmd BufWinEnter * silent! loadview
+	autocmd!
+	" autocmd BufWinLeave * set spellfile& " needed for spellcheck to work with view?
+	autocmd BufWinLeave * silent! mkview
+	autocmd BufWinEnter * silent! loadview
 augroup END
 
 " https://peps.python.org/pep-0350/
@@ -261,15 +261,15 @@ let g:vimtex_syntax_conceal_disable = 1
 " fzf
 set rtp+=/usr/bin/fzf
 function! s:build_quickfix_list(lines)
-  call setqflist(map(copy(a:lines), '{ "filename": v:val, "lnum": 1 }'))
-  copen
-  cc
+	call setqflist(map(copy(a:lines), '{ "filename": v:val, "lnum": 1 }'))
+	copen
+	cc
 endfunction
 let g:fzf_action = {
-  \ 'ctrl-q': function('s:build_quickfix_list'),
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-s': 'split',
-  \ 'ctrl-v': 'vsplit' }
+			\ 'ctrl-q': function('s:build_quickfix_list'),
+			\ 'ctrl-t': 'tab split',
+			\ 'ctrl-s': 'split',
+			\ 'ctrl-v': 'vsplit' }
 
 " These lines must be at the very end of the vimrc file.
 " packloadall breaks nvim plugin loading

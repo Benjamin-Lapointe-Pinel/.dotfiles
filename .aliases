@@ -12,7 +12,7 @@ alias spider='echo "/╲/\\╭( ͡°͡° ͜ʖ ͡°͡°)╮/\╱\\"'
 
 if command -v eza>/dev/null 2>&1
 then
-  alias ls='eza -1 --time-style long-iso --git'
+  alias ls='eza --oneline --git --time-style long-iso'
 else
   alias ls='ls -1 --color=auto'
 fi

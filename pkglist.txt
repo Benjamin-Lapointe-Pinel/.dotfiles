@@ -1,6 +1,7 @@
 bat
 btop
 clang
+diff-so-fancy
 exa
 fzf
 git

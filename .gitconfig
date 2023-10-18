@@ -18,9 +18,12 @@
 	autocrlf = input
 	preloadindex = true
 	ignorecase = false
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [pager]
 	branch = false
 [push]
 	autoSetupRemote = true
 [pull]
 	rebase = false
+[interactive]
+	diffFilter = diff-so-fancy --patch

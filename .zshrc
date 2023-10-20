@@ -5,7 +5,7 @@
 
 # https://stackoverflow.com/a/10737906
 include () {
-	[[ -f "$1" ]] && source "$1"
+  [[ -f "$1" ]] && source "$1"
 }
 
 autoload -Uz compinit && compinit -i
@@ -45,3 +45,7 @@ pasteinit() {
 pastefinish() {
   zle -N self-insert $OLD_SELF_INSERT
 }
+
+fg_function() { fg }
+zle -N fg_widget fg_function
+bindkey '^Z' fg_widget

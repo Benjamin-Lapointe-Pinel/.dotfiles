@@ -1,6 +1,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# disable suspend output
+stty susp undef
+
 source $HOME/.env
 source $HOME/.aliases
 source $HOME/.base16_theme

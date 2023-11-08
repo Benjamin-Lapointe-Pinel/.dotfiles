@@ -51,7 +51,7 @@ docker() {
 if command -v bat>/dev/null 2>&1
 then
 	cat() {
-		bat --paging=never -p --theme=base16 "$@"
+		bat --paging=never -p --theme=base16-256 "$@"
 	}
 fi
 

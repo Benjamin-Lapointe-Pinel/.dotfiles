@@ -18,7 +18,7 @@
 	autocrlf = input
 	preloadindex = true
 	ignorecase = false
-	pager = delta --color-only
+  pager = delta --color-only
 [pager]
 	branch = false
 [push]
@@ -31,3 +31,5 @@
 	colorMoved = default
 [merge]
 	conflictstyle = diff3
+[delta]
+	theme = base16-256

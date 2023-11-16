@@ -228,10 +228,13 @@ require'nvim-treesitter.configs'.setup({
 	}
 })
 
-vim.cmd [[highlight IndentBlanklineChar ctermfg=19]]
-require("indent_blankline").setup {
-  use_treesitter = true,
-  max_indent_increase = 1,
+require("ibl").setup {
+  indent = {
+    char = '│',
+  },
+	scope = {
+		enabled = false,
+	}
 }
 
 require("mason").setup()

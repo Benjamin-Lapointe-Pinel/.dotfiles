@@ -45,3 +45,7 @@ pasteinit() {
 pastefinish() {
   zle -N self-insert $OLD_SELF_INSERT
 }
+
+fg_function() { fg }
+zle -N fg_widget fg_function
+bindkey '^Z' fg_widget

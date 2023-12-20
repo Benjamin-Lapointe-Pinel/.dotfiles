@@ -33,3 +33,5 @@
 	conflictstyle = diff3
 [delta]
 	theme = base16-256
+[init]
+	defaultBranch = master

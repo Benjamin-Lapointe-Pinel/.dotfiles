@@ -1,0 +1,23 @@
+{
+    "background": "#1D2021",
+    "black": "#1D2021",
+    "blue": "#1E8BAC",
+    "brightBlack": "#6F7579",
+    "brightBlue": "#1E8BAC",
+    "brightCyan": "#1BA595",
+    "brightGreen": "#88B92D",
+    "brightPurple": "#BE4264",
+    "brightRed": "#D72638",
+    "brightWhite": "#E5E5E5",
+    "brightYellow": "#F19D1A",
+    "cursorColor": "#D5D5D5",
+    "cyan": "#1BA595",
+    "foreground": "#D5D5D5",
+    "green": "#88B92D",
+    "name": "base16-helios-scheme",
+    "purple": "#BE4264",
+    "red": "#D72638",
+    "selectionBackground": "#D5D5D5",
+    "white": "#D5D5D5",
+    "yellow": "#F19D1A"
+}

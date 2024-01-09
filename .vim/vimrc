@@ -180,6 +180,8 @@ nnoremap <C-\> :vertical terminal<CR>
 tnoremap <C-\> exit<CR>
 
 " miscellaneous
+nnoremap ]q :cnext<CR>
+nnoremap [q :cprev<CR>
 nnoremap Q gq
 nnoremap gb :ls<CR>:b 
 nmap <leader>d :bp\|bd #<CR>

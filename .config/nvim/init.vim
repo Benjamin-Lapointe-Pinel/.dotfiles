@@ -154,7 +154,7 @@ require('barbar').setup{
     },
     inactive = {separator = {left = '', right = '▕'}},
   },
-  exclude_ft = {'qf'},
+  exclude_ft = {'qf', 'dapui_watches'},
 }
 
 --vim.cmd[[hi! link NormalFloat Normal]] -- https://vi.stackexchange.com/a/39079
@@ -197,13 +197,14 @@ on_attach = function(client, bufnr)
 	vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 
 	vim.keymap.set('n', '<F5>', "<Cmd>lua require'dap'.continue()<CR>", opts)
+	vim.keymap.set('n', '<F29>', "<Cmd>lua require'dap'.run_last()<CR>", opts)
 	vim.keymap.set('n', '<F6>', "<Cmd>lua require'dap'.step_over()<CR>", opts)
 	vim.keymap.set('n', '<F7>', "<Cmd>lua require'dap'.step_into()<CR>", opts)
 	vim.keymap.set('n', '<F8>', "<Cmd>lua require'dap'.step_out()<CR>", opts)
 	vim.keymap.set('n', '<F9>', "<Cmd>lua require'dap'.toggle_breakpoint()<CR>", opts)
-	vim.keymap.set('n', '<F10>', "<Cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
-	vim.keymap.set({'n', 'v'}, '<F11>', '<Cmd>lua require("dapui").eval()<CR>', opts)
-	vim.keymap.set('n', '<F12>', ":DapTerminate<CR>", opts)
+	vim.keymap.set('n', '<F33>', "<Cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
+	vim.keymap.set('n', '<F10>', '<Cmd>lua require("dapui").eval()<CR>', opts)
+	vim.keymap.set('n', '<F12>', ':DapTerminate<CR><Cmd>lua require("dapui").close()<CR>', opts)
 
 	vim.cmd [[ command! DapClearBreakpoints lua require'dap'.clear_breakpoints() ]]
 	vim.cmd [[ command! DapRepl lua require'dap'.repl.toggle() ]]
@@ -294,19 +295,19 @@ dapui.setup({
 	layouts = {
 		{
 			elements = {
-				{ id = "scopes", size = 0.5 },
-				"watches",
-			},
-			size = 40,
-			position = "right",
-		},
-		{
-			elements = {
 				"console",
 			},
 			size = 0.25,
 			position = "bottom",
-		}
+		},
+		{
+			elements = {
+				"watches",
+				{ id = "scopes", size = 0.5 },
+			},
+			size = 40,
+			position = "right",
+		},
 	},
 	controls = {
     enabled = true,

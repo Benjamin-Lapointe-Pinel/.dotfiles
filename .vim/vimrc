@@ -77,6 +77,10 @@ highlight clear SpellRare
 highlight SpellRare cterm=underline ctermfg=green
 highlight clear SpellLocal
 highlight SpellLocal cterm=underline ctermfg=blue
+highlight DiffAdd ctermfg=0
+highlight DiffDelete ctermfg=0
+highlight DiffChange ctermfg=0
+highlight DiffText ctermfg=0
 highlight Pmenu ctermbg=gray ctermfg=black
 highlight PmenuSel ctermbg=yellow ctermfg=black
 highlight PmenuSbar ctermbg=gray ctermfg=white

@@ -31,6 +31,9 @@
 	colorMoved = default
 [merge]
 	conflictstyle = diff3
+	tool = nvimdiff
+[mergetool]
+	prompt = false
 [delta]
 	theme = base16-256
 [init]

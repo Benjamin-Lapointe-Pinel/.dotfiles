@@ -40,7 +40,6 @@ set viewoptions+=localoptions
 set sessionoptions+=localoptions
 
 set complete+=k
-set nomore
 
 set cursorline
 set cursorlineopt=line
@@ -142,7 +141,6 @@ augroup GetGitBranch
 	autocmd!
 	autocmd VimEnter,WinEnter,BufEnter * call StatuslineGitBranch()
 augroup END
-
 
 set laststatus=2
 set statusline=

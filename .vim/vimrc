@@ -4,9 +4,8 @@ set hidden
 set encoding=UTF-8
 set clipboard^=unnamed,unnamedplus
 
-let textwidth=220
-let &textwidth=textwidth
-let &colorcolumn=textwidth
+set textwidth=320
+set colorcolumn=+1
 
 set linebreak
 set breakindent
@@ -143,6 +142,7 @@ augroup GetGitBranch
 	autocmd VimEnter,WinEnter,BufEnter * call StatuslineGitBranch()
 augroup END
 
+
 set laststatus=2
 set statusline=
 set statusline+=%{%b:gitbranch%}
@@ -242,14 +242,15 @@ autocmd BufNewFile,BufRead *.md set filetype=markdown
 
 autocmd FileType tex,plaintex,gitcommit,markdown setlocal spell
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-autocmd FileType python compiler pylint
-autocmd FileType python nnoremap <buffer> <F4> :w<CR>:make %<CR>
-autocmd FileType tex,plaintex nnoremap <F4> :w<CR>:VimtexCompile<CR>
-autocmd FileType dockerfile nnoremap <buffer> <F4> :wa<CR>:!docker build -t build . && docker run --rm -it $(docker build -q .)<CR>
-autocmd FileType docker-compose nnoremap <buffer> <F4> :wa<CR>:!docker-compose down; docker-compose up -d<CR>
-autocmd FileType arduino nnoremap <buffer> <F4> :wa<CR>:!arduino -v --upload %<CR>
-autocmd FileType java execute 'match ColorColumn /\%'.textwidth.'v/'
 autocmd FileType qf set colorcolumn=0
+autocmd FileType python compiler pylint
+
+autocmd FileType python nnoremap <buffer> <F5> :w<CR>:make %<CR>
+autocmd FileType tex,plaintex nnoremap <F5> :w<CR>:VimtexCompile<CR>
+autocmd FileType dockerfile nnoremap <buffer> <F5> :wa<CR>:!docker build -t build . && docker run --rm -it $(docker build -q .)<CR>
+autocmd FileType docker-compose nnoremap <buffer> <F5> :wa<CR>:!docker-compose down; docker-compose up -d<CR>
+autocmd FileType arduino nnoremap <buffer> <F5> :wa<CR>:!arduino -v --upload %<CR>
+
 
 " https://vim.fandom.com/wiki/Automatically_open_the_quickfix_window_on_:make
 autocmd QuickfixCmdPost [^l]* nested cwindow

@@ -18,7 +18,7 @@
 		<setting id="org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_package" value="insert"/>
 		<setting id="org.eclipse.jdt.core.formatter.insert_new_line_at_end_of_file_if_missing" value="do not insert"/>
 
-		<setting id="org.eclipse.jdt.core.formatter.comment.line_length" value="180"/>
+		<setting id="org.eclipse.jdt.core.formatter.comment.line_length" value="160"/>
 		<setting id="org.eclipse.jdt.core.formatter.comment.format_line_comments" value="false"/>
 		<setting id="org.eclipse.jdt.core.formatter.join_lines_in_comments" value="false"/>
 

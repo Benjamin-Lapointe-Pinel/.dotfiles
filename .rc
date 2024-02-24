@@ -10,7 +10,7 @@ source $HOME/.base16_theme
 
 [[ -f $HOME/.rc_custom ]] && source $HOME/.rc_custom
 
-[ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ] && tmux new -As0 && exit $?
+[ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ] && tmux && exit $?
 
 #if [[ $(tput cols) -ge 100 ]]
 #then

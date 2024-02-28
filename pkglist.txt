@@ -10,6 +10,7 @@ neovim
 openssh
 stow
 sxiv
+sysstat
 task
 taskwarrior-tui
 tmux

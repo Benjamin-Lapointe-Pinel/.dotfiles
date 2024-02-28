@@ -1,5 +1,3 @@
-[[ -f $HOME/.rc ]] && source $HOME/.rc
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -9,7 +7,9 @@ include () {
 }
 
 autoload -Uz compinit && compinit -i
+autoload -U +X bashcompinit && bashcompinit
 
+include $HOME/.rc 
 include $HOME/.p10k.zsh
 include $HOME/.zsh/key-bindings/key-bindings.zsh
 include $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh

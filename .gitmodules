@@ -69,3 +69,6 @@
 [submodule ".vim/pack/plugins/start/vinegar"]
 	path = .vim/pack/plugins/start/vinegar
 	url = https://github.com/tpope/vim-vinegar.git
+[submodule ".vim/pack/plugins/start/signature"]
+	path = .vim/pack/plugins/start/signature
+	url = git@github.com:kshenoy/vim-signature.git

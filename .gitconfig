@@ -31,5 +31,12 @@
 	colorMoved = default
 [merge]
 	conflictstyle = diff3
+	tool = fugitive
+[mergetool]
+	prompt = false
+[mergetool "fugitive"]
+	cmd = nvim -f -c \"Git mergetool\" -c \"cclose\" -c \"Gdiffsplit!\"
 [delta]
 	theme = base16-256
+[init]
+	defaultBranch = master

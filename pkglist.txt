@@ -2,12 +2,14 @@ bat
 btop
 clang
 exa
+fd
 fzf
 git
 git-delta
 jq
 neovim
 openssh
+ripgrep-all
 stow
 sxiv
 sysstat

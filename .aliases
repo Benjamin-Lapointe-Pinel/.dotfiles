@@ -8,7 +8,7 @@ alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 alias ip='ip -color=auto'
 
-alias spider='echo "/╲/\\╭( ͡°͡° ͜ʖ ͡°͡°)╮/\╱\\"'
+alias spider='echo "/╲/\\╭( ͡°͡° ͜ʖ ͡°͡°)╮/\\╱\\"'
 bird() {
   echo "      ,----,\n ___.\`o    o\`,\n \`=== \____/ :\n   \`'.      .'\n      )    (                   ,\n     /      \_________________/|\n    /                          |\n   |                           ;\n   |               _____       /\n   |      \       ______7    ,'\n   |       \    ______7     /\n    \       \`-,____7      ,'\n     \`\                  /\n       \`----------------'\n             |    |\n             |    |\n             |    |\n             |    |\n           --+  --+"
 }

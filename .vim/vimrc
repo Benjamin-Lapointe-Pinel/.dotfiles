@@ -186,7 +186,7 @@ nnoremap <C-q> :ToggleQuickfix<CR>
 nnoremap ]q :cnext<CR>
 nnoremap [q :cprev<CR>
 nnoremap Q gq
-nnoremap gb :ls<CR>:b 
+nnoremap gb :ls<CR>:b
 nmap <leader>d :bp\|bd #<CR>
 nmap <leader>w :bp\|bw #<CR>
 nnoremap <C-space> :set list! list?<CR>
@@ -199,7 +199,7 @@ nnoremap <silent> <esc> :noh<return><esc>
 " nnoremap <esc>^[ <esc>^[
 
 " highlight trailing whitespaces
-autocmd BufWinEnter * call matchadd('Error', '\s\+\%#\@<!$')
+autocmd BufWinEnter * call matchadd('Error', '\s\+\%#\@<!$', -1)
 
 " file explorer
 let g:netrw_banner=0

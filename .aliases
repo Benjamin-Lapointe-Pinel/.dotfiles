@@ -15,9 +15,9 @@ bird() {
 
 if command -v eza>/dev/null 2>&1
 then
-  alias ls='eza --oneline --git --time-style long-iso'
+  alias ls='eza --oneline --git --time-style long-iso --group-directories-first'
 else
-  alias ls='ls -1 --color=auto'
+  alias ls='ls -1 --color=auto --group-directories-first'
 fi
 alias ll='ls -alF'
 alias la='ls -a'

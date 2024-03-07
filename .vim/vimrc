@@ -20,8 +20,8 @@ set softtabstop=2
 set smarttab
 set noexpandtab
 
+set hlsearch incsearch
 set number relativenumber
-set showmatch
 set showcmd
 set signcolumn=yes
 
@@ -142,7 +142,6 @@ augroup GetGitBranch
 	autocmd VimEnter,WinEnter,BufEnter * call StatuslineGitBranch()
 augroup END
 
-
 set laststatus=2
 set statusline=
 set statusline+=%{%b:gitbranch%}
@@ -198,6 +197,9 @@ inoremap <c-space> <c-n>
 nnoremap <silent> <esc> :noh<return><esc>
 " BUG maybe not good idea to remove this
 " nnoremap <esc>^[ <esc>^[
+
+" highlight trailing whitespaces
+autocmd BufWinEnter * call matchadd('Error', '\s\+\%#\@<!$')
 
 " file explorer
 let g:netrw_banner=0

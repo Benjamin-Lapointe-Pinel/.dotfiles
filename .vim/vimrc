@@ -252,6 +252,9 @@ function! VimGrepCodeTags(...) abort
 	execute 'vimgrep /TODO\|FIXME\|BUG\|NOBUG\|RFE\|IDEA\|HACK\||CAVEAT\|NOTE\|FAQ\|SEE\|TODOC\|CRED\|RVD/j' join(files)
 endfunction
 
+" remove trailing whitespaces
+command -range=% RemoveTrailingWhitespaces <line1>,<line2>s/^\s\+$//
+
 autocmd BufNewFile,BufRead *.ino set filetype=arduino
 autocmd BufNewFile,BufRead docker-compose.{yaml,yml} set filetype=docker-compose
 autocmd BufNewFile,BufRead *.md set filetype=markdown

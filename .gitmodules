@@ -72,3 +72,6 @@
 [submodule ".vim/pack/plugins/start/signature"]
 	path = .vim/pack/plugins/start/signature
 	url = git@github.com:kshenoy/vim-signature.git
+[submodule ".zsh/fzf-tab"]
+	path = .zsh/fzf-tab
+	url = https://github.com/Aloxaf/fzf-tab

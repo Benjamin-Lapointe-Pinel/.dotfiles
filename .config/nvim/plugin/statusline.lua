@@ -15,9 +15,10 @@ vim.api.nvim_create_user_command('Diagnostic',
 		end
 	end,
 	{
-		nargs = 1,
+		nargs = '?',
 		complete = function(ArgLead, CmdLine, CursorPos)
-			return { 'all', 'error', 'warning', 'info', 'hint' }
+			args = { 'all', 'error', 'warning', 'info', 'hint' }
+			return vim.fn.filter(args, 'v:val =~ "^'..ArgLead..'"')
 		end,
 		desc = 'Set diagnostic errors to quickfix list'
 	}

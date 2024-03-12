@@ -75,3 +75,6 @@
 [submodule ".zsh/fzf-tab"]
 	path = .zsh/fzf-tab
 	url = https://github.com/Aloxaf/fzf-tab
+[submodule ".vim/pack/plugins/start/codeium"]
+	path = .vim/pack/plugins/start/codeium
+	url = https://github.com/Exafunction/codeium.vim

@@ -138,6 +138,19 @@ function! StatuslineGitBranch()
 	return ""
 endfunction
 
+highlight CodeiumOn ctermbg=cyan ctermfg=black cterm=bold
+highlight CodeiumOff ctermbg=gray ctermfg=black cterm=bold
+function! CodeiumStatus()
+	let codeium = codeium#GetStatusString()
+	if len(codeium) == 0
+		return ''
+	elseif codeium == 'OFF'
+		return '▕%#CodeiumOff# CODEIUM '.codeium.'▕%*'
+	else
+		return '▕%#CodeiumOn# CODEIUM '.codeium.'▕%*'
+	endif
+endfunction
+
 augroup GetGitBranch
 	autocmd!
 	autocmd VimEnter,WinEnter,BufEnter * call StatuslineGitBranch()
@@ -149,6 +162,7 @@ set statusline+=%{%b:gitbranch%}
 set statusline+=%<%{%GetFileName()%}
 set statusline+=%{&readonly?'\ \ ':''}%{strlen(&ft)?join(['\ ',toupper(&ft)],''):''}\ [%{&ff}][%{strlen(&fenc)?&fenc:'none'}][%{&spelllang}]▕
 set statusline+=\ %=\ ▕\ %{wordcount().words}\ words\ %5(%l%):%-3(%v%)\ %3(%p%)%%\ 
+set statusline+=%{%CodeiumStatus()%}
 set statusline+=%{%GetQuickfixNumber()%}
 
 " navigate windows from any mode
@@ -270,17 +284,20 @@ autocmd FileType dockerfile nnoremap <buffer> <F5> :wa<CR>:!docker build -t buil
 autocmd FileType docker-compose nnoremap <buffer> <F5> :wa<CR>:!docker-compose down; docker-compose up -d<CR>
 autocmd FileType arduino nnoremap <buffer> <F5> :wa<CR>:!arduino -v --upload %<CR>
 
-
 " https://vim.fandom.com/wiki/Automatically_open_the_quickfix_window_on_:make
 autocmd QuickfixCmdPost [^l]* nested cwindow
 autocmd QuickfixCmdPost    l* nested lwindow
 
-let g:indentLine_char = '│'
-let g:indentLine_setConceal = 0
+" codeium
+let g:codeium_no_map_tab = v:false
+imap <script><nowait><expr> <C-g> codeium#Accept()
+command CodeiumChat call codeium#Chat()
 
+" termdebug
 packadd termdebug
 let g:termdebug_wide = 1
 
+" vimtex
 let g:vimtex_compiler_engine = 'lualatex'
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_syntax_conceal_disable = 1
@@ -293,10 +310,10 @@ function! s:build_quickfix_list(lines)
 	cc
 endfunction
 let g:fzf_action = {
-			\ 'ctrl-q': function('s:build_quickfix_list'),
-			\ 'ctrl-t': 'tab split',
-			\ 'ctrl-s': 'split',
-			\ 'ctrl-v': 'vsplit' }
+\ 'ctrl-q': function('s:build_quickfix_list'),
+\ 'ctrl-t': 'tab split',
+\ 'ctrl-s': 'split',
+\ 'ctrl-v': 'vsplit' }
 
 " These lines must be at the very end of the vimrc file.
 " packloadall breaks nvim plugin loading

@@ -46,6 +46,9 @@ pastefinish() {
   zle -N self-insert $OLD_SELF_INSERT
 }
 
-fg_function() { fg }
+fg_function() {
+	fg
+	zle accept-line
+}
 zle -N fg_widget fg_function
 bindkey '^Z' fg_widget

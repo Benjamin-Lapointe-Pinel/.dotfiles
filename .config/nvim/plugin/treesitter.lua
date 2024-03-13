@@ -20,7 +20,7 @@ require'nvim-treesitter.configs'.setup {
 
 		select = {
 			enable = true,
-			lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+			lookahead = false,
 			keymaps = {
 				["ab"] = "@block.outer",
 				["ib"] = "@block.inner",
@@ -52,21 +52,21 @@ require'nvim-treesitter.configs'.setup {
 			enable = true,
 			set_jumps = true,
 			goto_next_start = {
-				["]m"] = "@function.outer",
+				["]f"] = "@function.outer",
 				["]]"] = { query = "@class.outer", desc = "Next class start" },
 				["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
 				["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
 			},
 			goto_next_end = {
-				["]M"] = "@function.outer",
+				["]F"] = "@function.outer",
 				["]["] = "@class.outer",
 			},
 			goto_previous_start = {
-				["[m"] = "@function.outer",
+				["[f"] = "@function.outer",
 				["[["] = "@class.outer",
 			},
 			goto_previous_end = {
-				["[M"] = "@function.outer",
+				["[F"] = "@function.outer",
 				["[]"] = "@class.outer",
 			},
 		},

@@ -290,7 +290,7 @@ autocmd QuickfixCmdPost    l* nested lwindow
 
 " codeium
 let g:codeium_no_map_tab = v:false
-imap <script><nowait><expr> <C-g> codeium#Accept()
+imap <script><nowait><expr> <C-x> codeium#Accept()
 command CodeiumChat call codeium#Chat()
 
 " termdebug

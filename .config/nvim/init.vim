@@ -41,7 +41,6 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'f3fora/cmp-spell'
 Plug 'rcarriga/cmp-dap'
 Plug 'mfussenegger/nvim-jdtls'
-Plug 'akinsho/toggleterm.nvim'
 call plug#end()
 
 let g:barbar_auto_setup = v:false

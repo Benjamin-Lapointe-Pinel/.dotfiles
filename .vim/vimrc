@@ -229,7 +229,14 @@ nnoremap <silent> <esc> :noh<return><esc>
 " highlight trailing whitespaces
 let blacklist = ['floaterm']
 autocmd BufWinEnter * if index(blacklist, &ft) < 0 | let w = matchadd('Error', '\s\+\%#\@<!$', -1) | endif
-autocmd BufWinEnter,TermEnter * if exists('w') && index(blacklist, &ft) >= 0 | call matchdelete(w) | unlet w | endif
+autocmd BufWinEnter * if exists('w') && index(blacklist, &ft) >= 0 | call matchdelete(w) | unlet w | endif
+
+augroup terminal_settings
+	autocmd!
+	autocmd TermOpen * startinsert
+	autocmd TermOpen * :set nonumber norelativenumber
+	autocmd TermEnter * if exists('w') && index(blacklist, &ft) >= 0 | call matchdelete(w) | unlet w | endif
+augroup END
 
 " file explorer
 let g:netrw_banner=0

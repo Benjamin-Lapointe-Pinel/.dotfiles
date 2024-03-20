@@ -78,3 +78,9 @@
 [submodule ".vim/pack/plugins/start/codeium"]
 	path = .vim/pack/plugins/start/codeium
 	url = https://github.com/Exafunction/codeium.vim
+[submodule ".vim/pack/plugins/start/lf"]
+	path = .vim/pack/plugins/start/lf
+	url = git@github.com:ptzz/lf.vim.git
+[submodule ".vim/pack/plugins/start/floaterm"]
+	path = .vim/pack/plugins/start/floaterm
+	url = git@github.com:voldikss/vim-floaterm.git

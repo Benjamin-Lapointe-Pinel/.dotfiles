@@ -227,7 +227,9 @@ nnoremap <silent> <esc> :noh<return><esc>
 " nnoremap <esc>^[ <esc>^[
 
 " highlight trailing whitespaces
-autocmd BufWinEnter * call matchadd('Error', '\s\+\%#\@<!$', -1)
+let blacklist = ['floaterm']
+autocmd BufWinEnter * if index(blacklist, &ft) < 0 | let w = matchadd('Error', '\s\+\%#\@<!$', -1) | endif
+autocmd BufWinEnter,TermEnter * if exists('w') && index(blacklist, &ft) >= 0 | call matchdelete(w) | unlet w | endif
 
 " file explorer
 let g:netrw_banner=0
@@ -289,6 +291,7 @@ autocmd QuickfixCmdPost [^l]* nested cwindow
 autocmd QuickfixCmdPost    l* nested lwindow
 
 " codeium
+let g:codeium_enabled = v:false
 let g:codeium_no_map_tab = v:false
 imap <script><nowait><expr> <C-x> codeium#Accept()
 command CodeiumChat call codeium#Chat()

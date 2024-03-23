@@ -69,12 +69,16 @@
 [submodule ".vim/pack/plugins/start/vinegar"]
 	path = .vim/pack/plugins/start/vinegar
 	url = https://github.com/tpope/vim-vinegar.git
+	ignore = all
 [submodule ".vim/pack/plugins/start/signature"]
 	path = .vim/pack/plugins/start/signature
 	url = git@github.com:kshenoy/vim-signature.git
+	ignore = all
 [submodule ".zsh/fzf-tab"]
 	path = .zsh/fzf-tab
 	url = https://github.com/Aloxaf/fzf-tab
+	ignore = all
 [submodule ".vim/pack/plugins/start/codeium"]
 	path = .vim/pack/plugins/start/codeium
 	url = https://github.com/Exafunction/codeium.vim
+	ignore = all

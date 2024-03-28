@@ -190,6 +190,10 @@ nnoremap <M-left>  <C-w>h
 nnoremap <M-down>  <C-w>j
 nnoremap <M-up>    <C-w>k
 nnoremap <M-right> <C-w>l
+nnoremap <C-w><S-left>  <C-w>H
+nnoremap <C-w><S-down>  <C-w>J
+nnoremap <C-w><S-up>    <C-w>K
+nnoremap <C-w><S-right> <C-w>L
 
 " wildmenu uses up and down arrows instead (https://vi.stackexchange.com/a/22628)
 set wildcharm=<C-Z>
@@ -229,12 +233,6 @@ nnoremap <silent> <esc> :noh<return><esc>
 " highlight trailing whitespaces
 let ft_bt_ws_blacklist = ['nofile', 'terminal', 'lspinfo']
 autocmd BufWinEnter * let w = matchadd('Error', '\s\+\%#\@<!$', -1) | if index(ft_bt_ws_blacklist, &ft) >= 0 || index(ft_bt_ws_blacklist, &bt) >= 0 | call matchdelete(w) | unlet w | endif
-
-augroup terminal_settings
-	autocmd!
-	autocmd TermOpen * startinsert
-	autocmd TermOpen * :set nonumber norelativenumber
-augroup END
 
 " file explorer
 let g:netrw_banner=0
@@ -285,7 +283,7 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType qf set colorcolumn=0
 autocmd FileType python compiler pylint
 
-autocmd FileType python nnoremap <buffer> <F5> :w<CR>:make %<CR>
+autocmd FileType c,cpp,python nnoremap <buffer> <F5> :w<CR>:make %<CR>
 autocmd FileType tex,plaintex nnoremap <F5> :w<CR>:VimtexCompile<CR>
 autocmd FileType dockerfile nnoremap <buffer> <F5> :wa<CR>:!docker build -t build . && docker run --rm -it $(docker build -q .)<CR>
 autocmd FileType docker-compose nnoremap <buffer> <F5> :wa<CR>:!docker-compose down; docker-compose up -d<CR>

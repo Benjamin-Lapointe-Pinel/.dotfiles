@@ -17,6 +17,8 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 call plug#begin()
 Plug 'junegunn/vim-plug'
 Plug 'neovim/nvim-lspconfig'
+Plug 'mfussenegger/nvim-lint'
+Plug 'mhartington/formatter.nvim'
 Plug 'mfussenegger/nvim-dap'
 Plug 'mfussenegger/nvim-dap-python'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -52,3 +54,10 @@ nnoremap [d :lua vim.diagnostic.goto_prev()<CR>
 nnoremap ]d :lua vim.diagnostic.goto_next()<CR>
 nnoremap <leader>e :lua vim.diagnostic.open_float()<CR>
 nnoremap <leader>q :lua vim.diagnostic.setloclist()<CR>
+
+augroup terminal_settings
+	autocmd!
+	autocmd TermOpen * startinsert
+	autocmd TermOpen * :set nonumber norelativenumber
+augroup END
+

@@ -75,7 +75,3 @@ require'nvim-treesitter.configs'.setup {
 }
 
 local ts_repeat_move = require "nvim-treesitter.textobjects.repeatable_move"
-
--- Repeat movement with ; and ,
-vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move_next)
-vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_previous)

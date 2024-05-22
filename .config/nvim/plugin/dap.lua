@@ -1,11 +1,13 @@
-require("mason-nvim-dap").setup{
+require("mason-nvim-dap").setup {
 	ensure_installed = {
-		'javadbg',
-		'python'
+		'bash',
 	},
+	handlers = {},
 	automatic_installation = true,
 }
+
 require('dap-python').setup('/usr/bin/python')
+
 require("nvim-dap-virtual-text").setup()
 
 local dap, dapui = require("dap"), require("dapui")
@@ -54,3 +56,67 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
 	dapui.close()
 end
+
+-- vscode javascript debug adapter
+
+require("dap-vscode-js").setup({
+  debugger_path = os.getenv('HOME') .. "/.config/nvim/dependencies/vscode-js-debug",
+  adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' },
+})
+
+for _, language in ipairs({ "typescript", "javascript" }) do
+	require("dap").configurations[language] = {
+		{
+			type = "pwa-node",
+			request = "launch",
+			name = "Launch file",
+			program = "${file}",
+			cwd = "${workspaceFolder}",
+		},
+		{
+			type = "pwa-node",
+			request = "attach",
+			name = "Attach",
+			processId = require'dap.utils'.pick_process,
+			cwd = "${workspaceFolder}",
+		}
+	}
+end
+
+-- require("dap").adapters["pwa-node"] = {
+--   type = "server",
+--   host = "localhost",
+--   port = "${port}",
+--   executable = {
+--     command = "node",
+--     args = {os.getenv("HOME") .. "/.local/share/nvim/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js"},
+--   }
+-- }
+
+-- require("dap").configurations.javascript = {
+--   {
+--     type = "pwa-node",
+--     request = "launch",
+--     name = "Launch file",
+--     program = "${file}",
+--     cwd = "${workspaceFolder}",
+-- 		outFiles = {
+-- 			"${workspaceFolder}/**/*.(m|c|)js",
+-- 			"!**/node_modules/**"
+-- 		},
+--   },
+-- }
+
+-- require("dap").configurations.typescript = {
+--   {
+--     type = "pwa-node",
+--     request = "launch",
+--     name = "Launch file",
+--     program = "${file}",
+--     cwd = "${workspaceFolder}",
+-- 		outFiles = {
+-- 			"${workspaceFolder}/**/*.(m|c|)js",
+-- 			"!**/node_modules/**"
+-- 		},
+--   },
+-- }

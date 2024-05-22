@@ -6,7 +6,6 @@ on_attach = function(client, bufnr)
 	vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
 	vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
 	vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-	vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 	vim.keymap.set('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 	vim.keymap.set('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
 	vim.keymap.set('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
@@ -33,48 +32,53 @@ on_attach = function(client, bufnr)
 	vim.cmd [[ au FileType dap-repl lua require('dap.ext.autocompl').attach() ]]
 	vim.cmd [[ command! -range=% Format lua vim.lsp.buf.format({range={['start']={<line1>,0},['end']={<line2>,0}}}) ]]
 
-	api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+	vim.bo[bufnr].formatexpr = 'v:lua.vim.lsp.formatexpr()'
 end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 require("mason").setup()
+require("mason-lspconfig").setup {
+	ensure_installed = {
+		'angularls',
+		'bashls',
+		'clangd',
+		'cssls',
+		'gradle_ls',
+		'html',
+		'jdtls',
+		'lua_ls',
+		'pylsp',
+		'rust_analyzer',
+		'vimls',
+		'yamlls',
+	},
+	automatic_installation = true,
+	handlers = {
+		function (server_name)
+			require("lspconfig")[server_name].setup {
+				on_attach = on_attach,
+				capabilities = capabilities,
+			}
+		end,
+		["jdtls"] = function ()
+			-- will be redefined in ftplugin/java
+		end,
+	}
+}
+
 require('mason-tool-installer').setup {
 	ensure_installed = {
-		'angular-language-server',
-		'bash-language-server',
-		'clangd',
-		'gradle-language-server',
-		'jdtls',
-		--'js-debug-adapter',
-		'node-debug2-adapter',
+		'htmlhint',
 		'pylint',
-		'python-lsp-server',
-		'rust-analyzer',
 		'texlab',
-		'typescript-language-server',
-		'yaml-language-server',
 	},
 	run_on_start = true,
 	auto_update = true,
 }
 
-local servers = {
-	'angularls',
-	'bashls',
-	'clangd',
-	'gradle_ls',
-	'pylsp',
-	'texlab',
-	'rust_analyzer',
-	'tsserver',
-	'yamlls',
+-- better typescript lsp
+require("typescript-tools").setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
 }
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-local nvim_lsp = require('lspconfig')
-for _, lsp in ipairs(servers) do
-	nvim_lsp[lsp].setup {
-		on_attach = on_attach,
-		capabilities = capabilities,
-	}
-end

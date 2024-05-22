@@ -82,3 +82,9 @@
 	path = .vim/pack/plugins/start/codeium
 	url = https://github.com/Exafunction/codeium.vim
 	ignore = all
+[submodule ".config/nvim/dependencies/vscode-js-debug"]
+	path = .config/nvim/dependencies/vscode-js-debug
+	url = https://github.com/microsoft/vscode-js-debug
+[submodule ".vim/pack/plugins/start/targets"]
+	path = .vim/pack/plugins/start/targets
+	url = https://github.com/wellle/targets.vim.git

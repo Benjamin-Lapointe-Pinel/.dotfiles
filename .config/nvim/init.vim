@@ -17,10 +17,13 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 call plug#begin()
 Plug 'junegunn/vim-plug'
 Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'pmizio/typescript-tools.nvim'
 Plug 'mfussenegger/nvim-lint'
 Plug 'mhartington/formatter.nvim'
 Plug 'mfussenegger/nvim-dap'
 Plug 'mfussenegger/nvim-dap-python'
+Plug 'mxsdev/nvim-dap-vscode-js'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'lewis6991/gitsigns.nvim'
@@ -30,8 +33,8 @@ Plug 'theHamsta/nvim-dap-virtual-text'
 Plug 'nvim-neotest/nvim-nio'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'williamboman/mason.nvim'
+Plug 'jay-babu/mason-nvim-dap.nvim'
 Plug 'WhoIsSethDaniel/mason-tool-installer.nvim'
-Plug 'jayp0521/mason-nvim-dap.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 Plug 'nvim-telescope/telescope.nvim'
@@ -44,14 +47,13 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'f3fora/cmp-spell'
 Plug 'rcarriga/cmp-dap'
 Plug 'mfussenegger/nvim-jdtls'
+" Plug 'nvimtools/none-ls.nvim'
 call plug#end()
 
 let g:barbar_auto_setup = v:false
 
 command! -range Range lua print(<line1>,<line2>)
 
-nnoremap [d :lua vim.diagnostic.goto_prev()<CR>
-nnoremap ]d :lua vim.diagnostic.goto_next()<CR>
 nnoremap <leader>e :lua vim.diagnostic.open_float()<CR>
 nnoremap <leader>q :lua vim.diagnostic.setloclist()<CR>
 

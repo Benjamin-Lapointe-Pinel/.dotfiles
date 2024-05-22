@@ -1,9 +1,11 @@
-require'nvim-treesitter.configs'.setup({
+require'nvim-treesitter.configs'.setup{
 	ensure_installed = {
 		'bash',
 		'c',
 		'cpp',
+		'css',
 		'groovy',
+		'html',
 		'java',
 		'javascript',
 		'kotlin',
@@ -12,15 +14,13 @@ require'nvim-treesitter.configs'.setup({
 		'python',
 		'typescript',
 		'yaml',
-	}
-})
+	},
 
-require'nvim-treesitter.configs'.setup {
 	textobjects = {
 
 		select = {
 			enable = true,
-			lookahead = false,
+			lookahead = true,
 			keymaps = {
 				["ab"] = "@block.outer",
 				["ib"] = "@block.inner",
@@ -52,26 +52,24 @@ require'nvim-treesitter.configs'.setup {
 			enable = true,
 			set_jumps = true,
 			goto_next_start = {
-				["]f"] = "@function.outer",
+				["]m"] = "@function.outer",
 				["]]"] = { query = "@class.outer", desc = "Next class start" },
-				["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
+				["]o"] = "@loop.*",
 				["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
 			},
 			goto_next_end = {
-				["]F"] = "@function.outer",
+				["]M"] = "@function.outer",
 				["]["] = "@class.outer",
 			},
 			goto_previous_start = {
-				["[f"] = "@function.outer",
+				["[m"] = "@function.outer",
 				["[["] = "@class.outer",
 			},
 			goto_previous_end = {
-				["[F"] = "@function.outer",
+				["[M"] = "@function.outer",
 				["[]"] = "@class.outer",
 			},
 		},
 
 	},
 }
-
-local ts_repeat_move = require "nvim-treesitter.textobjects.repeatable_move"

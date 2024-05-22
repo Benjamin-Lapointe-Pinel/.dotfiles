@@ -1,4 +1,5 @@
 set nocompatible
+set notermguicolors
 set t_Co=256
 set hidden
 set encoding=UTF-8
@@ -80,14 +81,17 @@ highlight DiffAdd ctermfg=0
 highlight DiffDelete ctermfg=0
 highlight DiffChange ctermfg=0
 highlight DiffText ctermfg=0
-highlight Pmenu ctermbg=gray ctermfg=black
-highlight PmenuSel ctermbg=yellow ctermfg=black
+highlight Pmenu ctermbg=black ctermfg=gray
+highlight PmenuSel ctermbg=yellow ctermfg=black cterm=reverse
 highlight PmenuSbar ctermbg=gray ctermfg=white
+highlight NormalFloat ctermbg=gray ctermfg=black
 highlight TabLine cterm=NONE ctermbg=gray ctermfg=black
 highlight TabLineSel ctermbg=white ctermfg=black
 highlight ColorColumn ctermbg=18
 highlight StatusLineNC ctermfg=darkgray
 highlight NonText ctermfg=19
+highlight Comment ctermfg=8
+highlight Statement ctermfg=3
 
 highlight User1 ctermbg=1 ctermfg=white cterm=bold
 highlight User2 ctermbg=2 ctermfg=white cterm=bold

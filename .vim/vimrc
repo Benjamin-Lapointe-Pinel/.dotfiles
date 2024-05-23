@@ -1,6 +1,4 @@
 set nocompatible
-colorscheme base16-helios
-set termguicolors
 set t_Co=256
 set hidden
 set encoding=UTF-8

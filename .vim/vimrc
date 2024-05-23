@@ -1,5 +1,6 @@
 set nocompatible
-set notermguicolors
+colorscheme base16-helios
+set termguicolors
 set t_Co=256
 set hidden
 set encoding=UTF-8
@@ -91,7 +92,7 @@ highlight ColorColumn ctermbg=18
 highlight StatusLineNC ctermfg=darkgray
 highlight NonText ctermfg=19
 highlight Comment ctermfg=8
-highlight Statement ctermfg=3
+highlight Type ctermfg=10
 
 highlight User1 ctermbg=1 ctermfg=white cterm=bold
 highlight User2 ctermbg=2 ctermfg=white cterm=bold

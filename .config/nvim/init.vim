@@ -47,15 +47,12 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'f3fora/cmp-spell'
 Plug 'rcarriga/cmp-dap'
 Plug 'mfussenegger/nvim-jdtls'
-" Plug 'nvimtools/none-ls.nvim'
+Plug 'nvimtools/none-ls.nvim'
 call plug#end()
 
 let g:barbar_auto_setup = v:false
 
 command! -range Range lua print(<line1>,<line2>)
-
-nnoremap <leader>e :lua vim.diagnostic.open_float()<CR>
-nnoremap <leader>q :lua vim.diagnostic.setloclist()<CR>
 
 augroup terminal_settings
 	autocmd!

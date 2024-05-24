@@ -26,6 +26,11 @@ on_attach = function(client, bufnr)
 	--vim.keymap.set('n', '<F10>', "<Cmd>lua require('dap.ui.widgets').hover()<CR>", opts)
 	vim.keymap.set('n', '<F12>', ':DapTerminate<CR><Cmd>lua require("dapui").close()<CR>', opts)
 
+	vim.keymap.set('n', '[d', '<Cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+	vim.keymap.set('n', ']d', '<Cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+	vim.keymap.set('n', '<leader>e ', '<Cmd>lua vim.diagnostic.open_float()<CR>', opts)
+	vim.keymap.set('n', '<leader>q ', '<Cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+
 	vim.cmd [[ command! DapClearBreakpoints lua require'dap'.clear_breakpoints() ]]
 	vim.cmd [[ command! DapRepl lua require'dap'.repl.toggle() ]]
 	vim.cmd [[ command! DapUiToggle lua require("dapui").toggle() ]]
@@ -59,6 +64,15 @@ require("mason-lspconfig").setup {
 			require("lspconfig")[server_name].setup {
 				on_attach = on_attach,
 				capabilities = capabilities,
+			}
+		end,
+		["yamlls"] = function ()
+			require("lspconfig")["yamlls"].setup {
+				capabilities = capabilities,
+				on_attach = function(client, bufnr)
+					on_attach(client, bufnr)
+					vim.bo[bufnr].formatexpr = ''
+				end,
 			}
 		end,
 		["jdtls"] = function ()

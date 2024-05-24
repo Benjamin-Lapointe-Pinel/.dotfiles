@@ -7,6 +7,7 @@ alias egrep='egrep --color=auto'
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 alias ip='ip -color=auto'
+alias tree='tree --dirsfirst'
 command -v bat>/dev/null 2>&1 && alias cat='bat -pp --theme=base16-256'
 
 alias spider='echo "/╲/\\╭( ͡°͡° ͜ʖ ͡°͡°)╮/\\╱\\"'

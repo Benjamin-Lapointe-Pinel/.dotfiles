@@ -71,7 +71,7 @@ require("mason-lspconfig").setup {
 				capabilities = capabilities,
 				on_attach = function(client, bufnr)
 					on_attach(client, bufnr)
-					vim.bo[bufnr].formatexpr = ''
+					vim.bo[bufnr].formatexpr = '' -- using formatprg instead (see yaml ftplugin file)
 				end,
 			}
 		end,
@@ -79,16 +79,6 @@ require("mason-lspconfig").setup {
 			-- will be redefined in ftplugin/java
 		end,
 	}
-}
-
-require('mason-tool-installer').setup {
-	ensure_installed = {
-		'htmlhint',
-		'pylint',
-		'texlab',
-	},
-	run_on_start = true,
-	auto_update = true,
 }
 
 -- better typescript lsp

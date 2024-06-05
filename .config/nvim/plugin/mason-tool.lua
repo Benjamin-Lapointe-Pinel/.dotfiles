@@ -1,6 +1,7 @@
 require('mason-tool-installer').setup {
 	ensure_installed = {
 		'htmlhint',
+		'java-debug-adapter',
 		'pylint',
 		'texlab',
 		'tree-sitter-cli',

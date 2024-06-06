@@ -52,6 +52,7 @@ require("mason-lspconfig").setup {
 		'gradle_ls',
 		'html',
 		'jdtls',
+		'jsonls',
 		'lua_ls',
 		'pylsp',
 		'rust_analyzer',

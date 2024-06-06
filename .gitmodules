@@ -88,3 +88,6 @@
 [submodule ".vim/pack/plugins/start/targets"]
 	path = .vim/pack/plugins/start/targets
 	url = https://github.com/wellle/targets.vim.git
+[submodule ".vim/pack/plugins/start/titlecase"]
+	path = .vim/pack/plugins/start/titlecase
+	url = https://github.com/christoomey/vim-titlecase.git

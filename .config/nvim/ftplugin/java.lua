@@ -1,3 +1,4 @@
+local root_dir = vim.fs.root(0, {".git", "mvnw", "gradlew"})
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 local workspace_dir = os.getenv('HOME') .. '/.cache/jdtls/workspace/' .. project_name
 local config_dir = os.getenv('HOME') .. '/.cache/jdtls/config'
@@ -18,6 +19,7 @@ local config = {
 		'-data', workspace_dir,
 		'--jvm-arg=-javaagent:' .. lombok_jar,
 	},
+	root_dir = root_dir,
 	init_options = {
 		bundles = bundles
 	},

@@ -1,8 +1,6 @@
 vim.api.nvim_create_user_command('Diagnostic',
 	function(opts)
-		if opts.args == 'all' then
-			vim.diagnostic.setqflist()
-		elseif opts.args == 'error' then
+		if opts.args == 'error' then
 			vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })
 		elseif opts.args == 'warning' then
 			vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.WARNING })

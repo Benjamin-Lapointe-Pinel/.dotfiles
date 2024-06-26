@@ -1,0 +1,17 @@
+initscript {
+	repositories {
+		gradlePluginPortal()
+	}
+
+	dependencies {
+		classpath 'com.github.ben-manes:gradle-versions-plugin:+'
+		classpath 'com.netflix.nebula:gradle-lint-plugin:latest.release'
+	}
+}
+
+allprojects {
+	apply plugin: com.github.benmanes.gradle.versions.VersionsPlugin
+	apply plugin: com.netflix.nebula.lint.plugin.GradleLintPlugin
+
+	gradleLint.rules = ['all-dependency']
+}

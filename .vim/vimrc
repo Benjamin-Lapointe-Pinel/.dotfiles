@@ -39,6 +39,7 @@ set viewoptions+=localoptions
 set sessionoptions+=localoptions
 
 set complete+=k
+set formatoptions-=tcroa
 
 set cursorline
 set cursorlineopt=line

@@ -9,7 +9,10 @@ git
 git-delta
 jq
 neovim
+nodejs
+npm
 openssh
+python
 ripgrep-all
 stow
 sxiv

@@ -26,11 +26,11 @@ local config = {
 	settings = {
 		java = {
 			format = {
-          settings = {
-						url = os.getenv('HOME') .. '/.config/nvim/ftplugin/eclipse-java-style.xml',
-						profile = 'ProjectCodeStyle',
-					}
-      }
+				settings = {
+					url = os.getenv('HOME') .. '/.config/nvim/ftplugin/eclipse-java-style.xml',
+					profile = 'ProjectCodeStyle',
+				}
+			}
 		}
 	},
 	on_attach = on_attach,

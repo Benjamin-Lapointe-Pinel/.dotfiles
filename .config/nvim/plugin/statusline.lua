@@ -3,7 +3,7 @@ vim.api.nvim_create_user_command('Diagnostic',
 		if opts.args == 'error' then
 			vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })
 		elseif opts.args == 'warning' then
-			vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.WARNING })
+			vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.WARN })
 		elseif opts.args == 'info' then
 			vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.INFO })
 		elseif opts.args == 'hint' then
@@ -31,7 +31,7 @@ function SetErrorsQuickfixList(minwid, number_of_clicks, mouse_button, modifier)
 end
 
 function SetWarningsQuickfixList(minwid, number_of_clicks, mouse_button, modifier)
-	vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.WARNING })
+	vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.WARN })
 end
 
 function SetInfosQuickfixList(minwid, number_of_clicks, mouse_button, modifier)
@@ -51,7 +51,7 @@ function LspStatusError()
 end
 
 function LspStatusWarning()
-	local warning_number = #vim.diagnostic.get(nill, { severity = vim.diagnostic.severity.WARNING })
+	local warning_number = #vim.diagnostic.get(nill, { severity = vim.diagnostic.severity.WARN })
 	if warning_number > 0 then
 		return '%8* W '..warning_number..' %*'
 	end

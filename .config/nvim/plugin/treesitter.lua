@@ -14,6 +14,8 @@ require'nvim-treesitter.configs'.setup{
 		'lua',
 		'python',
 		'typescript',
+		'vim',
+		'vimdoc',
 		'yaml',
 	},
 

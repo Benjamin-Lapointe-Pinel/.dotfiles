@@ -18,7 +18,7 @@
 	autocrlf = input
 	preloadindex = true
 	ignorecase = false
-  pager = delta --color-only
+  pager = delta
 [pager]
 	branch = false
 [push]
@@ -26,7 +26,7 @@
 [pull]
 	rebase = false
 [interactive]
-	diffFilter = delta --color-only
+	diffFilter = delta
 [diff]
 	colorMoved = default
 [merge]
@@ -37,6 +37,8 @@
 [mergetool "fugitive"]
 	cmd = nvim -f -c \"Git mergetool\" -c \"cclose\" -c \"Gdiffsplit!\"
 [delta]
+	color-only = true
 	theme = base16-256
+	hunk-header-style = "omit"
 [init]
 	defaultBranch = master

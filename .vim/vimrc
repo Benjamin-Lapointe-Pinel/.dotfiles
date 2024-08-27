@@ -198,6 +198,9 @@ nnoremap <C-w><S-down>  <C-w>J
 nnoremap <C-w><S-up>    <C-w>K
 nnoremap <C-w><S-right> <C-w>L
 
+" jump to tag in vertical split
+nnoremap <C-w><C-[> :vert winc ]<CR>
+
 " wildmenu uses up and down arrows instead (https://vi.stackexchange.com/a/22628)
 set wildcharm=<C-Z>
 cnoremap <expr> <up> wildmenumode() ? "\<left>" : "\<up>"
@@ -271,7 +274,7 @@ function! VimGrepCodeTags(...) abort
 	if a:0
 		let files = a:000
 	endif
-	execute 'vimgrep /TODO\|FIXME\|BUG\|NOBUG\|RFE\|IDEA\|HACK\||CAVEAT\|NOTE\|FAQ\|SEE\|TODOC\|CRED\|RVD/j' join(files)
+	execute 'vimgrep /TODO\|FIXME\|BUG\|NOBUG\|RFE\|IDEA\|HACK\|CAVEAT\|NOTE\|FAQ\|SEE\|TODOC\|CRED\|RVD/j' join(files)
 endfunction
 
 " remove trailing whitespaces

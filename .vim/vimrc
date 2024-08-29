@@ -288,7 +288,7 @@ autocmd BufNewFile,BufRead *.md set filetype=markdown
 
 autocmd FileType tex,plaintex,gitcommit,markdown setlocal spell
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-autocmd FileType qf set colorcolumn=0
+autocmd FileType help,qf set colorcolumn=0
 autocmd FileType python compiler pylint
 
 autocmd FileType c,cpp,python nnoremap <buffer> <F5> :w<CR>:make %<CR>

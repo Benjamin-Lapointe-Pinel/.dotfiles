@@ -46,9 +46,14 @@ on_attach = function(client, bufnr)
 	vim.cmd [[ command! -range=% Format lua vim.lsp.buf.format({range={['start']={<line1>,0},['end']={<line2>,0}}}) ]]
 end
 
+require("mason").setup{
+	ui = {
+		border = 'single'
+	}
+}
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-require("mason").setup()
 require("mason-lspconfig").setup {
 	ensure_installed = {
 		'angularls',
@@ -57,7 +62,7 @@ require("mason-lspconfig").setup {
 		'cssls',
 		'gradle_ls',
 		'html',
-		-- 'jdtls',
+		'jdtls',
 		'jsonls',
 		'lua_ls',
 		'pylsp',

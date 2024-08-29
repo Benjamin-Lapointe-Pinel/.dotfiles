@@ -21,7 +21,7 @@ set smarttab
 set noexpandtab
 
 set hlsearch incsearch
-set number relativenumber
+set number
 set showcmd
 set signcolumn=yes
 
@@ -81,10 +81,12 @@ highlight DiffAdd ctermfg=0
 highlight DiffDelete ctermfg=0
 highlight DiffChange ctermfg=0
 highlight DiffText ctermfg=0
+highlight LineNr ctermbg=18
+highlight SignColumn ctermbg=18
 highlight Pmenu ctermbg=black ctermfg=gray
 highlight PmenuSel ctermbg=yellow ctermfg=black cterm=reverse
 highlight PmenuSbar ctermbg=gray ctermfg=white
-highlight NormalFloat ctermbg=gray ctermfg=black
+highlight NormalFloat ctermbg=black
 highlight TabLine cterm=NONE ctermbg=gray ctermfg=black
 highlight TabLineSel ctermbg=white ctermfg=black
 highlight ColorColumn ctermbg=18
@@ -306,7 +308,6 @@ imap <script><nowait><expr> <C-x> codeium#Accept()
 command CodeiumChat call codeium#Chat()
 
 " termdebug
-packadd termdebug
 let g:termdebug_wide = 1
 
 " vimtex

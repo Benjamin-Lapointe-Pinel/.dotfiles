@@ -1,3 +1,12 @@
+vim.api.nvim_set_hl(0, "DiagnosticSignInfo", { ctermbg=18, ctermfg=14 })
+vim.api.nvim_set_hl(0, "DiagnosticSignHint", { ctermbg=18, ctermfg=12 })
+vim.api.nvim_set_hl(0, "DiagnosticSignOk", { ctermbg=18, ctermfg=10 })
+vim.api.nvim_set_hl(0, "DiagnosticSignWarn", { ctermbg=18, ctermfg=11 })
+vim.api.nvim_set_hl(0, "DiagnosticSignError", { ctermbg=18, ctermfg=9 })
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
+
 on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -6,7 +15,6 @@ on_attach = function(client, bufnr)
 	vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
 	vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
 	vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-	vim.keymap.set('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 	vim.keymap.set('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
 	vim.keymap.set('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
 	vim.keymap.set('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
@@ -22,8 +30,8 @@ on_attach = function(client, bufnr)
 	vim.keymap.set('n', '<F8>', "<Cmd>lua require'dap'.step_out()<CR>", opts)
 	vim.keymap.set('n', '<F9>', "<Cmd>lua require'dap'.toggle_breakpoint()<CR>", opts)
 	vim.keymap.set('n', '<F33>', "<Cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
-	vim.keymap.set('n', '<F10>', '<Cmd>lua require("dapui").eval()<CR>', opts)
-	--vim.keymap.set('n', '<F10>', "<Cmd>lua require('dap.ui.widgets').hover()<CR>", opts)
+	vim.keymap.set('n', '<K>', '<Cmd>lua require("dapui").eval()<CR>', opts)
+	--vim.keymap.set('n', '<K>', "<Cmd>lua require('dap.ui.widgets').hover()<CR>", opts)
 	vim.keymap.set('n', '<F12>', ':DapTerminate<CR><Cmd>lua require("dapui").close()<CR>', opts)
 
 	vim.keymap.set('n', '[d', '<Cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
@@ -36,8 +44,6 @@ on_attach = function(client, bufnr)
 	vim.cmd [[ command! DapUiToggle lua require("dapui").toggle() ]]
 	vim.cmd [[ au FileType dap-repl lua require('dap.ext.autocompl').attach() ]]
 	vim.cmd [[ command! -range=% Format lua vim.lsp.buf.format({range={['start']={<line1>,0},['end']={<line2>,0}}}) ]]
-
-	vim.bo[bufnr].formatexpr = 'v:lua.vim.lsp.formatexpr()'
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -51,7 +57,7 @@ require("mason-lspconfig").setup {
 		'cssls',
 		'gradle_ls',
 		'html',
-		'jdtls',
+		-- 'jdtls',
 		'jsonls',
 		'lua_ls',
 		'pylsp',

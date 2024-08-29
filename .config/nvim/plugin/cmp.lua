@@ -6,9 +6,8 @@ cmp.setup {
 		end,
 	},
 	window = {
-		documentation = {
-			winhighlight = "Normal:Pmenu,FloatBorder:PmenuSbar,CursorLine:PmenuSel,Search:None",
-		}
+		documentation = cmp.config.window.bordered({ border = 'single' }),
+		completion = cmp.config.window.bordered({ border = 'single' }),
 	},
 	completion = {
 		completeopt = 'menu,menuone,noinsert',

@@ -50,6 +50,8 @@ Plug 'mfussenegger/nvim-jdtls'
 Plug 'nvimtools/none-ls.nvim'
 call plug#end()
 
+highlight ColorColumn cterm=NONE
+
 let g:barbar_auto_setup = v:false
 
 command! -range Range lua print(<line1>,<line2>)

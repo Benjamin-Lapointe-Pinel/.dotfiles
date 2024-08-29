@@ -21,7 +21,7 @@ set smarttab
 set noexpandtab
 
 set hlsearch incsearch
-set number
+set number norelativenumber
 set showcmd
 set signcolumn=yes
 
@@ -129,18 +129,17 @@ function! GetFileName()
 endfunction
 
 function! StatuslineGitBranch()
-	let b:gitbranch=""
 	if &modifiable
 		try
 			let l:dir=expand('%:p:h')
 			let l:gitrevparse = system("git -C ".l:dir." rev-parse --abbrev-ref HEAD")
 			if !v:shell_error
-				let b:gitbranch="%2* ".substitute(l:gitrevparse, '\n', '', 'g')." %*"
+				return "%2* ".substitute(l:gitrevparse, '\n', '', 'g')." %*"
 			endif
 		catch
 		endtry
 	endif
-	return ""
+	return " "
 endfunction
 
 highlight CodeiumOn ctermbg=cyan ctermfg=black cterm=bold
@@ -163,9 +162,9 @@ augroup END
 
 set laststatus=2
 set statusline=
-set statusline+=%{%b:gitbranch%}
+set statusline+=%{%StatuslineGitBranch()%}
 set statusline+=%<%{%GetFileName()%}
-set statusline+=%{&readonly?'\ \ ':''}%{strlen(&ft)?join(['\ ',toupper(&ft)],''):''}\ [%{&ff}][%{strlen(&fenc)?&fenc:'none'}][%{&spelllang}]▕
+set statusline+=%{&readonly?'\ ':''}%{strlen(&ft)?join(['\ \ ',toupper(&ft)],''):''}\ [%{&ff}][%{strlen(&fenc)?&fenc:'none'}][%{&spelllang}]▕
 set statusline+=\ %=\ ▕\ %{wordcount().words}\ words\ %5(%l%):%-3(%v%)\ %3(%p%)%%\ 
 set statusline+=%{%CodeiumStatus()%}
 set statusline+=%{%GetQuickfixNumber()%}

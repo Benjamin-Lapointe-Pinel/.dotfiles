@@ -4,6 +4,7 @@ vim.api.nvim_set_hl(0, "DiagnosticSignOk", { ctermbg=18, ctermfg=10 })
 vim.api.nvim_set_hl(0, "DiagnosticSignWarn", { ctermbg=18, ctermfg=11 })
 vim.api.nvim_set_hl(0, "DiagnosticSignError", { ctermbg=18, ctermfg=9 })
 
+require('lspconfig.ui.windows').default_options.border = 'single'
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
 
@@ -49,6 +50,10 @@ end
 require("mason").setup{
 	ui = {
 		border = 'single'
+	},
+	registries = {
+		'github:nvim-java/mason-registry',
+		'github:mason-org/mason-registry',
 	}
 }
 
@@ -62,7 +67,6 @@ require("mason-lspconfig").setup {
 		'cssls',
 		'gradle_ls',
 		'html',
-		'jdtls',
 		'jsonls',
 		'lua_ls',
 		'pylsp',
@@ -88,7 +92,11 @@ require("mason-lspconfig").setup {
 			}
 		end,
 		["jdtls"] = function ()
-			-- will be redefined in ftplugin/java
+			require('java').setup()
+			require("lspconfig")["jdtls"].setup {
+				on_attach = on_attach,
+				capabilities = capabilities,
+			}
 		end,
 	}
 }

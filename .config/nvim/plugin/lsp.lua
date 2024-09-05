@@ -31,8 +31,7 @@ on_attach = function(client, bufnr)
 	vim.keymap.set('n', '<F8>', "<Cmd>lua require'dap'.step_out()<CR>", opts)
 	vim.keymap.set('n', '<F9>', "<Cmd>lua require'dap'.toggle_breakpoint()<CR>", opts)
 	vim.keymap.set('n', '<F33>', "<Cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
-	vim.keymap.set('n', '<K>', '<Cmd>lua require("dapui").eval()<CR>', opts)
-	--vim.keymap.set('n', '<K>', "<Cmd>lua require('dap.ui.widgets').hover()<CR>", opts)
+	vim.keymap.set('n', '<F10>', '<Cmd>lua require("dapui").eval()<CR>', opts)
 	vim.keymap.set('n', '<F12>', ':DapTerminate<CR><Cmd>lua require("dapui").close()<CR>', opts)
 
 	vim.keymap.set('n', '[d', '<Cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
@@ -40,6 +39,7 @@ on_attach = function(client, bufnr)
 	vim.keymap.set('n', '<leader>e ', '<Cmd>lua vim.diagnostic.open_float()<CR>', opts)
 	vim.keymap.set('n', '<leader>q ', '<Cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
+	vim.cmd [[ command! DapListBreakpoints lua require'dap'.list_breakpoints(); vim.cmd('copen'); ]]
 	vim.cmd [[ command! DapClearBreakpoints lua require'dap'.clear_breakpoints() ]]
 	vim.cmd [[ command! DapRepl lua require'dap'.repl.toggle() ]]
 	vim.cmd [[ command! DapUiToggle lua require("dapui").toggle() ]]
@@ -96,6 +96,19 @@ require("mason-lspconfig").setup {
 			require("lspconfig")["jdtls"].setup {
 				on_attach = on_attach,
 				capabilities = capabilities,
+				-- settings = {
+				-- 	java = {
+				-- 		import = {
+				-- 			gradle = {
+				-- 				arguments = { '-parameters' },
+				-- 				jvmArguments = { '-parameters' },
+				-- 				wrapper = {
+				-- 					enable = true
+				-- 				}
+				-- 			}
+				-- 		}
+				-- 	}
+				-- }
 			}
 		end,
 	}

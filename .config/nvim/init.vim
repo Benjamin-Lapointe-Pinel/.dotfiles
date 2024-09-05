@@ -63,9 +63,10 @@ let g:barbar_auto_setup = v:false
 
 command! -range Range lua print(<line1>,<line2>)
 
-augroup terminal_settings
-	autocmd!
-	autocmd TermOpen * startinsert
-	autocmd TermOpen * :set nonumber norelativenumber
-augroup END
+" this seems to break nvim-dap (https://github.com/mfussenegger/nvim-dap/issues/439)
+" augroup terminal_settings
+" 	autocmd!
+" 	autocmd TermOpen * startinsert
+" 	autocmd TermOpen * :set nonumber norelativenumber
+" augroup END
 

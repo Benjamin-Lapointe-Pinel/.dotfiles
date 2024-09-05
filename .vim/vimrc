@@ -94,6 +94,7 @@ highlight StatusLineNC ctermfg=darkgray
 highlight NonText ctermfg=19
 highlight Comment ctermfg=8
 highlight Type ctermfg=10
+highlight DebugPc ctermbg=19
 
 highlight User1 ctermbg=1 ctermfg=white cterm=bold
 highlight User2 ctermbg=2 ctermfg=white cterm=bold

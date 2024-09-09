@@ -67,6 +67,7 @@ require("mason-lspconfig").setup {
 		'cssls',
 		'gradle_ls',
 		'html',
+		'jdtls',
 		'jsonls',
 		'lua_ls',
 		'pylsp',

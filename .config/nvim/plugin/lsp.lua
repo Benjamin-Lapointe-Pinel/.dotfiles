@@ -79,8 +79,8 @@ require("mason-lspconfig").setup {
 	handlers = {
 		function (server_name)
 			require("lspconfig")[server_name].setup {
-				on_attach = on_attach,
 				capabilities = capabilities,
+				on_attach = on_attach,
 			}
 		end,
 		["yamlls"] = function ()
@@ -94,23 +94,19 @@ require("mason-lspconfig").setup {
 		end,
 		["jdtls"] = function ()
 			require('java').setup()
+			-- FIXME
+			-- org.eclipse.jdt.core.compil.codegen.methodParameters=generate
+			-- this settings needs to be in .settings/org.eclipse.jdt.core.prefs of some buggy spring projects past 6.1
+			-- see https://github.com/spring-projects/spring-framework/wiki/Upgrading-to-Spring-Framework-6.x#parameter-name-retention
 			require("lspconfig")["jdtls"].setup {
-				on_attach = on_attach,
 				capabilities = capabilities,
-				-- settings = {
-				-- 	java = {
-				-- 		import = {
-				-- 			gradle = {
-				-- 				arguments = { '-parameters' },
-				-- 				jvmArguments = { '-parameters' },
-				-- 				wrapper = {
-				-- 					enable = true
-				-- 				}
-				-- 			}
-				-- 		}
-				-- 	}
-				-- }
+				on_attach = on_attach,
 			}
+			-- HACK
+			-- I use nvim-jdtls at the same time as nvim-java, even though I shouldn't.
+			-- nvim-jdtls handling of test is just so much better
+			vim.cmd [[ command! -buffer JavaTestClass lua require('jdtls').test_class() ]]
+			vim.cmd [[ command! -buffer JavaTestNearestMethod lua require('jdtls').test_nearest_method() ]]
 		end,
 	}
 }

@@ -68,7 +68,7 @@ augroup vimStartup
 	\ | endif
 augroup END
 
-highlight CursorLine cterm=none ctermbg=18
+highlight CursorLine cterm=none ctermbg=19
 highlight clear SpellBad
 highlight SpellBad cterm=underline ctermfg=red
 highlight clear SpellCap
@@ -94,7 +94,7 @@ highlight StatusLineNC ctermfg=darkgray
 highlight NonText ctermfg=19
 highlight Comment ctermfg=8
 highlight Type ctermfg=10
-highlight DebugPc ctermbg=19
+highlight DebugPc ctermbg=5
 
 highlight User1 ctermbg=1 ctermfg=white cterm=bold
 highlight User2 ctermbg=2 ctermfg=white cterm=bold

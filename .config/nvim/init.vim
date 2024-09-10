@@ -45,7 +45,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'f3fora/cmp-spell'
 Plug 'rcarriga/cmp-dap'
-" Plug 'mfussenegger/nvim-jdtls'
+Plug 'mfussenegger/nvim-jdtls'
 Plug 'JavaHello/spring-boot.nvim'
 Plug 'MunifTanjim/nui.nvim'
 Plug 'nvim-java/nvim-java-core'
@@ -62,11 +62,3 @@ highlight ColorColumn cterm=NONE
 let g:barbar_auto_setup = v:false
 
 command! -range Range lua print(<line1>,<line2>)
-
-" this seems to break nvim-dap (https://github.com/mfussenegger/nvim-dap/issues/439)
-" augroup terminal_settings
-" 	autocmd!
-" 	autocmd TermOpen * startinsert
-" 	autocmd TermOpen * :set nonumber norelativenumber
-" augroup END
-

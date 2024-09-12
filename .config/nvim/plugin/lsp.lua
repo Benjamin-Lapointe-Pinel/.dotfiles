@@ -69,6 +69,7 @@ require("mason-lspconfig").setup {
 		'html',
 		'jdtls',
 		'jsonls',
+		'terraformls',
 		'lua_ls',
 		'pylsp',
 		'rust_analyzer',

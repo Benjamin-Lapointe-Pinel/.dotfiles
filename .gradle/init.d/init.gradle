@@ -10,6 +10,7 @@ initscript {
 }
 
 allprojects {
+	apply plugin: org.gradle.testing.jacoco.plugins.JacocoPlugin
 	apply plugin: com.github.benmanes.gradle.versions.VersionsPlugin
 	apply plugin: com.netflix.nebula.lint.plugin.GradleLintPlugin
 

@@ -27,6 +27,6 @@ local function toggle_test_coverage()
 	end
 end
 
-vim.api.nvim_create_user_command("TestCoverageStart", blanket.start, {})
-vim.api.nvim_create_user_command("TestCoverageStop", blanket.stop, {})
-vim.api.nvim_create_user_command("TestCoverageToggle", toggle_test_coverage, {})
+vim.api.nvim_create_user_command("JavaTestCoverageStart", blanket.start, {})
+vim.api.nvim_create_user_command("JavaTestCoverageStop", blanket.stop, {})
+vim.api.nvim_create_user_command("JavaTestCoverageToggle", toggle_test_coverage, {})

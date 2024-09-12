@@ -51,14 +51,6 @@ call plug#begin()
 	Plug 'nvimtools/none-ls.nvim'
 	Plug 'antoinemadec/FixCursorHold.nvim'
 	Plug 'nvim-neotest/neotest'
-
-	" java bullshit
-	Plug 'nvim-java/nvim-java-core'
-	Plug 'nvim-java/nvim-java-dap'
-	Plug 'nvim-java/nvim-java-test'
-	Plug 'nvim-java/lua-async-await'
-	Plug 'nvim-java/nvim-java-refactor'
-	Plug 'nvim-java/nvim-java'
 	Plug 'rcasia/neotest-java'
 	Plug 'dsych/blanket.nvim'
 call plug#end()

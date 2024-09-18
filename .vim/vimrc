@@ -95,6 +95,7 @@ highlight NonText ctermfg=19
 highlight Comment ctermfg=8
 highlight Type ctermfg=10
 highlight DebugPc ctermbg=5
+highlight MatchParen cterm=bold ctermbg=6
 
 highlight User1 ctermbg=1 ctermfg=white cterm=bold
 highlight User2 ctermbg=2 ctermfg=white cterm=bold

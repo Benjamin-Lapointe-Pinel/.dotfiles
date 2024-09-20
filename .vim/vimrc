@@ -1,7 +1,8 @@
 set nocompatible
-set t_Co=256
-set hidden
 set encoding=UTF-8
+set t_Co=256
+set updatetime=750
+set hidden
 set clipboard^=unnamed,unnamedplus
 
 set textwidth=320

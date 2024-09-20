@@ -1,3 +1,6 @@
+vim.api.nvim_set_hl(0, "TSDefinition", { ctermbg = 8 })
+vim.api.nvim_set_hl(0, "TSDefinitionUsage", { ctermbg = 18 })
+
 require'nvim-treesitter.configs'.setup{
 	ensure_installed = {
 		'bash',
@@ -25,6 +28,13 @@ require'nvim-treesitter.configs'.setup{
 
 	indent = {
 		enable = true
+	},
+
+	refactor = {
+		highlight_definitions = {
+			enable = true,
+			clear_on_cursor_move = true,
+		},
 	},
 
 	incremental_selection = {

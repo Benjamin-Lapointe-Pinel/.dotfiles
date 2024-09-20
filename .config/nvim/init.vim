@@ -25,6 +25,7 @@ call plug#begin()
 	Plug 'mxsdev/nvim-dap-vscode-js'
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 	Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+	Plug 'nvim-treesitter/nvim-treesitter-refactor'
 	Plug 'lewis6991/gitsigns.nvim'
 	Plug 'romgrk/barbar.nvim'
 	Plug 'lukas-reineke/indent-blankline.nvim'

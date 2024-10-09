@@ -51,8 +51,6 @@ call plug#begin()
 	Plug 'MunifTanjim/nui.nvim'
 	Plug 'nvimtools/none-ls.nvim'
 	Plug 'antoinemadec/FixCursorHold.nvim'
-	Plug 'nvim-neotest/neotest'
-	Plug 'rcasia/neotest-java'
 	Plug 'dsych/blanket.nvim'
 call plug#end()
 

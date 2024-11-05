@@ -560,10 +560,12 @@
   # typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_PREFIX='%248Ftook '
 
   #######################[ background_jobs: presence of background jobs ]#######################
-  # Don't show the number of background jobs.
-  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VERBOSE=false
-  # Background jobs color.
-  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND=37
+  # Show the number of background jobs.
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VERBOSE=true
+  # Background jobs background color.
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND=37
+  # Background jobs foreground color.
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND=POWERLEVEL9K_BACKGROUND
   # Custom icon.
   typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VISUAL_IDENTIFIER_EXPANSION='≡'
 

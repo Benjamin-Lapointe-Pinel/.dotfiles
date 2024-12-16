@@ -87,6 +87,7 @@ highlight SignColumn ctermbg=18
 highlight Pmenu ctermbg=black ctermfg=gray
 highlight PmenuSel ctermbg=yellow ctermfg=black cterm=reverse
 highlight PmenuSbar ctermbg=gray ctermfg=white
+highlight PmenuThumb ctermbg=8
 highlight NormalFloat ctermbg=black
 highlight TabLine cterm=NONE ctermbg=gray ctermfg=black
 highlight TabLineSel ctermbg=white ctermfg=black
@@ -233,7 +234,6 @@ nmap <leader>d :bp\|bd #<CR>
 nmap <leader>w :bp\|bw #<CR>
 nnoremap <C-space> :set list! list?<CR>
 nnoremap <F5> :w<CR>:!%:p<CR>
-nnoremap <C-s> :setlocal spell!<CR>
 inoremap <c-space> <c-n>
 " https://stackoverflow.com/a/1037182
 nnoremap <silent> <esc> :noh<return><esc>

@@ -7,9 +7,7 @@ require("CopilotChat").setup({
 	highlight_selection = false,
 	insert_at_end = true,
 	window = {
-		layout = 'float',
-		width = 0.75,
-		height = 0.75,
+		layout = 'vertical',
 	},
 })
 

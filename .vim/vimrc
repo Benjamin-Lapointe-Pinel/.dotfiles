@@ -146,19 +146,6 @@ function! StatuslineGitBranch()
 	return " "
 endfunction
 
-highlight CodeiumOn ctermbg=cyan ctermfg=black cterm=bold
-highlight CodeiumOff ctermbg=gray ctermfg=black cterm=bold
-function! CodeiumStatus()
-	let codeium = codeium#GetStatusString()
-	if len(codeium) == 0
-		return ''
-	elseif codeium == 'OFF'
-		return '▕%#CodeiumOff# CODEIUM '.codeium.'▕%*'
-	else
-		return '▕%#CodeiumOn# CODEIUM '.codeium.'▕%*'
-	endif
-endfunction
-
 augroup GetGitBranch
 	autocmd!
 	autocmd VimEnter,WinEnter,BufEnter * call StatuslineGitBranch()
@@ -170,7 +157,6 @@ set statusline+=%{%StatuslineGitBranch()%}
 set statusline+=%<%{%GetFileName()%}
 set statusline+=%{&readonly?'\ ':''}%{strlen(&ft)?join(['\ \ ',toupper(&ft)],''):''}\ [%{&ff}][%{strlen(&fenc)?&fenc:'none'}][%{&spelllang}]▕
 set statusline+=\ %=\ ▕\ %{wordcount().words}\ words\ %5(%l%):%-3(%v%)\ %3(%p%)%%\ 
-set statusline+=%{%CodeiumStatus()%}
 set statusline+=%{%GetQuickfixNumber()%}
 
 " navigate windows from any mode

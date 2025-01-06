@@ -78,10 +78,6 @@
 	path = .zsh/fzf-tab
 	url = https://github.com/Aloxaf/fzf-tab
 	ignore = all
-[submodule ".vim/pack/plugins/start/codeium"]
-	path = .vim/pack/plugins/start/codeium
-	url = https://github.com/Exafunction/codeium.vim
-	ignore = all
 [submodule ".config/nvim/dependencies/vscode-js-debug"]
 	path = .config/nvim/dependencies/vscode-js-debug
 	url = https://github.com/microsoft/vscode-js-debug

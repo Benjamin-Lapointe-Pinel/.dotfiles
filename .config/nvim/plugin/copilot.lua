@@ -3,9 +3,14 @@ require("copilot").setup({
 	panel = { enabled = false },
 })
 
-
 require("CopilotChat").setup({
-		window = {
-			layout = 'horizontal'
-		}
+	highlight_selection = false,
+	insert_at_end = true,
+	window = {
+		layout = 'float',
+		width = 0.75,
+		height = 0.75,
+	},
 })
+
+vim.keymap.set({'n', 'v'}, '<C-g>', function() require("CopilotChat").toggle() end)

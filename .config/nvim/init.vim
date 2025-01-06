@@ -52,6 +52,7 @@ call plug#begin()
 	Plug 'nvimtools/none-ls.nvim'
 	Plug 'antoinemadec/FixCursorHold.nvim'
 	Plug 'dsych/blanket.nvim'
+	Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 	Plug 'zbirenbaum/copilot.lua'
 	Plug 'zbirenbaum/copilot-cmp'
 	Plug 'CopilotC-Nvim/CopilotChat.nvim'

@@ -11,7 +11,7 @@ alias tree='tree --dirsfirst'
 command -v bat>/dev/null 2>&1 && alias cat='bat -pp --theme=base16-256'
 
 alias shrug="echo '¯\_(ツ)_/¯'"
-alias spider='echo "/╲/\\╭( ͡°͡° ͜ʖ ͡°͡°)╮/\\╱\\"'
+alias spider='echo "/╲/\\╭( ͡°͡° ͜ʖ ͡°͡°)╮/\\╱\\\\"'
 bird() {
   echo "      ,----,\n ___.\`o    o\`,\n \`=== \____/ :\n   \`'.      .'\n      )    (                   ,\n     /      \_________________/|\n    /                          |\n   |                           ;\n   |               _____       /\n   |      \       ______7    ,'\n   |       \    ______7     /\n    \       \`-,____7      ,'\n     \`\                  /\n       \`----------------'\n             |    |\n             |    |\n             |    |\n             |    |\n           --+  --+"
 }

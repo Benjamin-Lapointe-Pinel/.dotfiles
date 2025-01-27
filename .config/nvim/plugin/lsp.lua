@@ -24,27 +24,10 @@ on_attach = function(client, bufnr)
 	vim.keymap.set('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 	vim.keymap.set('n', '<A-enter>', '<cmd>lua vim.lsp.buf.code_action({apply=true})<CR>', opts)
 
-	vim.keymap.set('n', '<F5>', "<Cmd>lua require'dap'.continue()<CR>", opts)
-	vim.keymap.set('n', '<F29>', "<Cmd>lua require'dap'.run_last()<CR>", opts)
-	vim.keymap.set('n', '<F6>', "<Cmd>lua require'dap'.step_over()<CR>", opts)
-	vim.keymap.set('n', '<F7>', "<Cmd>lua require'dap'.step_into()<CR>", opts)
-	vim.keymap.set('n', '<F8>', "<Cmd>lua require'dap'.step_out()<CR>", opts)
-	vim.keymap.set('n', '<F9>', "<Cmd>lua require'dap'.toggle_breakpoint()<CR>", opts)
-	vim.keymap.set('n', '<F33>', "<Cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
-	vim.keymap.set('n', '<F10>', '<Cmd>lua require("dapui").eval()<CR>', opts)
-	vim.keymap.set('n', '<F12>', ':DapTerminate<CR><Cmd>lua require("dapui").close()<CR>', opts)
-
 	vim.keymap.set('n', '[d', '<Cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 	vim.keymap.set('n', ']d', '<Cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 	vim.keymap.set('n', '<leader>e ', '<Cmd>lua vim.diagnostic.open_float()<CR>', opts)
 	vim.keymap.set('n', '<leader>q ', '<Cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-
-	vim.cmd [[ command! DapListBreakpoints lua require'dap'.list_breakpoints(); vim.cmd('copen'); ]]
-	vim.cmd [[ command! DapClearBreakpoints lua require'dap'.clear_breakpoints() ]]
-	vim.cmd [[ command! DapRepl lua require'dap'.repl.toggle() ]]
-	vim.cmd [[ command! DapUiToggle lua require("dapui").toggle() ]]
-	vim.cmd [[ au FileType dap-repl lua require('dap.ext.autocompl').attach() ]]
-	vim.cmd [[ command! -range=% Format lua vim.lsp.buf.format({range={['start']={<line1>,0},['end']={<line2>,0}}}) ]]
 end
 
 require("mason").setup{

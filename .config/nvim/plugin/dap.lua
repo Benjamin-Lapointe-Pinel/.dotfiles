@@ -10,7 +10,7 @@ require('dap-python').setup('/usr/bin/python')
 
 require("nvim-dap-virtual-text").setup()
 
-local dap, dapui = require("dap"), require("dapui")
+local dapui = require("dapui")
 vim.fn.sign_define('DapStopped', {text='>'})
 dapui.setup({
 	icons = { collapsed = ">", expanded = "-" },
@@ -47,6 +47,7 @@ dapui.setup({
 	},
 })
 
+local dap = require("dap")
 dap.listeners.after.event_initialized["dapui_config"] = function()
 	dapui.open()
 end
@@ -56,6 +57,25 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
 	dapui.close()
 end
+
+local opts = { noremap=true, silent=true }
+vim.keymap.set('n', '<F5>',  function() dap.continue() end, opts)
+vim.keymap.set('n', '<F29>', function() dap.run_last() end, opts)
+vim.keymap.set('n', '<F6>',  function() dap.step_over() end, opts)
+vim.keymap.set('n', '<F7>',  function() dap.step_into() end, opts)
+vim.keymap.set('n', '<F8>',  function() dap.step_out() end, opts)
+vim.keymap.set('n', '<F9>',  function() dap.toggle_breakpoint() end, opts)
+vim.keymap.set('n', '<F30>', function() dap.list_breakpoints(); vim.cmd.copen() end, opts)
+vim.keymap.set('n', '<F33>', function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, opts)
+vim.keymap.set('n', '<F10>', function() dapui.eval() end, opts)
+vim.keymap.set('n', '<F12>', ':DapTerminate<CR><Cmd>lua require("dapui").close()<CR>', opts)
+
+vim.cmd [[ command! DapListBreakpoints lua require'dap'.list_breakpoints(); vim.cmd('copen'); ]]
+vim.cmd [[ command! DapClearBreakpoints lua require'dap'.clear_breakpoints() ]]
+vim.cmd [[ command! DapRepl lua require'dap'.repl.toggle() ]]
+vim.cmd [[ command! DapUiToggle lua require("dapui").toggle() ]]
+vim.cmd [[ au FileType dap-repl lua require('dap.ext.autocompl').attach() ]]
+vim.cmd [[ command! -range=% Format lua vim.lsp.buf.format({range={['start']={<line1>,0},['end']={<line2>,0}}}) ]]
 
 -- vscode javascript debug adapter
 

@@ -10,9 +10,14 @@ initscript {
 }
 
 allprojects {
+	apply plugin: 'java'
 	apply plugin: org.gradle.testing.jacoco.plugins.JacocoPlugin
 	apply plugin: com.github.benmanes.gradle.versions.VersionsPlugin
 	apply plugin: com.netflix.nebula.lint.plugin.GradleLintPlugin
+
+	jacocoTestReport {
+		reports.xml.required = true
+	}
 
 	gradleLint {
 		alwaysRun = false

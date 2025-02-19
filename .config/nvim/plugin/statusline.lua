@@ -1,27 +1,3 @@
-vim.api.nvim_create_user_command('Diagnostic',
-	function(opts)
-		if opts.args == 'error' then
-			vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })
-		elseif opts.args == 'warning' then
-			vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.WARN })
-		elseif opts.args == 'info' then
-			vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.INFO })
-		elseif opts.args == 'hint' then
-			vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.HINT })
-		else
-			vim.diagnostic.setqflist()
-		end
-	end,
-	{
-		nargs = '?',
-		complete = function(ArgLead, CmdLine, CursorPos)
-			args = { 'all', 'error', 'warning', 'info', 'hint' }
-			return vim.fn.filter(args, 'v:val =~ "^'..ArgLead..'"')
-		end,
-		desc = 'Set diagnostic errors to quickfix list'
-	}
-)
-
 function SetQuickfixList(minwid, number_of_clicks, mouse_button, modifier)
 	vim.cmd[[ :ToggleQuickfix ]]
 end

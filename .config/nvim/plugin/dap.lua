@@ -1,3 +1,6 @@
+vim.api.nvim_set_hl(0, "DapUIVariable", { ctermfg=4 })
+vim.api.nvim_set_hl(0, "DapUIType", { link="Type" })
+
 require("mason-nvim-dap").setup {
 	ensure_installed = {
 		'bash',
@@ -13,7 +16,7 @@ require("nvim-dap-virtual-text").setup()
 local dapui = require("dapui")
 vim.fn.sign_define('DapStopped', {text='>'})
 dapui.setup({
-	icons = { collapsed = ">", expanded = "-" },
+	icons = { collapsed = " ", expanded = " " },
 	layouts = {
 		{
 			elements = {
@@ -59,15 +62,15 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 end
 
 local opts = { noremap=true, silent=true }
-vim.keymap.set('n', '<F5>',  function() dap.continue() end, opts)
-vim.keymap.set('n', '<F29>', function() dap.run_last() end, opts)
-vim.keymap.set('n', '<F6>',  function() dap.step_over() end, opts)
-vim.keymap.set('n', '<F7>',  function() dap.step_into() end, opts)
-vim.keymap.set('n', '<F8>',  function() dap.step_out() end, opts)
-vim.keymap.set('n', '<F9>',  function() dap.toggle_breakpoint() end, opts)
+vim.keymap.set('n', '<F5>',  dap.continue, opts)
+vim.keymap.set('n', '<F29>', dap.run_last, opts)
+vim.keymap.set('n', '<F6>',  dap.step_over, opts)
+vim.keymap.set('n', '<F7>',  dap.step_into, opts)
+vim.keymap.set('n', '<F8>',  dap.step_out, opts)
+vim.keymap.set('n', '<F9>',  dap.toggle_breakpoint, opts)
+vim.keymap.set('n', '<F10>', dapui.eval, opts)
 vim.keymap.set('n', '<F30>', function() dap.list_breakpoints(); vim.cmd.copen() end, opts)
 vim.keymap.set('n', '<F33>', function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, opts)
-vim.keymap.set('n', '<F10>', function() dapui.eval() end, opts)
 vim.keymap.set('n', '<F12>', ':DapTerminate<CR><Cmd>lua require("dapui").close()<CR>', opts)
 
 vim.cmd [[ command! DapListBreakpoints lua require'dap'.list_breakpoints(); vim.cmd('copen'); ]]

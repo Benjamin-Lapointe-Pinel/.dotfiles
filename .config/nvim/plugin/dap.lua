@@ -1,3 +1,7 @@
+vim.fn.sign_define('DapBreakpoint', { numhl='User1' })
+vim.fn.sign_define('DapBreakpointCondition', { numhl='User3' })
+vim.fn.sign_define('DapLogPoint', { numhl='User4' })
+vim.fn.sign_define('DapBreakpointRejected')
 vim.api.nvim_set_hl(0, "DapUIVariable", { ctermfg=4 })
 vim.api.nvim_set_hl(0, "DapUIType", { link="Type" })
 
@@ -10,8 +14,6 @@ require("mason-nvim-dap").setup {
 }
 
 require('dap-python').setup('/usr/bin/python')
-
-require("nvim-dap-virtual-text").setup()
 
 local dapui = require("dapui")
 vim.fn.sign_define('DapStopped', {text='>'})

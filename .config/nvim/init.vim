@@ -29,7 +29,6 @@ call plug#begin()
 	Plug 'lewis6991/gitsigns.nvim'
 	Plug 'romgrk/barbar.nvim'
 	Plug 'lukas-reineke/indent-blankline.nvim'
-	Plug 'theHamsta/nvim-dap-virtual-text'
 	Plug 'nvim-neotest/nvim-nio'
 	Plug 'rcarriga/nvim-dap-ui'
 	Plug 'williamboman/mason.nvim'

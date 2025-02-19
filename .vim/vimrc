@@ -289,12 +289,6 @@ autocmd FileType arduino nnoremap <buffer> <F5> :wa<CR>:!arduino -v --upload %<C
 autocmd QuickfixCmdPost [^l]* nested cwindow
 autocmd QuickfixCmdPost    l* nested lwindow
 
-" codeium
-let g:codeium_enabled = v:false
-let g:codeium_no_map_tab = v:false
-imap <script><nowait><expr> <C-x> codeium#Accept()
-command CodeiumChat call codeium#Chat()
-
 " termdebug
 let g:termdebug_wide = 1
 

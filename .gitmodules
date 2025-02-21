@@ -87,6 +87,3 @@
 [submodule ".vim/pack/plugins/start/titlecase"]
 	path = .vim/pack/plugins/start/titlecase
 	url = https://github.com/christoomey/vim-titlecase.git
-[submodule ".vim/pack/plugins/start/nerdtree"]
-	path = .vim/pack/plugins/start/nerdtree
-	url = https://github.com/preservim/nerdtree.git

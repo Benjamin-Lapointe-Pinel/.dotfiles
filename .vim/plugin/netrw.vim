@@ -11,7 +11,7 @@ function! ToggleNetrw()
 		let b:NetrwHasOpen=1
 	endif
 endfunction
-" nnoremap <silent> <C-e> :call ToggleNetrw()<CR>
+nnoremap <silent> <C-e> :call ToggleNetrw()<CR>
 autocmd FileType netrw nnoremap <buffer> <C-c> :Rexplore<CR>
 autocmd FileType netrw nnoremap <buffer> <escape> :Rexplore<CR>
 autocmd FileType netrw setlocal bufhidden=wipe

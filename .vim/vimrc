@@ -69,185 +69,6 @@ augroup vimStartup
 	\ | endif
 augroup END
 
-highlight CursorLine cterm=none ctermbg=19
-highlight clear SpellBad
-highlight SpellBad cterm=underline ctermfg=red
-highlight clear SpellCap
-highlight SpellCap cterm=underline ctermfg=red
-highlight clear SpellRare
-highlight SpellRare cterm=underline ctermfg=green
-highlight clear SpellLocal
-highlight SpellLocal cterm=underline ctermfg=blue
-highlight DiffAdd ctermfg=0
-highlight DiffDelete ctermfg=0
-highlight DiffChange ctermfg=0
-highlight DiffText ctermfg=0
-highlight LineNr ctermbg=18
-highlight SignColumn ctermbg=18
-highlight Pmenu ctermbg=black ctermfg=gray
-highlight PmenuSel ctermbg=yellow ctermfg=black cterm=reverse
-highlight PmenuSbar ctermbg=gray ctermfg=white
-highlight PmenuThumb ctermbg=8
-highlight NormalFloat ctermbg=black
-highlight TabLine cterm=NONE ctermbg=gray ctermfg=black
-highlight TabLineSel ctermbg=white ctermfg=black
-highlight ColorColumn ctermbg=18
-highlight StatusLineNC ctermfg=darkgray
-highlight NonText ctermfg=8
-highlight Comment ctermfg=8
-highlight Type ctermfg=10
-highlight DebugPc ctermbg=5
-highlight MatchParen cterm=bold ctermbg=6
-
-highlight User1 ctermbg=1 ctermfg=white cterm=bold
-highlight User2 ctermbg=2 ctermfg=white cterm=bold
-highlight User3 ctermbg=3 ctermfg=white cterm=bold
-highlight User4 ctermbg=4 ctermfg=white cterm=bold
-highlight User5 ctermbg=5 ctermfg=black cterm=bold
-highlight User6 ctermbg=6 ctermfg=white cterm=bold
-highlight User7 ctermbg=7 ctermfg=black cterm=bold
-highlight User8 ctermbg=16 ctermfg=white cterm=bold
-
-" statusline
-command ToggleQuickfix if empty(filter(getwininfo(), 'v:val.quickfix')) | copen | else | cclose | endif
-
-function! GetQuickfixNumber()
-	let quickfix_number = len(getqflist())
-	if quickfix_number > 0
-		return '%3* Q ' . quickfix_number . ' %*'
-	endif
-	return ''
-endfunction
-
-function! GetFileName()
-	let filename = expand("%:~:.")
-	if len(filename) == 0
-		return ''
-	endif
-	let filename = filename.'▕'
-	if getbufinfo(bufnr('%'))[0].changed
-		return '%4* '.filename.'%*'
-	else
-		return '%1  '.filename.'%*'
-	endif
-endfunction
-
-function! StatuslineGitBranch()
-	if &modifiable
-		try
-			let l:dir=expand('%:p:h')
-			let l:gitrevparse = system("git -C ".l:dir." rev-parse --abbrev-ref HEAD")
-			if !v:shell_error
-				return "%2* ".substitute(l:gitrevparse, '\n', '', 'g')." %*"
-			endif
-		catch
-		endtry
-	endif
-	return " "
-endfunction
-
-augroup GetGitBranch
-	autocmd!
-	autocmd VimEnter,WinEnter,BufEnter * call StatuslineGitBranch()
-augroup END
-
-set laststatus=2
-set statusline=
-set statusline+=%{%StatuslineGitBranch()%}
-set statusline+=%<%{%GetFileName()%}
-set statusline+=%{&readonly?'\ ':''}%{strlen(&ft)?join(['\ \ ',toupper(&ft)],''):''}\ [%{&ff}][%{strlen(&fenc)?&fenc:'none'}][%{&spelllang}]▕
-set statusline+=\ %=\ ▕\ %{wordcount().words}\ words\ %5(%l%):%-3(%v%)\ %3(%p%)%%\ 
-set statusline+=%{%GetQuickfixNumber()%}
-
-" navigate windows from any mode
-tnoremap <M-h> <C-\><C-N><C-w>h
-tnoremap <M-j> <C-\><C-N><C-w>j
-tnoremap <M-k> <C-\><C-N><C-w>k
-tnoremap <M-l> <C-\><C-N><C-w>l
-inoremap <M-h> <C-\><C-N><C-w>h
-inoremap <M-j> <C-\><C-N><C-w>j
-inoremap <M-k> <C-\><C-N><C-w>k
-inoremap <M-l> <C-\><C-N><C-w>l
-nnoremap <M-h> <C-w>h
-nnoremap <M-j> <C-w>j
-nnoremap <M-k> <C-w>k
-nnoremap <M-l> <C-w>l
-tnoremap <M-left>  <C-\><C-N><C-w>h
-tnoremap <M-down>  <C-\><C-N><C-w>j
-tnoremap <M-up>    <C-\><C-N><C-w>k
-tnoremap <M-right> <C-\><C-N><C-w>l
-inoremap <M-left>  <C-\><C-N><C-w>h
-inoremap <M-down>  <C-\><C-N><C-w>j
-inoremap <M-up>    <C-\><C-N><C-w>k
-inoremap <M-right> <C-\><C-N><C-w>l
-nnoremap <M-left>  <C-w>h
-nnoremap <M-down>  <C-w>j
-nnoremap <M-up>    <C-w>k
-nnoremap <M-right> <C-w>l
-nnoremap <C-w><S-left>  <C-w>H
-nnoremap <C-w><S-down>  <C-w>J
-nnoremap <C-w><S-up>    <C-w>K
-nnoremap <C-w><S-right> <C-w>L
-
-" jump to tag in vertical split
-nnoremap <C-w><C-[> :vert winc ]<CR>
-
-" wildmenu uses up and down arrows instead (https://vi.stackexchange.com/a/22628)
-set wildcharm=<C-Z>
-cnoremap <expr> <up> wildmenumode() ? "\<left>" : "\<up>"
-cnoremap <expr> <down> wildmenumode() ? "\<right>" : "\<down>"
-cnoremap <expr> <left> wildmenumode() ? "\<C-Y>\<left>" : "\<left>"
-cnoremap <expr> <right> wildmenumode() ? "\<bs>\<C-Z>" : "\<right>"
-
-" if your '{' or '}' are not in the first column, and you would like to use [[ and ]] anyway, try these mappings:
-map [[ ?{<CR>w99[{
-map ][ /}<CR>b99]}
-map ]] j0[[%/{<CR>
-map [] k$][%?}<CR>
-
-" terminal
-tnoremap <Esc> <C-\><C-n>
-nnoremap <C-\> :vertical terminal<CR>
-tnoremap <C-\> exit<CR>
-
-" miscellaneous
-nnoremap <C-q> :ToggleQuickfix<CR>
-nnoremap ]q :cnext<CR>
-nnoremap [q :cprev<CR>
-nnoremap Q gq
-nnoremap gb :ls<CR>:b
-nnoremap <C-space> :set list! list?<CR>
-nnoremap <F5> :w<CR>:!%:p<CR>
-inoremap <c-space> <c-n>
-" https://stackoverflow.com/a/1037182
-nnoremap <silent> <esc> :noh<return><esc>
-" BUG maybe not good idea to remove this
-" nnoremap <esc>^[ <esc>^[
-
-" highlight trailing whitespaces
-let ft_bt_ws_blacklist = ['nofile', 'terminal', 'lspinfo', 'help', 'qf']
-autocmd BufWinEnter * let w = matchadd('Error', '\s\+\%#\@<!$', -1) | if index(ft_bt_ws_blacklist, &ft) >= 0 || index(ft_bt_ws_blacklist, &bt) >= 0 | call matchdelete(w) | unlet w | endif
-
-" file explorer
-let g:netrw_banner=0
-let g:netrw_liststyle=3
-let g:netrw_fastbrowse=2
-let g:netrw_localcopydircmd='cp -r'
-autocmd BufNewFile,BufRead * let b:NetrwHasOpen=0
-function! ToggleNetrw()
-	if b:NetrwHasOpen
-		:Rexplore
-	else
-		:Explore
-		let b:NetrwHasOpen=1
-	endif
-endfunction
-nnoremap <silent> <C-e> :call ToggleNetrw()<CR>
-autocmd FileType netrw nnoremap <buffer> <C-c> :Rexplore<CR>
-autocmd FileType netrw nnoremap <buffer> <escape> :Rexplore<CR>
-autocmd FileType netrw setlocal bufhidden=wipe
-autocmd FileType netrw setlocal statusline=\ 
-
 augroup auto_save_view
 	autocmd!
 	" autocmd BufWinLeave * set spellfile& " needed for spellcheck to work with view?
@@ -255,52 +76,19 @@ augroup auto_save_view
 	autocmd BufWinEnter * silent! loadview
 augroup END
 
-" https://peps.python.org/pep-0350/
-command! -nargs=* Codetags call VimGrepCodeTags(<f-args>)
-function! VimGrepCodeTags(...) abort
-	let files = ['%']
-	if a:0
-		let files = a:000
-	endif
-	execute 'vimgrep /TODO\|FIXME\|BUG\|NOBUG\|RFE\|IDEA\|HACK\|CAVEAT\|NOTE\|FAQ\|SEE\|TODOC\|CRED\|RVD/j' join(files)
-endfunction
-
-" remove trailing whitespaces
-command -range=% RemoveTrailingWhitespaces <line1>,<line2>s/\s\+$//
+" termdebug
+let g:termdebug_wide = 1
 
 autocmd BufNewFile,BufRead *.ino set filetype=arduino
 autocmd BufNewFile,BufRead docker-compose.{yaml,yml} set filetype=docker-compose
-autocmd BufNewFile,BufRead *.md set filetype=markdown
 
 autocmd FileType tex,plaintex,gitcommit,markdown setlocal spell
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType help,qf set colorcolumn=0
 autocmd FileType python compiler pylint
 
 " https://vim.fandom.com/wiki/Automatically_open_the_quickfix_window_on_:make
 autocmd QuickfixCmdPost [^l]* nested cwindow
 autocmd QuickfixCmdPost    l* nested lwindow
-
-" termdebug
-let g:termdebug_wide = 1
-
-" vimtex
-let g:vimtex_compiler_engine = 'lualatex'
-let g:vimtex_view_method = 'zathura'
-let g:vimtex_syntax_conceal_disable = 1
-
-" fzf
-set rtp+=/usr/bin/fzf
-function! s:build_quickfix_list(lines)
-	call setqflist(map(copy(a:lines), '{ "filename": v:val, "lnum": 1 }'))
-	copen
-	cc
-endfunction
-let g:fzf_action = {
-\ 'ctrl-q': function('s:build_quickfix_list'),
-\ 'ctrl-t': 'tab split',
-\ 'ctrl-s': 'split',
-\ 'ctrl-v': 'vsplit' }
 
 " These lines must be at the very end of the vimrc file.
 " packloadall breaks nvim plugin loading

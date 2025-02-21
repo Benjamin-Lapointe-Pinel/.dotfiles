@@ -7,7 +7,8 @@ function! ToggleNetrw()
 	if b:NetrwHasOpen
 		:Rexplore
 	else
-		:Explore
+		" https://stackoverflow.com/a/53539371
+		:exe 'Explore' getcwd()
 		let b:NetrwHasOpen=1
 	endif
 endfunction

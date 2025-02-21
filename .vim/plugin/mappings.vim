@@ -57,7 +57,7 @@ nnoremap Q gq
 nnoremap gb :ls<CR>:b
 nnoremap <C-space> :set list! list?<CR>
 nnoremap <F5> :w<CR>:!%:p<CR>
-inoremap <c-space> <c-n>
+inoremap <c-space> <c-x><c-o>
 " https://stackoverflow.com/a/1037182
 nnoremap <silent> <esc> :noh<return><esc>
 " BUG maybe not good idea to remove this

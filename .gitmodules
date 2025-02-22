@@ -10,10 +10,6 @@
 	path = .vim/pack/plugins/start/colorizer
 	url = https://github.com/lilydjwg/colorizer.git
 	ignore = all
-[submodule ".vim/pack/plugins/start/commentary"]
-	path = .vim/pack/plugins/start/commentary
-	url = https://github.com/tpope/vim-commentary.git
-	ignore = all
 [submodule ".vim/pack/plugins/start/surround"]
 	path = .vim/pack/plugins/start/surround
 	url = https://github.com/tpope/vim-surround.git
@@ -57,10 +53,6 @@
 [submodule ".config/nvim/dependencies/vscode-java-test"]
 	path = .config/nvim/dependencies/vscode-java-test
 	url = https://github.com/microsoft/vscode-java-test.git
-	ignore = all
-[submodule ".vim/pack/plugins/start/editorconfig"]
-	path = .vim/pack/plugins/start/editorconfig
-	url = https://github.com/editorconfig/editorconfig-vim.git
 	ignore = all
 [submodule ".config/tmux/plugins/tpm"]
 	path = .config/tmux/plugins/tpm

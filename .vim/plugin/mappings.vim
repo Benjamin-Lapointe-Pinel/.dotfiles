@@ -38,6 +38,10 @@ cnoremap <expr> <down> wildmenumode() ? "\<right>" : "\<down>"
 cnoremap <expr> <left> wildmenumode() ? "\<C-Y>\<left>" : "\<left>"
 cnoremap <expr> <right> wildmenumode() ? "\<bs>\<C-Z>" : "\<right>"
 
+" omnicomplete
+inoremap <C-space> <c-x><c-o>
+inoremap <expr> <tab> pumvisible() ? "\<C-y>" : "\<tab>"
+
 " if your '{' or '}' are not in the first column, and you would like to use [[ and ]] anyway, try these mappings:
 map [[ ?{<CR>w99[{
 map ][ /}<CR>b99]}
@@ -57,7 +61,6 @@ nnoremap Q gq
 nnoremap gb :ls<CR>:b
 nnoremap <C-space> :set list! list?<CR>
 nnoremap <F5> :w<CR>:!%:p<CR>
-inoremap <c-space> <c-x><c-o>
 " https://stackoverflow.com/a/1037182
 nnoremap <silent> <esc> :noh<return><esc>
 " BUG maybe not good idea to remove this

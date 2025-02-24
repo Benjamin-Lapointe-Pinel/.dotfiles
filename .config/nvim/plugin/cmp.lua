@@ -4,17 +4,17 @@ local cmp = require('cmp')
 cmp.setup {
 	snippet = {
 		expand = function(args)
-			vim.fn["vsnip#anonymous"](args.body)
+			vim.snippet.expand(args.body)
 		end,
+	},
+	completion = {
+		completeopt = vim.o.completeopt,
 	},
 	window = {
 		documentation = cmp.config.window.bordered({ border = 'single' }),
 		completion = cmp.config.window.bordered({ border = 'single' }),
 	},
-	completion = {
-		completeopt = 'menu,menuone,noinsert',
-	},
-	mapping = {
+	mapping = cmp.mapping.preset.insert({
 		['<C-p>'] = cmp.mapping.select_prev_item(),
 		['<C-n>'] = cmp.mapping.select_next_item(),
 		['<C-Up>'] = cmp.mapping.scroll_docs(-4),
@@ -47,12 +47,11 @@ cmp.setup {
 				fallback()
 			end
 		end,
-	},
+	}),
 	sources = cmp.config.sources(
 	{
 		-- { name = 'copilot' },
 		{ name = 'nvim_lsp' },
-		{ name = 'vsnip' },
 		{ name = 'spell' },
 	},
 	{

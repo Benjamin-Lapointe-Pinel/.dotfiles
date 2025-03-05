@@ -15,6 +15,8 @@ alias spider='echo "/╲/\\╭( ͡°͡° ͜ʖ ͡°͡°)╮/\\╱\\\\"'
 bird() {
   echo "      ,----,\n ___.\`o    o\`,\n \`=== \____/ :\n   \`'.      .'\n      )    (                   ,\n     /      \_________________/|\n    /                          |\n   |                           ;\n   |               _____       /\n   |      \       ______7    ,'\n   |       \    ______7     /\n    \       \`-,____7      ,'\n     \`\                  /\n       \`----------------'\n             |    |\n             |    |\n             |    |\n             |    |\n           --+  --+"
 }
+alias spidersay='cowsay -f spider'
+alias birdsay='cowsay -f bird'
 
 if command -v eza>/dev/null 2>&1
 then

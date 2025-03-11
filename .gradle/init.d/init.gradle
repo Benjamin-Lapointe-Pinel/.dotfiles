@@ -4,8 +4,9 @@ initscript {
 	}
 
 	dependencies {
-		classpath 'com.github.ben-manes:gradle-versions-plugin:+'
+		classpath 'com.github.ben-manes:gradle-versions-plugin:latest.release'
 		classpath 'com.netflix.nebula:gradle-lint-plugin:latest.release'
+    classpath 'org.springframework.boot:spring-boot-devtools:latest.release'
 	}
 }
 

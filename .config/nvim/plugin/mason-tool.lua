@@ -1,6 +1,7 @@
 require('mason-tool-installer').setup {
 	ensure_installed = {
 		'debugpy',
+		'eslint',
 		'htmlhint',
 		'java-debug-adapter',
 		'pylint',

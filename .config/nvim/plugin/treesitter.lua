@@ -55,8 +55,8 @@ require'nvim-treesitter.configs'.setup{
 				["ib"] = "@block.inner",
 				["ac"] = "@class.outer",
 				["ic"] = "@class.inner",
-				["af"] = "@function.outer",
-				["if"] = "@function.inner",
+				["am"] = "@function.outer",
+				["im"] = "@function.inner",
 				["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
 			},
 			selection_modes = {
@@ -64,7 +64,7 @@ require'nvim-treesitter.configs'.setup{
 				['@function.outer'] = 'V',  -- linewise
 				['@class.outer'] = '<c-v>', -- blockwise
 			},
-			include_surrounding_whitespace = true,
+			include_surrounding_whitespace = false,
 		},
 
 		swap = {

@@ -43,15 +43,6 @@ require("mason-lspconfig").setup {
 				on_attach = on_attach,
 			}
 		end,
-		["yamlls"] = function ()
-			require("lspconfig")["yamlls"].setup {
-				capabilities = capabilities,
-				on_attach = function(bufnr)
-					on_attach()
-					vim.bo[bufnr].formatexpr = '' -- using formatprg instead (see yaml ftplugin file)
-				end,
-			}
-		end,
 		["jdtls"] = function () -- will be redefined in ftplugin/java
 			-- FIXME
 			-- org.eclipse.jdt.core.compil.codegen.methodParameters=generate

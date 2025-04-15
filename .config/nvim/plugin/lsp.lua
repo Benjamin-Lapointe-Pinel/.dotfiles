@@ -1,19 +1,12 @@
 require("mason").setup{ ui = { border = 'single' } }
-require('lspconfig.ui.windows').default_options.border = 'single'
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
-vim.diagnostic.config { float = { border = "single" } }
+-- require('lspconfig.ui.windows').default_options.border = 'single'
+vim.o.winborder = 'single'
 
 on_attach = function()
 	local opts = { noremap=true }
 	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-	vim.keymap.set('n', 'gri', vim.lsp.buf.implementation, opts)
-	vim.keymap.set('n', 'grr', vim.lsp.buf.references, opts)
 	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-	vim.keymap.set('n', 'grn', vim.lsp.buf.rename, opts)
-	vim.keymap.set('n', 'gra', vim.lsp.buf.code_action, opts)
-	vim.keymap.set('n', 'gO', vim.lsp.buf.document_symbol, opts)
-	vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+	vim.keymap.set('i', '<c-space>', vim.lsp.completion.get, opts)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

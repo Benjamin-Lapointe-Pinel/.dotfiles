@@ -28,7 +28,7 @@ set signcolumn=yes
 
 set wildmenu
 set wildmode=longest:full,full
-set completeopt=noinsert,menu,menuone,popup
+set completeopt=noinsert,menu,menuone,popup,fuzzy
 
 set splitbelow
 set splitright
@@ -91,19 +91,12 @@ autocmd FileType python compiler pylint
 autocmd QuickfixCmdPost [^l]* nested cwindow
 autocmd QuickfixCmdPost    l* nested lwindow
 
-" TODO integrate to Diagnostics command as well (neovim)
-" https://dhruvasagar.com/2013/12/17/vim-filter-quickfix-list/
-function! s:FilterQuickfixList(invert, pattern)
-  let cmp = a:invert ? '!~#' : '=~#'
-  call setqflist(filter(getqflist(), "bufname(v:val['bufnr']) " . cmp . " a:pattern"))
-endfunction
-command! -bang -nargs=1 -complete=file Cfilter call s:FilterQuickfixList(<bang>0, <q-args>)
-
 " those are already in neovim, thus not optional
 if !has('nvim')
 	packadd! comment
 	packadd! editorconfig
 endif
+packadd cfilter
 
 " These lines must be at the very end of the vimrc file.
 " packloadall breaks nvim plugin loading

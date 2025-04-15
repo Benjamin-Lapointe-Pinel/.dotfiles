@@ -4,6 +4,8 @@ vim.api.nvim_set_hl(0, "DiagnosticSignOk", { ctermbg=18, ctermfg=10 })
 vim.api.nvim_set_hl(0, "DiagnosticSignWarn", { ctermbg=18, ctermfg=11 })
 vim.api.nvim_set_hl(0, "DiagnosticSignError", { ctermbg=18, ctermfg=9 })
 
+vim.diagnostic.config({ virtual_text = true })
+
 vim.api.nvim_create_user_command('Diagnostic',
 	function(opts)
 		if opts.args == 'error' then

@@ -1,5 +1,3 @@
-command ToggleQuickfix if empty(filter(getwininfo(), 'v:val.quickfix')) | copen | else | cclose | endif
-
 function! GetQuickfixNumber()
 	let quickfix_number = len(getqflist())
 	if quickfix_number > 0

@@ -54,11 +54,20 @@ nnoremap <C-\> :vertical terminal<CR>
 tnoremap <C-\> exit<CR>
 
 " miscellaneous
+command ToggleQuickfix if empty(filter(getwininfo(), 'v:val.quickfix')) | copen | else | cclose | endif
+command ToggleLocation if empty(filter(getwininfo(), 'v:val.loclist')) | lopen | else | lclose | endif
 nnoremap <C-q> :ToggleQuickfix<CR>
+nnoremap <C-l> :ToggleLocation<CR>
 nnoremap ]q :cnext<CR>
 nnoremap [q :cprev<CR>
+nnoremap ]Q :clast<CR>
+nnoremap [Q :cfirst<CR>
+nnoremap ]l :lnext<CR>
+nnoremap [l :lprev<CR>
+nnoremap ]L :llast<CR>
+nnoremap [L :lfirst<CR>
 nnoremap Q gq
-nnoremap gb :ls<CR>:b
+nnoremap gb :ls<CR>:b 
 nnoremap <C-space> :set list! list?<CR>
 nnoremap <F5> :w<CR>:!%:p<CR>
 " https://stackoverflow.com/a/1037182

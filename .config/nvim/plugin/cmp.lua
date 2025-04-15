@@ -1,5 +1,3 @@
-require("copilot_cmp").setup()
-
 local cmp = require('cmp')
 cmp.setup {
 	snippet = {
@@ -50,7 +48,6 @@ cmp.setup {
 	}),
 	sources = cmp.config.sources(
 	{
-		-- { name = 'copilot' },
 		{ name = 'nvim_lsp' },
 		{ name = 'spell' },
 	},

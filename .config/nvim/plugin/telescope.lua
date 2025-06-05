@@ -8,6 +8,6 @@ vim.keymap.set('n', 'gs', function() builtin.lsp_document_symbols({symbol_width=
 require('telescope').setup {
 	defaults = {
 		layout_strategy = 'vertical',
-		-- borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+		border = false
 	},
 }

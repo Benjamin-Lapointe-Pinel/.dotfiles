@@ -24,6 +24,7 @@
 	branch = false
 [push]
 	autoSetupRemote = true
+	recurseSubmodules = on-demand
 [pull]
 	rebase = false
 [interactive]
@@ -43,3 +44,5 @@
 	hunk-header-style = "omit"
 [init]
 	defaultBranch = master
+[submodule]
+	recurse = true

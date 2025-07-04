@@ -54,6 +54,7 @@ nnoremap <C-\> :vertical terminal<CR>
 tnoremap <C-\> exit<CR>
 
 " miscellaneous
+command BufOnly silent! execute "%bd|e#|bd#"
 command ToggleQuickfix if empty(filter(getwininfo(), 'v:val.quickfix')) | copen | else | cclose | endif
 command ToggleLocation if empty(filter(getwininfo(), 'v:val.loclist')) | lopen | else | lclose | endif
 nnoremap <C-q> :ToggleQuickfix<CR>

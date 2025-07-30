@@ -1,4 +1,3 @@
--- local root_dir = vim.fs.root(0, {".git", "mvnw", "gradlew"})
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 local workspace_dir = os.getenv('HOME') .. '/.cache/jdtls/workspace/' .. project_name
 local config_dir = os.getenv('HOME') .. '/.cache/jdtls/config'
@@ -6,10 +5,9 @@ local lombok_jar = vim.fn.glob(os.getenv('HOME') .. '/.gradle/caches/**/lombok-[
 local bundles = { vim.fn.glob(os.getenv('HOME') .. "/.local/share/nvim/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar", 1) }
 vim.list_extend(bundles, vim.split(vim.fn.glob(os.getenv('HOME') .. "/.config/nvim/dependencies/vscode-java-test/server/*.jar", 1), "\n"))
 
-local on_attach = function(client, bufnr)
+local on_attach = function()
 	require('jdtls').setup_dap({ hotcodereplace = 'auto' })
 	require('jdtls.dap').setup_dap_main_class_configs()
-	on_attach(client, bufnr)
 end
 
 local config = {
@@ -19,7 +17,6 @@ local config = {
 		'-data', workspace_dir,
 		'--jvm-arg=-javaagent:' .. lombok_jar,
 	},
-	-- root_dir = root_dir,
 	init_options = {
 		bundles = bundles
 	},
@@ -35,6 +32,7 @@ local config = {
 	},
 	on_attach = on_attach,
 }
+
 require('jdtls').start_or_attach(config)
 
 vim.cmd [[ command! -buffer JtdOrganizeImports lua require'jdtls'.organize_imports() ]]

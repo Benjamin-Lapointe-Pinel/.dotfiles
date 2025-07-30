@@ -11,10 +11,9 @@ require('barbar').setup{
 		pinned = {button = '+'},
 		separator = {left = '', right = '▕'},
 		gitsigns = {
-			enabled = true,
-			added = {enabled = true, icon = '+'},
-			changed = {enabled = true, icon = '~'},
-			deleted = {enabled = true, icon = '-'},
+			added = {enabled = false, icon = '+'},
+			changed = {enabled = false, icon = '~'},
+			deleted = {enabled = false, icon = '-'},
 		},
 		filetype = {
 			enabled = false,

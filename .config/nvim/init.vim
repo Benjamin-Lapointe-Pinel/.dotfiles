@@ -37,6 +37,7 @@ call plug#begin()
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 	Plug 'nvim-telescope/telescope.nvim'
+	Plug 'nvim-telescope/telescope-ui-select.nvim'
 	Plug 'hrsh7th/cmp-nvim-lsp'
 	Plug 'hrsh7th/cmp-buffer'
 	Plug 'hrsh7th/cmp-path'
@@ -55,6 +56,7 @@ call plug#end()
 
 highlight ColorColumn cterm=NONE
 
+set winborder=single
 let g:barbar_auto_setup = v:false
 
 command! -range Range lua print(<line1>,<line2>)

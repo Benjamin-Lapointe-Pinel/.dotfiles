@@ -27,8 +27,7 @@ require("mason-lspconfig").setup {
 vim.api.nvim_create_autocmd('LspAttach', {
 	callback = function(args)
 		local opts = { noremap = true }
-		vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-		vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+		vim.keymap.set('n', 'gd', vim.lsp.buf.declaration, opts)
 		vim.keymap.set('i', '<c-space>', vim.lsp.completion.get, opts)
 	end,
 })

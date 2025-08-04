@@ -25,4 +25,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
+eval "$(fzf --bash)"
+
 PS1='[\u@\h \W]\$ '

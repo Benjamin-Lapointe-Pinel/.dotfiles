@@ -17,13 +17,11 @@ include $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 include $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh
 include $HOME/.zsh/extract/extract.plugin.zsh
 include $HOME/.zsh/powerlevel10k/powerlevel10k.zsh-theme
-include /usr/share/fzf/completion.zsh
-include /usr/share/fzf/key-bindings.zsh
-include /usr/share/doc/fzf/examples/completion.zsh
-include /usr/share/doc/fzf/examples/key-bindings.zsh
 command -v kubectl &> /dev/null && source <(kubectl completion zsh)
 command -v ng &> /dev/null && source <(ng completion script)
 fpath=($HOME/.zsh/zsh-completions/src $fpath)
+
+source <(fzf --zsh)
 
 setopt histappend
 setopt share_history

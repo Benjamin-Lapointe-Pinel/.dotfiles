@@ -47,3 +47,5 @@
 	defaultBranch = master
 [submodule]
 	recurse = true
+[fetch]
+	prune = true

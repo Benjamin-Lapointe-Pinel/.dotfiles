@@ -1,7 +1,7 @@
 set nocompatible
 set encoding=UTF-8
 set t_Co=256
-set updatetime=750
+set updatetime=100
 set hidden
 set clipboard^=unnamed,unnamedplus
 
@@ -24,7 +24,7 @@ set noexpandtab
 set hlsearch incsearch
 set number norelativenumber
 set showcmd
-set signcolumn=yes
+set signcolumn=auto:9
 
 set wildmenu
 set wildmode=longest:full,full

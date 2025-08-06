@@ -7,10 +7,6 @@ highlight clear SpellRare
 highlight SpellRare cterm=underline ctermfg=green
 highlight clear SpellLocal
 highlight SpellLocal cterm=underline ctermfg=blue
-highlight DiffAdd ctermfg=0
-highlight DiffDelete ctermfg=0
-highlight DiffChange ctermfg=0
-highlight DiffText ctermfg=0
 highlight LineNr ctermbg=18
 highlight SignColumn ctermbg=18
 highlight Pmenu ctermbg=black ctermfg=gray
@@ -27,6 +23,10 @@ highlight Comment ctermfg=8
 highlight Type ctermfg=10
 highlight DebugPc ctermbg=5
 highlight MatchParen cterm=bold ctermbg=6
+
+highlight GitGutterAdd ctermfg=green
+highlight GitGutterChange ctermfg=cyan
+highlight GitGutterDelete ctermfg=red
 
 highlight User1 ctermbg=1 ctermfg=white cterm=bold
 highlight User2 ctermbg=2 ctermfg=white cterm=bold

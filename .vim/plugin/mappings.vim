@@ -66,7 +66,6 @@ nnoremap ]l <Cmd>lnext<CR>
 nnoremap [l <Cmd>lprev<CR>
 nnoremap ]L <Cmd>llast<CR>
 nnoremap [L <Cmd>lfirst<CR>
-nnoremap <C-[> <C-O>
 nnoremap gm <Cmd>marks<CR>:normal! `
 
 " miscellaneous

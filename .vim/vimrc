@@ -5,6 +5,7 @@ set updatetime=100
 set hidden
 set clipboard^=unnamed,unnamedplus
 
+set scrolloff=4
 set textwidth=320
 set colorcolumn=+1
 
@@ -24,7 +25,7 @@ set noexpandtab
 set hlsearch incsearch
 set number norelativenumber
 set showcmd
-set signcolumn=auto:9
+set signcolumn=yes:2
 
 set wildmenu
 set wildmode=longest:full,full

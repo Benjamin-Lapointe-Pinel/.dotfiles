@@ -32,7 +32,7 @@ dapui.setup({
 				"watches",
 				{ id = "scopes", size = 0.5 },
 			},
-			size = 64,
+			size = 70,
 			position = "right",
 		},
 	},

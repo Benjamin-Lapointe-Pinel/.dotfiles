@@ -24,6 +24,8 @@ require("mason-lspconfig").setup {
 	},
 }
 
+require("typescript-tools").setup({})
+
 vim.api.nvim_create_autocmd('LspAttach', {
 	callback = function(args)
 		local opts = { noremap = true }

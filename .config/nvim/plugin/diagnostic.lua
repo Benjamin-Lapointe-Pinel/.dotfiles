@@ -21,6 +21,7 @@ vim.api.nvim_create_user_command('Diagnostic',
 		end
 	end,
 	{
+		bar = true,
 		nargs = '?',
 		complete = function(ArgLead, CmdLine, CursorPos)
 			args = { 'all', 'error', 'warning', 'info', 'hint' }

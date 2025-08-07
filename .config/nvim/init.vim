@@ -34,9 +34,6 @@ call plug#begin()
 	Plug 'jay-babu/mason-nvim-dap.nvim'
 	Plug 'WhoIsSethDaniel/mason-tool-installer.nvim'
 	Plug 'nvim-lua/plenary.nvim'
-	Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
-	Plug 'nvim-telescope/telescope.nvim'
-	Plug 'nvim-telescope/telescope-ui-select.nvim'
 	Plug 'hrsh7th/cmp-nvim-lsp'
 	Plug 'hrsh7th/cmp-buffer'
 	Plug 'hrsh7th/cmp-path'

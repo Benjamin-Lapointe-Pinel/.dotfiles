@@ -41,7 +41,6 @@
 	cmd = nvim -f -c \"Git mergetool\" -c \"cclose\" -c \"Gdiffsplit!\"
 [delta]
 	color-only = true
-	theme = base16-256
 	hunk-header-style = "omit"
 [init]
 	defaultBranch = master

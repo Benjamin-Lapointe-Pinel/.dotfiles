@@ -6,3 +6,5 @@ gui:
 git:
   paging:
     pager: delta --color-only --paging=never
+
+promptToReturnFromSubprocess: false

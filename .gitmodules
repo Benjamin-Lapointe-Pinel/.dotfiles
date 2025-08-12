@@ -1,71 +1,54 @@
 [submodule ".config/base16-shell"]
 	path = .config/base16-shell
 	url = https://github.com/chriskempson/base16-shell.git
-	ignore = all
 [submodule ".vim/pack/plugins/start/gitgutter"]
 	path = .vim/pack/plugins/start/gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
-	ignore = all
 [submodule ".vim/pack/plugins/start/colorizer"]
 	path = .vim/pack/plugins/start/colorizer
 	url = https://github.com/lilydjwg/colorizer.git
-	ignore = all
 [submodule ".vim/pack/plugins/start/surround"]
 	path = .vim/pack/plugins/start/surround
 	url = https://github.com/tpope/vim-surround.git
-	ignore = all
 [submodule ".vim/pack/plugins/start/fzf"]
 	path = .vim/pack/plugins/start/fzf
 	url = https://github.com/junegunn/fzf.vim.git
-	ignore = all
 [submodule ".zsh/zsh-autosuggestions"]
 	path = .zsh/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
-	ignore = all
 [submodule ".zsh/zsh-syntax-highlighting"]
 	path = .zsh/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-	ignore = all
 [submodule ".zsh/zsh-completions"]
 	path = .zsh/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
-	ignore = all
 [submodule ".zsh/zsh-history-substring-search"]
 	path = .zsh/zsh-history-substring-search
 	url = https://github.com/zsh-users/zsh-history-substring-search
-	ignore = all
 [submodule ".zsh/powerlevel10k"]
 	path = .zsh/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
-	ignore = all
 [submodule ".vim/pack/plugins/start/clang-format"]
 	path = .vim/pack/plugins/start/clang-format
 	url = https://github.com/rhysd/vim-clang-format.git
-	ignore = all
 [submodule ".vim/pack/plugins/start/vimtex"]
 	path = .vim/pack/plugins/start/vimtex
 	url = https://github.com/lervag/vimtex.git
-	ignore = all
 [submodule ".vim/pack/plugins/start/fugitive"]
 	path = .vim/pack/plugins/start/fugitive
 	url = https://github.com/tpope/vim-fugitive
-	ignore = all
 [submodule ".config/nvim/dependencies/vscode-java-test"]
 	path = .config/nvim/dependencies/vscode-java-test
 	url = https://github.com/microsoft/vscode-java-test.git
-	ignore = all
 [submodule ".config/tmux/plugins/tpm"]
 	path = .config/tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
-	ignore = all
 [submodule ".vim/pack/plugins/start/vinegar"]
 	path = .vim/pack/plugins/start/vinegar
 	url = https://github.com/tpope/vim-vinegar.git
-	ignore = all
 [submodule ".zsh/fzf-tab"]
 	path = .zsh/fzf-tab
 	url = https://github.com/Aloxaf/fzf-tab
-	ignore = all
 [submodule ".config/nvim/dependencies/vscode-js-debug"]
 	path = .config/nvim/dependencies/vscode-js-debug
 	url = https://github.com/microsoft/vscode-js-debug

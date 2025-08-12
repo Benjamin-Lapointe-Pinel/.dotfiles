@@ -13,6 +13,7 @@ require("mason-lspconfig").setup {
 		'lua_ls',
 		'pylsp',
 		'rust_analyzer',
+		'sqlls',
 		'terraformls',
 		'vimls',
 		'yamlls',

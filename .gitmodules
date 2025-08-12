@@ -75,3 +75,12 @@
 [submodule ".vim/pack/plugins/start/titlecase"]
 	path = .vim/pack/plugins/start/titlecase
 	url = https://github.com/christoomey/vim-titlecase.git
+[submodule ".vim/pack/plugins/start/dadbod"]
+	path = .vim/pack/plugins/start/dadbod
+	url = https://github.com/tpope/vim-dadbod.git
+[submodule ".vim/pack/plugins/start/dadbod-ui"]
+	path = .vim/pack/plugins/start/dadbod-ui
+	url = https://github.com/kristijanhusak/vim-dadbod-ui.git
+[submodule ".vim/pack/plugins/start/dadbod-completion"]
+	path = .vim/pack/plugins/start/dadbod-completion
+	url = https://github.com/kristijanhusak/vim-dadbod-completion.git

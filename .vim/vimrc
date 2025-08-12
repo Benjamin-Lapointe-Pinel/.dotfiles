@@ -25,7 +25,7 @@ set noexpandtab
 set hlsearch incsearch
 set number norelativenumber
 set showcmd
-set signcolumn=yes:2
+set signcolumn=yes
 
 set wildmenu
 set wildmode=longest:full,full

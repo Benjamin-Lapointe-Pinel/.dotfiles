@@ -52,6 +52,7 @@ call plug#end()
 
 highlight ColorColumn cterm=NONE
 
+set signcolumn=yes:2
 set winborder=single
 let g:barbar_auto_setup = v:false
 

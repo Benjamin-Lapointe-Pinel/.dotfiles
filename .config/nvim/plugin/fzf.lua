@@ -1,4 +1,16 @@
 local fzf_lua = require("fzf-lua")
+
+local send_to_qf_ll = {
+	["ctrl-q"] = {
+		prefix = "select-all+",
+		fn = fzf_lua.actions.file_sel_to_qf,
+	},
+	["ctrl-l"] = {
+		prefix = "select-all+",
+		fn = fzf_lua.actions.file_sel_to_ll,
+	}
+}
+
 fzf_lua.setup({
 	winopts = {
 		border = 'single',
@@ -11,7 +23,9 @@ fzf_lua.setup({
 		symbols = {
 			symbol_style = 3
 		}
-	}
+	},
+	grep = { actions = send_to_qf_ll },
+	files = { actions = send_to_qf_ll },
 })
 
 vim.keymap.set('n', 'gl', fzf_lua.live_grep, { desc = 'live grep' })

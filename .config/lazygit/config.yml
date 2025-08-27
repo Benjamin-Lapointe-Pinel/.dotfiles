@@ -2,6 +2,7 @@ gui:
   timeFormat: "2006-01-02 15:04:05"
   shortTimeFormat: "15:04:05"
   border: single
+  nerdFontsVersion: ""
 
 git:
   paging:

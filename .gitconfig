@@ -32,7 +32,7 @@
 	diffFilter = delta
 [diff]
 	colorMoved = default
-	ignoreSubmodules = all
+	ignoreSubmodules = dirty
 [merge]
 	conflictstyle = diff3
 	tool = fugitive

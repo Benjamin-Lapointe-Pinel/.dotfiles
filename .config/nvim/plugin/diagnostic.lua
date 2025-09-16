@@ -30,4 +30,3 @@ vim.api.nvim_create_user_command('Diagnostic',
 		desc = 'Set diagnostic errors to quickfix list'
 	}
 )
-

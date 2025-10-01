@@ -47,7 +47,8 @@ call plug#begin()
 	Plug 'nvimtools/none-ls.nvim'
 	Plug 'antoinemadec/FixCursorHold.nvim'
 	Plug 'dsych/blanket.nvim'
-	Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
+	Plug 'ibhagwan/fzf-lua'
+	Plug 'lewis6991/satellite.nvim'
 call plug#end()
 
 highlight ColorColumn cterm=NONE

@@ -8,6 +8,7 @@ fzf
 git
 git-delta
 jq
+lazygit
 neovim
 nodejs
 npm

@@ -1,0 +1,16 @@
+{
+  "general": {
+    "preferredEditor": "neovim",
+    "vimMode": false
+  },
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal"
+    }
+  },
+  "ui": {
+    "accessibility": {
+      "disableLoadingPhrases": true
+    }
+  }
+}

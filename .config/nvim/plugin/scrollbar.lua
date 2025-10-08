@@ -1,4 +1,5 @@
 require('satellite').setup({
+	current_only = true,
 	handlers = {
 		cursor = {
 			symbols = { '▔', '━' ,'▁' }

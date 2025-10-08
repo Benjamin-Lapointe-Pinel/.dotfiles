@@ -15,6 +15,8 @@ require'nvim-treesitter.configs'.setup{
 		'kotlin',
 		'latex',
 		'lua',
+		'markdown',
+		'markdown_inline',
 		'python',
 		'typescript',
 		'vim',

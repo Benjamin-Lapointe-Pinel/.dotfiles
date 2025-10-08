@@ -11,6 +11,8 @@ autoload -U +X bashcompinit && bashcompinit
 
 include $HOME/.rc
 include $HOME/.p10k.zsh
+# include $HOME/.zsh/fzf-tab/fzf-tab.plugin.zsh
+# include $HOME/.zsh/fzf-tab-completion/zsh/fzf-zsh-completion.sh
 include $HOME/.zsh/key-bindings/key-bindings.zsh
 include $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 include $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
@@ -19,7 +21,7 @@ include $HOME/.zsh/extract/extract.plugin.zsh
 include $HOME/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 command -v kubectl &> /dev/null && source <(kubectl completion zsh)
 command -v ng &> /dev/null && source <(ng completion script)
-fpath=($HOME/.zsh/zsh-completions/src $fpath)
+fpath=($HOME/.zsh/zsh-completions/src $HOME/.zsh/gradle-completion $fpath)
 
 source <(fzf --zsh)
 

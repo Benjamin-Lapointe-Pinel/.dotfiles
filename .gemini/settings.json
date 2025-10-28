@@ -11,6 +11,14 @@
   "ui": {
     "accessibility": {
       "disableLoadingPhrases": true
+    },
+    "hideTips": true,
+    "hideBanner": true
+  },
+  "tools": {
+    "shell": {
+      "showColor": true,
+      "enableInteractiveShell": true
     }
   }
 }

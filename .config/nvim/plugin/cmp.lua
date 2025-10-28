@@ -50,6 +50,7 @@ cmp.setup {
 	{
 		{ name = 'nvim_lsp' },
 		{ name = 'spell' },
+		{ name = 'codecompanion' },
 	},
 	{
 		{ name = 'buffer' },

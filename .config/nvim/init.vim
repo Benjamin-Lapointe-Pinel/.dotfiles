@@ -49,6 +49,9 @@ call plug#begin()
 	Plug 'dsych/blanket.nvim'
 	Plug 'ibhagwan/fzf-lua'
 	Plug 'lewis6991/satellite.nvim'
+
+	Plug 'CopilotC-Nvim/CopilotChat.nvim'
+	Plug 'olimorris/codecompanion.nvim'
 call plug#end()
 
 highlight ColorColumn cterm=NONE

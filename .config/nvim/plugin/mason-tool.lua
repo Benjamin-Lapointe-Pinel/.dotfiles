@@ -4,6 +4,7 @@ require('mason-tool-installer').setup {
 		'eslint',
 		'htmlhint',
 		'java-debug-adapter',
+		'java-test',
 		'js-debug-adapter',
 		'pylint',
 		'texlab',

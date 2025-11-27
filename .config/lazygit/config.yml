@@ -3,9 +3,7 @@ gui:
   shortTimeFormat: "15:04:05"
   border: single
   nerdFontsVersion: ""
-
 git:
-  paging:
-    pager: delta --color-only --paging=never
-
+  pagers:
+    - pager: delta --color-only --paging=never
 promptToReturnFromSubprocess: false

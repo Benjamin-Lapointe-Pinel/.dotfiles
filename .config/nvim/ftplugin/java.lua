@@ -7,9 +7,19 @@ local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 local workspace_dir = os.getenv('HOME') .. '/.cache/jdtls/workspace/' .. project_name
 local config_dir = os.getenv('HOME') .. '/.cache/jdtls/config'
 local lombok_jar = vim.fn.glob(os.getenv('HOME') .. '/.gradle/caches/**/lombok-[0-9]*.*[0-9]*.*[0-9].jar', 0, 1)[1]
-local bundles = { }
-vim.list_extend(bundles, vim.split(vim.fn.glob(os.getenv('HOME') .. "/.local/share/nvim/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar", 1), "\n"))
-vim.list_extend(bundles, vim.split(vim.fn.glob(os.getenv('HOME') .. "/.local/share/nvim/mason/packages/java-test/extension/server/*.jar", 1), "\n"))
+
+local bundles = { vim.fn.glob(os.getenv('HOME') .. "/.local/share/nvim/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar", 1) }
+local java_test_bundles = vim.split(vim.fn.glob(os.getenv('HOME') .. "/.local/share/nvim/mason/packages/java-test/extension/server/*.jar", 1), "\n")
+local excluded = {
+  "com.microsoft.java.test.runner-jar-with-dependencies.jar",
+  "jacocoagent.jar",
+}
+for _, java_test_jar in ipairs(java_test_bundles) do
+  local fname = vim.fn.fnamemodify(java_test_jar, ":t")
+  if not vim.tbl_contains(excluded, fname) then
+    table.insert(bundles, java_test_jar)
+  end
+end
 
 local on_attach = function()
 	require('jdtls').setup_dap({ hotcodereplace = 'auto' })

@@ -71,8 +71,8 @@ vim.keymap.set('n', '<F7>',  dap.step_into, opts)
 vim.keymap.set('n', '<F8>',  dap.step_out, opts)
 vim.keymap.set('n', '<F9>',  dap.toggle_breakpoint, opts)
 vim.keymap.set('n', '<F10>', dapui.eval, opts)
-vim.keymap.set('n', '<F30>', function() dap.list_breakpoints(); vim.cmd.copen() end, opts)
-vim.keymap.set('n', '<F33>', function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, opts)
+vim.keymap.set('n', '<F21>', function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, opts)
+vim.keymap.set('n', '<F33>', function() dap.list_breakpoints(); vim.cmd.copen() end, opts)
 vim.keymap.set('n', '<F12>', ':DapTerminate<CR><Cmd>lua require("dapui").close()<CR>', opts)
 
 vim.cmd [[ command! DapListBreakpoints lua require'dap'.list_breakpoints(); vim.cmd('copen'); ]]

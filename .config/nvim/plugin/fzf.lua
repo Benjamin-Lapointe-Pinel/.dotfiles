@@ -42,6 +42,7 @@ vim.keymap.set('n', 'gh', fzf_lua.helptags, { desc = 'find help tag' })
 vim.keymap.set('n', 'z=', fzf_lua.spell_suggest, { desc = 'spell suggestions' })
 vim.keymap.set('n', '<M-q>', fzf_lua.quickfix, { desc = 'find quick fix' })
 vim.keymap.set('n', '<M-l>', fzf_lua.loclist, { desc = 'find location' })
+vim.keymap.set('n', '<F33>', fzf_lua.dap_breakpoints, { desc = 'find breakpoints' })
 
 -- lsp
 require('fzf-lua').register_ui_select()

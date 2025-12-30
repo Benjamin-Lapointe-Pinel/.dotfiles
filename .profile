@@ -20,6 +20,12 @@ then
 	export PATH="$HOME/.local/bin:$PATH"
 fi
 
+# WSL can access windows tools
+if [ -d /mnt/c/Windows/System32 ]
+then
+	export PATH="/mnt/c/Windows/System32:/mnt/c/Windows/System32/WindowsPowerShell/v1.0:$PATH"
+fi
+
 if [[ `ps --no-headers -o comm 1` = 'systemd' ]] && systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]
 then
 	exec startx

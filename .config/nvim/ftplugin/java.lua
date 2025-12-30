@@ -21,7 +21,8 @@ for _, java_test_jar in ipairs(java_test_bundles) do
   end
 end
 
-local on_attach = function()
+local on_attach = function(client, _)
+	client.server_capabilities.semanticTokensProvider = nil
 	require('jdtls').setup_dap({ hotcodereplace = 'auto' })
 	require('jdtls.dap').setup_dap_main_class_configs()
 end
@@ -44,7 +45,10 @@ local config = {
 					profile = 'ProjectCodeStyle',
 				}
 			}
-		}
+		},
+		semanticHighlighting = {
+			enabled = false,
+		},
 	},
 	on_attach = on_attach,
 }

@@ -1,6 +1,7 @@
 set nocompatible
 set encoding=UTF-8
 set t_Co=256
+set notermguicolors
 set updatetime=100
 set hidden
 set clipboard^=unnamed,unnamedplus

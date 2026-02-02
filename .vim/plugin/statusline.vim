@@ -13,7 +13,7 @@ function! GetFileName()
 	endif
 	let filename = filename.'▕'
 	if getbufinfo(bufnr('%'))[0].changed
-		return '%4* '.filename.'%*'
+		return '%6* '.filename.'%*'
 	else
 		return '%1  '.filename.'%*'
 	endif

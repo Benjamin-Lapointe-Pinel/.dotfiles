@@ -15,6 +15,7 @@ require("mason-lspconfig").setup {
 		'rust_analyzer',
 		'sqlls',
 		'terraformls',
+		'ts_ls',
 		'vimls',
 		'yamlls',
 	},

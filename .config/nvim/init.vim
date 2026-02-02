@@ -54,6 +54,8 @@ call plug#begin()
 	Plug 'olimorris/codecompanion.nvim'
 call plug#end()
 
+colorscheme vim
+
 highlight ColorColumn cterm=NONE
 
 set signcolumn=yes:2

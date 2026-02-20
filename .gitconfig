@@ -41,6 +41,7 @@
 [mergetool "fugitive"]
 	cmd = nvim -f -c \"Git mergetool\" -c \"cclose\" -c \"Gdiffsplit!\"
 [delta]
+	navigate = true
 	color-only = true
 	hunk-header-style = "omit"
 [init]

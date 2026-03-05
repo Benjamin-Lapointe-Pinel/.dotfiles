@@ -80,7 +80,6 @@ vim.cmd [[ command! DapClearBreakpoints lua require'dap'.clear_breakpoints() ]]
 vim.cmd [[ command! DapRepl lua require'dap'.repl.toggle() ]]
 vim.cmd [[ command! DapUiToggle lua require("dapui").toggle() ]]
 vim.cmd [[ au FileType dap-repl lua require('dap.ext.autocompl').attach() ]]
-vim.cmd [[ command! -range=% Format lua vim.lsp.buf.format({range={['start']={<line1>,0},['end']={<line2>,0}}}) ]]
 
 -- vscode javascript debug adapter
 

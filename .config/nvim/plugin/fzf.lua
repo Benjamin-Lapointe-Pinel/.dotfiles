@@ -24,7 +24,7 @@ fzf_lua.setup({
 			symbol_style = 3
 		}
 	},
-	diagnostics ={
+	diagnostics = {
 		multiline = 1
 	},
 	grep = { actions = send_to_qf_ll },

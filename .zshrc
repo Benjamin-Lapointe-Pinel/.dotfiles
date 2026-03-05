@@ -31,6 +31,7 @@ setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt extendedglob
 setopt globstarshort
+setopt inc_append_history_time
 
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish

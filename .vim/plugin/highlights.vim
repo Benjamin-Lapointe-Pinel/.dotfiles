@@ -9,7 +9,7 @@ highlight clear SpellLocal
 highlight SpellLocal cterm=underline ctermfg=blue
 highlight LineNr ctermbg=18 ctermfg=7
 highlight SignColumn ctermbg=18
-highlight Pmenu ctermbg=black ctermfg=gray
+highlight Pmenu ctermbg=gray ctermfg=black
 highlight PmenuSel ctermbg=yellow ctermfg=black cterm=reverse
 highlight PmenuSbar ctermbg=gray ctermfg=white
 highlight PmenuThumb ctermbg=8

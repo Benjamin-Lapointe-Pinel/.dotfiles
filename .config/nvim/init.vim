@@ -23,9 +23,8 @@ call plug#begin()
 	Plug 'mfussenegger/nvim-dap'
 	Plug 'mfussenegger/nvim-dap-python'
 	Plug 'mxsdev/nvim-dap-vscode-js'
-	Plug 'nvim-treesitter/nvim-treesitter', { 'branch': 'master', 'do': ':TSUpdate' }
+	Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 	Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-	Plug 'nvim-treesitter/nvim-treesitter-refactor'
 	Plug 'romgrk/barbar.nvim'
 	Plug 'lukas-reineke/indent-blankline.nvim'
 	Plug 'nvim-neotest/nvim-nio'

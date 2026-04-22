@@ -11,8 +11,6 @@ autoload -U +X bashcompinit && bashcompinit
 
 include $HOME/.rc
 include $HOME/.p10k.zsh
-# include $HOME/.zsh/fzf-tab/fzf-tab.plugin.zsh
-# include $HOME/.zsh/fzf-tab-completion/zsh/fzf-zsh-completion.sh
 include $HOME/.zsh/key-bindings/key-bindings.zsh
 include $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 include $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh

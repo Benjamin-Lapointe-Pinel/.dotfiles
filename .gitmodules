@@ -43,9 +43,6 @@
 [submodule ".vim/pack/plugins/start/vinegar"]
 	path = .vim/pack/plugins/start/vinegar
 	url = https://github.com/tpope/vim-vinegar.git
-[submodule ".zsh/fzf-tab"]
-	path = .zsh/fzf-tab
-	url = https://github.com/Aloxaf/fzf-tab
 [submodule ".vim/pack/plugins/start/targets"]
 	path = .vim/pack/plugins/start/targets
 	url = https://github.com/wellle/targets.vim.git
@@ -61,12 +58,12 @@
 [submodule ".vim/pack/plugins/start/dadbod-completion"]
 	path = .vim/pack/plugins/start/dadbod-completion
 	url = https://github.com/kristijanhusak/vim-dadbod-completion.git
-[submodule ".zsh/fzf-tab-completion"]
-	path = .zsh/fzf-tab-completion
-	url = https://github.com/lincheney/fzf-tab-completion
 [submodule ".zsh/gradle-completion"]
 	path = .zsh/gradle-completion
 	url = https://github.com/gradle/gradle-completion
 [submodule ".vim/pack/plugins/start/rust"]
 	path = .vim/pack/plugins/start/rust
 	url = https://github.com/rust-lang/rust.vim
+[submodule ".vim/pack/plugins/start/pgsql"]
+	path = .vim/pack/plugins/start/pgsql
+	url = https://codeberg.org/lifepillar/pgsql.vim.git

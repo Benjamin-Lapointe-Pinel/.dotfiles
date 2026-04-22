@@ -11,6 +11,7 @@ require("mason-lspconfig").setup {
 		'jdtls',
 		'jsonls',
 		'lua_ls',
+		'postgres_lsp',
 		'pylsp',
 		'rust_analyzer',
 		'sqlls',
